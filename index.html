@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Camino al Griego · Vivos para servir</title>
-    <!-- Font Awesome (íconos) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vivos para servir · Camino al Griego</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- Google Fonts: modernas -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,500;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <style>
+        /* ========== RESET Y BASE ========== */
         * {
             margin: 0;
             padding: 0;
@@ -14,443 +19,678 @@
         }
 
         body {
-            font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
-            background: #f8f4f0;  /* fondo cálido */
+            font-family: 'Inter', sans-serif;
+            background: #0c0a0a;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 2rem 1rem 3rem;
-        }
-
-        /* contenedor principal */
-        .main-container {
-            max-width: 1100px;
-            width: 100%;
-            background: rgba(255, 253, 250, 0.7);
-            backdrop-filter: blur(2px);
-            border-radius: 60px 60px 40px 40px;
-            padding: 2.5rem 2rem;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08), 0 8px 20px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(255, 245, 235, 0.5);
-        }
-
-        /* ===== ENCABEZADO / IDENTIDAD ===== */
-        .header-identity {
-            display: flex;
-            align-items: center;
-            gap: 1.2rem;
-            flex-wrap: wrap;
-            margin-bottom: 2.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 3px dashed #d9c8b4;
-        }
-
-        .logo-container {
-            flex-shrink: 0;
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            overflow: hidden;
-            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
-            border: 3px solid #ffffff;
-            background: white;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 2rem 1.5rem;
+            background-image: 
+                radial-gradient(ellipse at 10% 20%, rgba(120, 70, 40, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 90% 80%, rgba(60, 100, 80, 0.10) 0%, transparent 50%),
+                linear-gradient(145deg, #141110 0%, #1f1a17 100%);
+            position: relative;
         }
 
-        .logo-container img {
+        /* efecto de "bruma" sutil */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.06'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ========== CONTENEDOR PRINCIPAL ========== */
+        .game-container {
+            max-width: 1200px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ========== HEADER - IDENTIDAD ÉPICA ========== */
+        .header-identity {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.8rem;
+            padding: 1.2rem 2rem 1.2rem 1.8rem;
+            background: rgba(30, 26, 23, 0.7);
+            backdrop-filter: blur(16px) saturate(180%);
+            border-radius: 100px 100px 100px 100px;
+            border: 1px solid rgba(255, 215, 175, 0.12);
+            box-shadow: 0 20px 40px -12px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,215,175,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .logo-wrapper {
+            flex-shrink: 0;
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid rgba(235, 190, 150, 0.4);
+            box-shadow: 0 0 30px rgba(180, 120, 70, 0.15), 0 8px 20px rgba(0,0,0,0.6);
+            background: #1e1713;
+            transition: 0.3s;
+        }
+
+        .logo-wrapper:hover {
+            transform: scale(1.05) rotate(-2deg);
+            border-color: #dba87a;
+            box-shadow: 0 0 40px rgba(200, 140, 80, 0.25);
+        }
+
+        .logo-wrapper img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .title-ministry {
+        .ministry-title {
             flex: 1;
         }
 
-        .title-ministry h1 {
-            font-size: 2.2rem;
-            font-weight: 300;
-            letter-spacing: 2px;
-            color: #4f3b2c;
-            line-height: 1.2;
-        }
-
-        .title-ministry h1 strong {
+        .ministry-title h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.4rem;
             font-weight: 700;
-            color: #b45f3b;
-            background: linear-gradient(145deg, #b45f3b, #8e4a2c);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .title-ministry .subhead {
-            font-size: 1rem;
-            color: #7f6a58;
-            letter-spacing: 4px;
-            font-weight: 300;
-            margin-top: 4px;
-        }
-
-        .title-ministry .subhead i {
-            margin-right: 8px;
-            color: #b77f5a;
-        }
-
-        /* ===== DESCRIPCIÓN CAMINO ===== */
-        .path-intro {
-            text-align: center;
-            margin: 1.2rem 0 2.8rem;
-        }
-
-        .path-intro h2 {
-            font-size: 1.9rem;
-            font-weight: 300;
-            color: #3b2c20;
-        }
-
-        .path-intro h2 i {
-            color: #b77f5a;
-            margin: 0 10px;
-        }
-
-        .path-intro p {
-            color: #5f4d3c;
-            max-width: 650px;
-            margin: 0.5rem auto 0;
-            font-size: 1.1rem;
-            background: #ede5dc;
-            padding: 0.6rem 2rem;
-            border-radius: 40px;
-            display: inline-block;
-            backdrop-filter: blur(4px);
-        }
-
-        /* ===== SECCIONES (3 PASOS) ===== */
-        .path-steps {
+            letter-spacing: -0.5px;
+            color: #f5ede6;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
             display: flex;
-            flex-direction: column;
-            gap: 2.2rem;
-            margin-top: 0.8rem;
-        }
-
-        .step-card {
-            background: white;
-            border-radius: 90px 30px 30px 90px;
-            display: flex;
+            align-items: center;
             flex-wrap: wrap;
-            align-items: center;
-            padding: 0.8rem 1.8rem 0.8rem 1rem;
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.04), 0 4px 12px rgba(0, 0, 0, 0.02);
-            border: 1px solid rgba(235, 215, 195, 0.5);
-            transition: all 0.25s ease;
-            position: relative;
+            gap: 8px 12px;
         }
 
-        .step-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 30px rgba(110, 70, 40, 0.08);
-            border-color: #dbbc9e;
+        .ministry-title h1 .highlight {
+            background: linear-gradient(135deg, #f5cba0, #dba87a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: none;
+            font-weight: 800;
         }
 
-        /* número / ícono de paso */
-        .step-badge {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: #f2e3d6;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.2rem;
-            font-weight: 600;
-            color: #7f5d41;
-            margin-right: 1.2rem;
-            flex-shrink: 0;
-            box-shadow: 0 6px 0 #d9c0ab;
-        }
-
-        .step-badge i {
-            font-size: 2rem;
-            color: #8e5e3f;
-        }
-
-        .step-content {
-            flex: 1;
-            min-width: 200px;
-            padding: 0.4rem 0.2rem;
-        }
-
-        .step-content h3 {
-            font-size: 1.7rem;
-            font-weight: 600;
-            color: #3b281d;
-            letter-spacing: -0.3px;
-        }
-
-        .step-content h3 small {
-            font-size: 1rem;
-            font-weight: 300;
-            color: #917a66;
-            margin-left: 12px;
-            font-style: italic;
-        }
-
-        .step-content .desc {
-            color: #5f4b38;
+        .ministry-title .subhead {
             font-size: 0.95rem;
-            margin-top: 6px;
+            font-weight: 400;
+            color: #b8a394;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-top: 4px;
             display: flex;
             align-items: center;
             gap: 12px;
+        }
+
+        .ministry-title .subhead i {
+            color: #dba87a;
+            font-size: 0.9rem;
+        }
+
+        .badge-level {
+            background: rgba(219, 168, 122, 0.15);
+            border: 1px solid rgba(219, 168, 122, 0.25);
+            padding: 0.4rem 1.4rem;
+            border-radius: 60px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #e8d5c4;
+            letter-spacing: 2px;
+            backdrop-filter: blur(4px);
+        }
+
+        /* ========== INTRO / MAPA ========== */
+        .map-intro {
+            text-align: center;
+            margin: 1.2rem 0 3.2rem;
+            position: relative;
+        }
+
+        .map-intro .glow-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.6rem;
+            font-weight: 600;
+            color: #f0e4d8;
+            text-shadow: 0 0 40px rgba(200, 150, 100, 0.1);
+            letter-spacing: -1px;
+        }
+
+        .map-intro .glow-text i {
+            color: #dba87a;
+            margin: 0 14px;
+            filter: drop-shadow(0 0 12px rgba(219, 168, 122, 0.3));
+        }
+
+        .map-intro .sub-mission {
+            display: inline-block;
+            margin-top: 10px;
+            background: rgba(40, 34, 30, 0.6);
+            backdrop-filter: blur(8px);
+            padding: 0.6rem 2.4rem;
+            border-radius: 60px;
+            border: 1px solid rgba(219, 168, 122, 0.15);
+            color: #cdbcae;
+            font-weight: 400;
+            font-size: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .map-intro .sub-mission i {
+            margin-right: 10px;
+            color: #dba87a;
+        }
+
+        /* ========== CAMINO: TARJETAS ========== */
+        .path-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            position: relative;
+        }
+
+        /* línea vertical de fondo (camino) */
+        .path-steps::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 30px;
+            bottom: 30px;
+            width: 4px;
+            background: linear-gradient(to bottom, 
+                rgba(219, 168, 122, 0.2) 0%,
+                rgba(219, 168, 122, 0.5) 30%,
+                rgba(219, 168, 122, 0.7) 60%,
+                rgba(219, 168, 122, 0.2) 100%);
+            transform: translateX(-50%);
+            border-radius: 4px;
+            box-shadow: 0 0 20px rgba(219, 168, 122, 0.15);
+            z-index: 0;
+        }
+
+        /* cada paso */
+        .step-card {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 1.8rem;
+            background: rgba(28, 24, 21, 0.8);
+            backdrop-filter: blur(12px) saturate(180%);
+            border-radius: 80px 24px 24px 80px;
+            padding: 0.8rem 1.8rem 0.8rem 0.8rem;
+            border: 1px solid rgba(255, 215, 175, 0.06);
+            box-shadow: 
+                0 20px 40px -12px rgba(0,0,0,0.7),
+                inset 0 1px 0 rgba(255, 215, 175, 0.06);
+            transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+            cursor: default;
+        }
+
+        .step-card:hover {
+            transform: translateY(-6px) scale(1.01);
+            border-color: rgba(219, 168, 122, 0.25);
+            box-shadow: 
+                0 30px 60px -16px rgba(0,0,0,0.8),
+                0 0 40px rgba(219, 168, 122, 0.04),
+                inset 0 1px 0 rgba(255, 215, 175, 0.12);
+            background: rgba(34, 29, 25, 0.9);
+        }
+
+        /* insigia / número */
+        .step-badge {
+            flex-shrink: 0;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.4rem;
+            font-weight: 700;
+            font-family: 'Space Grotesk', sans-serif;
+            color: #f5ede6;
+            background: radial-gradient(circle at 30% 30%, #3d322a, #1f1814);
+            box-shadow: 0 8px 0 #0f0c0a, 0 12px 28px rgba(0,0,0,0.6);
+            border: 1px solid rgba(219, 168, 122, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .step-badge i {
+            font-size: 2.2rem;
+            color: #dba87a;
+            filter: drop-shadow(0 0 8px rgba(219, 168, 122, 0.3));
+        }
+
+        .step-card:hover .step-badge {
+            transform: scale(1.05);
+            box-shadow: 0 8px 0 #0f0c0a, 0 0 40px rgba(219, 168, 122, 0.15);
+        }
+
+        /* contenido */
+        .step-content {
+            flex: 1;
+            padding: 0.2rem 0;
+        }
+
+        .step-content h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #f0e4d8;
+            letter-spacing: -0.3px;
+            display: flex;
             flex-wrap: wrap;
+            align-items: baseline;
+            gap: 8px 16px;
+        }
+
+        .step-content h3 .tag {
+            font-size: 0.8rem;
+            font-weight: 400;
+            color: #b8a394;
+            background: rgba(255,255,255,0.04);
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            border: 1px solid rgba(255,255,255,0.04);
+            letter-spacing: 1px;
+        }
+
+        .step-content .desc {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px 20px;
+            margin-top: 6px;
+            color: #b8a394;
+            font-size: 0.95rem;
+            font-weight: 400;
         }
 
         .step-content .desc i {
-            color: #a87958;
+            color: #dba87a;
             width: 18px;
+            font-size: 0.9rem;
         }
 
-        /* ===== ENLACES / BOTONES ===== */
+        .step-content .desc .pill {
+            background: rgba(219, 168, 122, 0.08);
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            border: 1px solid rgba(219, 168, 122, 0.06);
+            font-size: 0.8rem;
+            color: #cdbcae;
+        }
+
+        /* ===== BOTONES / ENLACES ===== */
         .step-links {
             display: flex;
             gap: 12px;
             flex-wrap: wrap;
-            align-items: center;
-            margin-top: 8px;
+            margin-top: 10px;
         }
 
-        .btn-link {
+        .btn-game {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: #f3ede8;
-            padding: 0.6rem 1.6rem;
+            padding: 0.6rem 1.8rem;
             border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            font-family: 'Inter', sans-serif;
             text-decoration: none;
-            font-weight: 500;
-            color: #3d2c1d;
+            transition: all 0.25s cubic-bezier(0.23, 1, 0.32, 1);
             border: 1px solid transparent;
-            transition: all 0.2s;
-            font-size: 0.95rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            letter-spacing: 0.3px;
+            background: rgba(255,255,255,0.04);
+            backdrop-filter: blur(4px);
+            color: #f0e4d8;
         }
 
-        .btn-link i {
-            font-size: 1.2rem;
-            color: #996f4f;
-        }
-
-        .btn-link:hover {
-            background: #e0cfbf;
-            border-color: #b28b6e;
-            transform: scale(1.03);
-            box-shadow: 0 6px 12px rgba(110, 70, 40, 0.1);
+        .btn-game i {
+            font-size: 1.1rem;
         }
 
         .btn-pdf {
-            background: #f2e2d4;
+            background: linear-gradient(145deg, rgba(180, 100, 60, 0.15), rgba(120, 60, 30, 0.10));
+            border-color: rgba(200, 130, 80, 0.15);
         }
 
         .btn-pdf i {
-            color: #b4533b;
+            color: #e8b088;
+        }
+
+        .btn-pdf:hover {
+            background: linear-gradient(145deg, rgba(200, 130, 80, 0.25), rgba(140, 80, 40, 0.20));
+            border-color: rgba(200, 130, 80, 0.4);
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 12px 24px -8px rgba(180, 100, 60, 0.2);
+            color: #fff;
         }
 
         .btn-interactivo {
-            background: #dde9e0;
+            background: linear-gradient(145deg, rgba(60, 160, 100, 0.12), rgba(40, 120, 70, 0.08));
+            border-color: rgba(80, 180, 120, 0.12);
         }
 
         .btn-interactivo i {
-            color: #2f784a;
+            color: #7bc49a;
         }
 
-        /* ===== ESTILO "CAMINO" (línea conectora) ===== */
+        .btn-interactivo:hover {
+            background: linear-gradient(145deg, rgba(60, 180, 100, 0.20), rgba(40, 140, 70, 0.15));
+            border-color: rgba(80, 200, 120, 0.3);
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 12px 24px -8px rgba(60, 160, 100, 0.2);
+            color: #fff;
+        }
+
+        /* ===== CONECTORES ===== */
         .step-connector {
             display: flex;
             justify-content: center;
-            margin: -0.8rem 0 -0.4rem;
-            color: #cfb9a6;
-            font-size: 1.8rem;
-            letter-spacing: 6px;
+            align-items: center;
+            gap: 18px;
+            padding: 0.2rem 0;
+            color: rgba(219, 168, 122, 0.2);
+            font-size: 1.2rem;
+            position: relative;
+            z-index: 1;
         }
 
-        .step-connector i {
-            background: #f8f4f0;
-            padding: 0 12px;
-            border-radius: 40px;
+        .step-connector .line-dot {
+            width: 8px;
+            height: 8px;
+            background: rgba(219, 168, 122, 0.2);
+            border-radius: 50%;
+            box-shadow: 0 0 16px rgba(219, 168, 122, 0.05);
         }
 
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 750px) {
-            .main-container {
-                padding: 1.8rem 1rem;
-                border-radius: 40px;
-            }
+        .step-connector .line-dot.active {
+            background: rgba(219, 168, 122, 0.6);
+            box-shadow: 0 0 20px rgba(219, 168, 122, 0.15);
+        }
+
+        .step-connector .line-dash {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(219, 168, 122, 0.1), rgba(219, 168, 122, 0.3), rgba(219, 168, 122, 0.1));
+            border-radius: 4px;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer-ministry {
+            margin-top: 4rem;
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 215, 175, 0.06);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem 2.5rem;
+            color: #7a6b5e;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            font-weight: 400;
+        }
+
+        .footer-ministry i {
+            color: #dba87a;
+            margin: 0 6px;
+        }
+
+        .footer-ministry strong {
+            color: #cdbcae;
+            font-weight: 500;
+        }
+
+        .footer-ministry .shield {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.02);
+            padding: 0.3rem 1.2rem;
+            border-radius: 60px;
+            border: 1px solid rgba(255,255,255,0.03);
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 820px) {
             .header-identity {
-                flex-direction: column;
-                align-items: center;
+                border-radius: 40px;
+                padding: 1rem 1.5rem;
+                justify-content: center;
                 text-align: center;
             }
-            .title-ministry h1 {
+            .ministry-title h1 {
                 font-size: 1.8rem;
+                justify-content: center;
+            }
+            .ministry-title .subhead {
+                justify-content: center;
+                font-size: 0.8rem;
             }
             .step-card {
                 border-radius: 40px;
-                padding: 1.2rem 1.2rem;
+                padding: 1.2rem;
                 flex-direction: column;
-                align-items: flex-start;
-                gap: 0.4rem;
+                align-items: stretch;
+                gap: 0.8rem;
             }
             .step-badge {
-                width: 60px;
-                height: 60px;
-                font-size: 1.8rem;
-                margin-right: 0;
                 align-self: center;
+                width: 70px;
+                height: 70px;
+                font-size: 1.8rem;
             }
             .step-content h3 {
                 font-size: 1.5rem;
+                justify-content: center;
                 text-align: center;
-                width: 100%;
             }
             .step-content .desc {
                 justify-content: center;
             }
             .step-links {
                 justify-content: center;
-                width: 100%;
-                margin-top: 12px;
             }
-            .btn-link {
-                flex: 1 1 120px;
-                justify-content: center;
+            .path-steps::before {
+                display: none;
+            }
+            .step-connector {
+                padding: 0.4rem 0;
+            }
+            .step-connector .line-dash {
+                width: 30px;
+            }
+            .map-intro .glow-text {
+                font-size: 2rem;
             }
         }
 
         @media (max-width: 480px) {
+            .header-identity {
+                padding: 0.8rem 1rem;
+                border-radius: 30px;
+            }
+            .logo-wrapper {
+                width: 56px;
+                height: 56px;
+            }
+            .ministry-title h1 {
+                font-size: 1.4rem;
+            }
+            .badge-level {
+                font-size: 0.6rem;
+                padding: 0.2rem 1rem;
+            }
+            .step-card {
+                border-radius: 28px;
+                padding: 1rem;
+            }
+            .step-badge {
+                width: 60px;
+                height: 60px;
+                font-size: 1.4rem;
+            }
+            .step-badge i {
+                font-size: 1.6rem;
+            }
             .step-links {
                 flex-direction: column;
                 align-items: stretch;
             }
-            .btn-link {
+            .btn-game {
                 justify-content: center;
             }
-            .step-connector {
-                font-size: 1.2rem;
-                margin: 0.2rem 0;
+            .map-intro .glow-text {
+                font-size: 1.6rem;
             }
-            .path-intro h2 {
-                font-size: 1.5rem;
+            .map-intro .sub-mission {
+                font-size: 0.8rem;
+                padding: 0.4rem 1.2rem;
             }
-        }
-
-        /* footer */
-        .footer-ministry {
-            margin-top: 3.5rem;
-            text-align: center;
-            font-size: 0.9rem;
-            color: #a58b78;
-            border-top: 1px solid #e5d6c8;
-            padding-top: 2rem;
-            letter-spacing: 1px;
-        }
-
-        .footer-ministry i {
-            color: #b77f5a;
-            margin: 0 6px;
-        }
-
-        .footer-ministry strong {
-            color: #6f4f36;
-            font-weight: 500;
         }
     </style>
 </head>
 <body>
-    <div class="main-container">
 
-        <!-- IDENTIDAD MINISTERIO + LOGO -->
-        <header class="header-identity">
-            <div class="logo-container">
-                <img src="https://i.postimg.cc/wMJ2bCgV/mas-logos.jpg" alt="Logo Vivos para servir">
-            </div>
-            <div class="title-ministry">
-                <h1><strong>Vivos para servir</strong> · griego</h1>
-                <div class="subhead"><i class="fas fa-scroll"></i> καλὸς ὁ ἀγών · revalida</div>
-            </div>
-        </header>
+<div class="game-container">
 
-        <!-- INTRO CAMINO -->
-        <div class="path-intro">
-            <h2><i class="fas fa-arrow-right"></i> camino de revalidación <i class="fas fa-arrow-left"></i></h2>
-            <p><i class="fas fa-graduation-cap" style="margin-right: 10px;"></i> tres secciones · avanza a tu ritmo</p>
+    <!-- ===== HEADER ===== -->
+    <header class="header-identity">
+        <div class="logo-wrapper">
+            <img src="https://i.postimg.cc/wMJ2bCgV/mas-logos.jpg" alt="Logo Vivos para servir" />
         </div>
-
-        <!-- ========== SECCIONES (3 PASOS) ========== -->
-        <div class="path-steps">
-
-            <!-- PASO 1: COMPONENTES BÁSICOS -->
-            <div class="step-card">
-                <div class="step-badge" style="background: #e9d9cb;"><i class="fas fa-puzzle-piece"></i></div>
-                <div class="step-content">
-                    <h3>Componentes básicos <small>alfabeto · diptongos</small></h3>
-                    <div class="desc">
-                        <span><i class="fas fa-book-open"></i> fundamentos del griego</span>
-                        <span><i class="fas fa-check-circle" style="color: #4d7b5a;"></i> 4 lecciones</span>
-                    </div>
-                    <div class="step-links">
-                        <a href="#" class="btn-link btn-pdf"><i class="fas fa-file-pdf"></i> PDF</a>
-                        <a href="#" class="btn-link btn-interactivo"><i class="fas fa-laptop-code"></i> Interactivo</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="step-connector"><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i></div>
-
-            <!-- PASO 2: PRONOMBRES -->
-            <div class="step-card">
-                <div class="step-badge" style="background: #d7cfc0;"><i class="fas fa-user-tag"></i></div>
-                <div class="step-content">
-                    <h3>Pronombres <small>personales · demostrativos</small></h3>
-                    <div class="desc">
-                        <span><i class="fas fa-arrows-spin"></i> declinaciones</span>
-                        <span><i class="fas fa-check-circle" style="color: #4d7b5a;"></i> 3 lecciones</span>
-                    </div>
-                    <div class="step-links">
-                        <a href="#" class="btn-link btn-pdf"><i class="fas fa-file-pdf"></i> PDF</a>
-                        <a href="#" class="btn-link btn-interactivo"><i class="fas fa-laptop-code"></i> Interactivo</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="step-connector"><i class="fas fa-circle"></i><i class="fas fa-circle"></i><i class="fas fa-circle"></i></div>
-
-            <!-- PASO 3: VERBOS BÁSICOS -->
-            <div class="step-card">
-                <div class="step-badge" style="background: #d4c5b0;"><i class="fas fa-running"></i></div>
-                <div class="step-content">
-                    <h3>Verbos básicos <small>presente · infinitivo</small></h3>
-                    <div class="desc">
-                        <span><i class="fas fa-regular fa-clock"></i> tiempos primarios</span>
-                        <span><i class="fas fa-check-circle" style="color: #4d7b5a;"></i> 5 lecciones</span>
-                    </div>
-                    <div class="step-links">
-                        <a href="#" class="btn-link btn-pdf"><i class="fas fa-file-pdf"></i> PDF</a>
-                        <a href="#" class="btn-link btn-interactivo"><i class="fas fa-laptop-code"></i> Interactivo</a>
-                    </div>
-                </div>
+        <div class="ministry-title">
+            <h1>
+                <span class="highlight">Vivos para servir</span>
+                <span style="font-weight:300; font-size:1.4rem; color:#b8a394;">·</span>
+                <span style="font-weight:400; font-size:1.6rem; color:#dba87a;">Ἑλληνική</span>
+            </h1>
+            <div class="subhead">
+                <i class="fas fa-scroll"></i> revalida · camino de maestro
+                <span class="badge-level"><i class="fas fa-flag-checkered" style="margin-right:6px;"></i> Nivel 1</span>
             </div>
         </div>
+    </header>
 
-        <!-- PIE DE PÁGINA CON LA IDENTIDAD -->
-        <div class="footer-ministry">
-            <i class="fas fa-church"></i> <strong>Vivos para servir</strong> · ministerio de enseñanza <i class="fas fa-heart" style="color: #b97f5a;"></i> · 2026
+    <!-- ===== INTRO ===== -->
+    <div class="map-intro">
+        <div class="glow-text">
+            <i class="fas fa-arrow-right"></i> misión: revalidar <i class="fas fa-arrow-left"></i>
         </div>
-
+        <div class="sub-mission">
+            <i class="fas fa-compass"></i> 3 territorios · domina cada uno
+        </div>
     </div>
-    <!-- fin main-container -->
+
+    <!-- ===== CAMINO ===== -->
+    <div class="path-steps">
+
+        <!-- PASO 1 -->
+        <div class="step-card">
+            <div class="step-badge" style="background: radial-gradient(circle at 30% 30%, #4d382a, #261e18);">
+                <i class="fas fa-puzzle-piece"></i>
+            </div>
+            <div class="step-content">
+                <h3>
+                    Componentes básicos
+                    <span class="tag">alfabeto · diptongos</span>
+                </h3>
+                <div class="desc">
+                    <span><i class="fas fa-book-open"></i> fundamentos</span>
+                    <span><i class="fas fa-check-circle" style="color:#7bc49a;"></i> 4 lecciones</span>
+                    <span class="pill"><i class="fas fa-star" style="color:#dba87a;"></i> esencial</span>
+                </div>
+                <div class="step-links">
+                    <a href="#" class="btn-game btn-pdf"><i class="fas fa-file-pdf"></i> PDF</a>
+                    <a href="#" class="btn-game btn-interactivo"><i class="fas fa-laptop-code"></i> Interactivo</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONECTOR -->
+        <div class="step-connector">
+            <span class="line-dot active"></span>
+            <span class="line-dash"></span>
+            <span class="line-dot"></span>
+            <span class="line-dash"></span>
+            <span class="line-dot"></span>
+        </div>
+
+        <!-- PASO 2 -->
+        <div class="step-card">
+            <div class="step-badge" style="background: radial-gradient(circle at 30% 30%, #3f4032, #22201a);">
+                <i class="fas fa-user-tag"></i>
+            </div>
+            <div class="step-content">
+                <h3>
+                    Pronombres
+                    <span class="tag">personales · demostrativos</span>
+                </h3>
+                <div class="desc">
+                    <span><i class="fas fa-arrows-spin"></i> declinaciones</span>
+                    <span><i class="fas fa-check-circle" style="color:#7bc49a;"></i> 3 lecciones</span>
+                    <span class="pill"><i class="fas fa-chess-queen" style="color:#dba87a;"></i> intermedio</span>
+                </div>
+                <div class="step-links">
+                    <a href="#" class="btn-game btn-pdf"><i class="fas fa-file-pdf"></i> PDF</a>
+                    <a href="#" class="btn-game btn-interactivo"><i class="fas fa-laptop-code"></i> Interactivo</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONECTOR -->
+        <div class="step-connector">
+            <span class="line-dot active"></span>
+            <span class="line-dash"></span>
+            <span class="line-dot active"></span>
+            <span class="line-dash"></span>
+            <span class="line-dot"></span>
+        </div>
+
+        <!-- PASO 3 -->
+        <div class="step-card">
+            <div class="step-badge" style="background: radial-gradient(circle at 30% 30%, #3d3a2a, #1f1d18);">
+                <i class="fas fa-running"></i>
+            </div>
+            <div class="step-content">
+                <h3>
+                    Verbos básicos
+                    <span class="tag">presente · infinitivo</span>
+                </h3>
+                <div class="desc">
+                    <span><i class="fas fa-clock"></i> tiempos primarios</span>
+                    <span><i class="fas fa-check-circle" style="color:#7bc49a;"></i> 5 lecciones</span>
+                    <span class="pill"><i class="fas fa-gem" style="color:#dba87a;"></i> avanzado</span>
+                </div>
+                <div class="step-links">
+                    <a href="#" class="btn-game btn-pdf"><i class="fas fa-file-pdf"></i> PDF</a>
+                    <a href="#" class="btn-game btn-interactivo"><i class="fas fa-laptop-code"></i> Interactivo</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <div class="footer-ministry">
+        <span class="shield"><i class="fas fa-church"></i> <strong>Vivos para servir</strong></span>
+        <span><i class="fas fa-heart" style="color:#b97f5a;"></i> ministerio de enseñanza · 2026</span>
+        <span><i class="fas fa-flag"></i> ἀλήθεια · χάρις · ζωή</span>
+    </div>
+
+</div>
+<!-- fin game-container -->
+
 </body>
 </html>
