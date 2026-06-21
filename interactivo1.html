@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gramática Griega · Módulo Interactivo · Vivos para servir</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        /* ========== RESET & BASE ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0c0a0a;
+            min-height: 100vh;
+            padding: 2rem 1.5rem;
+            background-image: 
+                radial-gradient(ellipse at 20% 30%, rgba(120, 70, 40, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(60, 100, 80, 0.08) 0%, transparent 50%),
+                linear-gradient(160deg, #141110 0%, #1f1a17 100%);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        /* ========== CONTENEDOR ========== */
+        .module-container {
+            max-width: 1100px;
+            width: 100%;
+            background: rgba(28, 24, 21, 0.85);
+            backdrop-filter: blur(16px) saturate(180%);
+            border-radius: 40px;
+            border: 1px solid rgba(255, 215, 175, 0.06);
+            box-shadow: 0 30px 60px -16px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,215,175,0.04);
+            padding: 2rem 2rem 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .module-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(219, 168, 122, 0.03) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* ========== HEADER ========== */
+        .module-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 215, 175, 0.06);
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .module-header .left {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .module-header .logo-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid rgba(219, 168, 122, 0.25);
+            flex-shrink: 0;
+        }
+
+        .module-header .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .module-header .title-group h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #f0e4d8;
+            letter-spacing: -0.5px;
+        }
+
+        .module-header .title-group h2 span {
+            background: linear-gradient(135deg, #f5cba0, #dba87a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .module-header .title-group .sub {
+            font-size: 0.8rem;
+            color: #b8a394;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .module-header .badge-module {
+            background: rgba(219, 168, 122, 0.1);
+            border: 1px solid rgba(219, 168, 122, 0.15);
+            padding: 0.4rem 1.6rem;
+            border-radius: 60px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #dba87a;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* ========== PROGRESS BAR ========== */
+        .progress-section {
+            margin-bottom: 2.2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .progress-track {
+            flex: 1;
+            min-width: 150px;
+            height: 6px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-track .fill {
+            height: 100%;
+            width: 20%;
+            background: linear-gradient(90deg, #dba87a, #c4895e);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(219, 168, 122, 0.2);
+            transition: width 0.4s ease;
+        }
+
+        .progress-label {
+            color: #b8a394;
+            font-size: 0.8rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .progress-label i {
+            color: #dba87a;
+            margin-right: 6px;
+        }
+
+        /* ========== TABS ========== */
+        .tabs-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+            border-bottom: 1px solid rgba(255,215,175,0.05);
+            padding-bottom: 0.8rem;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            padding: 0.6rem 1.6rem;
+            border-radius: 60px;
+            color: #b8a394;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid transparent;
+        }
+
+        .tab-btn i {
+            font-size: 0.9rem;
+            color: #7a6b5e;
+            transition: 0.2s;
+        }
+
+        .tab-btn:hover {
+            color: #f0e4d8;
+            background: rgba(255,255,255,0.03);
+        }
+
+        .tab-btn.active {
+            background: rgba(219, 168, 122, 0.10);
+            border-color: rgba(219, 168, 122, 0.15);
+            color: #f5ede6;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+        }
+
+        .tab-btn.active i {
+            color: #dba87a;
+        }
+
+        /* ========== TAB CONTENT ========== */
+        .tab-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .tab-pane {
+            display: none;
+            animation: fadeIn 0.35s ease;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ========== CONTENIDO ESTILOS ========== */
+        .lesson-card {
+            background: rgba(255,255,255,0.02);
+            border-radius: 24px;
+            padding: 1.8rem 2rem;
+            border: 1px solid rgba(255,215,175,0.04);
+            margin-bottom: 1.8rem;
+            transition: 0.2s;
+        }
+
+        .lesson-card:hover {
+            border-color: rgba(219, 168, 122, 0.08);
+            background: rgba(255,255,255,0.03);
+        }
+
+        .lesson-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #f0e4d8;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .lesson-card h3 .week-tag {
+            font-size: 0.7rem;
+            font-weight: 400;
+            background: rgba(219, 168, 122, 0.08);
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            color: #dba87a;
+            letter-spacing: 1px;
+            border: 1px solid rgba(219, 168, 122, 0.06);
+        }
+
+        .lesson-card .verse {
+            background: rgba(219, 168, 122, 0.04);
+            padding: 1rem 1.5rem;
+            border-radius: 16px;
+            border-left: 3px solid #dba87a;
+            margin: 0.8rem 0 1.2rem;
+            font-family: 'Times New Roman', serif;
+            font-size: 1.2rem;
+            color: #e8d5c4;
+        }
+
+        .lesson-card .verse small {
+            display: block;
+            font-size: 0.8rem;
+            color: #b8a394;
+            font-family: 'Inter', sans-serif;
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        .lesson-card p {
+            color: #cdbcae;
+            line-height: 1.7;
+            margin-bottom: 0.8rem;
+            font-size: 0.98rem;
+        }
+
+        .lesson-card .highlight-box {
+            background: rgba(219, 168, 122, 0.04);
+            border-radius: 16px;
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+            border: 1px solid rgba(219, 168, 122, 0.06);
+        }
+
+        .lesson-card .highlight-box strong {
+            color: #f0e4d8;
+        }
+
+        /* ===== TABLAS ===== */
+        .table-wrap {
+            overflow-x: auto;
+            margin: 1rem 0;
+            border-radius: 16px;
+            border: 1px solid rgba(255,215,175,0.04);
+        }
+
+        .table-wrap table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        .table-wrap th {
+            background: rgba(219, 168, 122, 0.06);
+            color: #f0e4d8;
+            font-weight: 600;
+            padding: 0.7rem 1rem;
+            text-align: left;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .table-wrap td {
+            padding: 0.6rem 1rem;
+            border-bottom: 1px solid rgba(255,215,175,0.03);
+            color: #cdbcae;
+        }
+
+        .table-wrap tr:last-child td {
+            border-bottom: none;
+        }
+
+        .table-wrap td:first-child {
+            font-family: 'Times New Roman', serif;
+            font-size: 1.1rem;
+            color: #e8d5c4;
+        }
+
+        /* ===== VOCABULARIO ===== */
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 0.8rem;
+            margin-top: 0.8rem;
+        }
+
+        .vocab-item {
+            background: rgba(255,255,255,0.02);
+            padding: 0.6rem 1.2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255,215,175,0.04);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.95rem;
+            transition: 0.2s;
+        }
+
+        .vocab-item:hover {
+            background: rgba(255,255,255,0.04);
+            border-color: rgba(219, 168, 122, 0.08);
+        }
+
+        .vocab-item .greek {
+            font-family: 'Times New Roman', serif;
+            font-size: 1.15rem;
+            color: #f0e4d8;
+        }
+
+        .vocab-item .meaning {
+            color: #b8a394;
+            font-size: 0.85rem;
+        }
+
+        .vocab-item .tag {
+            font-size: 0.65rem;
+            background: rgba(219, 168, 122, 0.06);
+            padding: 0.1rem 0.8rem;
+            border-radius: 40px;
+            color: #7a6b5e;
+        }
+
+        /* ===== FOOTER MODULE ===== */
+        .module-footer {
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,215,175,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            color: #7a6b5e;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        .module-footer .ministry {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .module-footer .ministry i {
+            color: #dba87a;
+        }
+
+        .module-footer .ministry strong {
+            color: #cdbcae;
+            font-weight: 500;
+        }
+
+        .module-footer .nav-arrows {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .module-footer .nav-arrows a {
+            color: #b8a394;
+            text-decoration: none;
+            padding: 0.3rem 1.2rem;
+            border-radius: 60px;
+            border: 1px solid rgba(255,215,175,0.06);
+            transition: 0.2s;
+            font-size: 0.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .module-footer .nav-arrows a:hover {
+            background: rgba(219, 168, 122, 0.06);
+            border-color: rgba(219, 168, 122, 0.15);
+            color: #f0e4d8;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            body { padding: 1rem; }
+            .module-container { padding: 1.5rem 1.2rem; border-radius: 28px; }
+            .module-header .title-group h2 { font-size: 1.2rem; }
+            .module-header .badge-module { font-size: 0.6rem; padding: 0.2rem 1rem; }
+            .tab-btn { padding: 0.4rem 1rem; font-size: 0.8rem; }
+            .lesson-card { padding: 1.2rem; }
+            .lesson-card h3 { font-size: 1.2rem; flex-wrap: wrap; }
+            .vocab-grid { grid-template-columns: 1fr; }
+            .module-footer { flex-direction: column; align-items: center; text-align: center; }
+        }
+
+        @media (max-width: 480px) {
+            .module-header .left { flex-wrap: wrap; }
+            .tabs-nav { gap: 0.3rem; }
+            .tab-btn { font-size: 0.7rem; padding: 0.3rem 0.8rem; }
+            .lesson-card .verse { font-size: 1rem; padding: 0.8rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="module-container">
+
+    <!-- ===== HEADER ===== -->
+    <header class="module-header">
+        <div class="left">
+            <div class="logo-icon">
+                <img src="https://i.postimg.cc/wMJ2bCgV/mas-logos.jpg" alt="Vivos para servir" />
+            </div>
+            <div class="title-group">
+                <h2><span>Gramática</span> · Griego Koiné</h2>
+                <div class="sub"><i class="fas fa-scroll"></i> Sección No 1 · Fundamentos</div>
+            </div>
+        </div>
+        <div class="badge-module">
+            <i class="fas fa-flag-checkered" style="margin-right:6px;"></i> Módulo 1
+        </div>
+    </header>
+
+    <!-- ===== PROGRESS ===== -->
+    <div class="progress-section">
+        <div class="progress-track">
+            <div class="fill" style="width: 20%;"></div>
+        </div>
+        <div class="progress-label">
+            <i class="fas fa-arrow-right"></i> 1 de 5 semanas
+        </div>
+    </div>
+
+    <!-- ===== TABS ===== -->
+    <nav class="tabs-nav" id="tabsNav">
+        <button class="tab-btn active" data-tab="semana1"><i class="fas fa-1"></i> Semana 1</button>
+        <button class="tab-btn" data-tab="semana2"><i class="fas fa-2"></i> Semana 2</button>
+        <button class="tab-btn" data-tab="semana3"><i class="fas fa-3"></i> Semana 3</button>
+        <button class="tab-btn" data-tab="semana4"><i class="fas fa-4"></i> Semana 4</button>
+        <button class="tab-btn" data-tab="semana5"><i class="fas fa-5"></i> Semana 5</button>
+        <button class="tab-btn" data-tab="vocabulario"><i class="fas fa-book"></i> Vocabulario</button>
+    </nav>
+
+    <!-- ===== CONTENIDO ===== -->
+    <div class="tab-content">
+
+        <!-- ===== SEMANA 1 ===== -->
+        <div class="tab-pane active" id="semana1">
+            <div class="lesson-card">
+                <h3>Fundamentos del Griego Bíblico <span class="week-tag"><i class="fas fa-calendar-week"></i> Semana 1</span></h3>
+                
+                <div class="verse">
+                    Ἐν ἀρχῇ ἦν ὁ λόγος, καὶ ὁ λόγος ἦν πρὸς τὸν θεόν, καὶ θεὸς ἦν ὁ λόγος.
+                    <small>Juan 1:1 — "En el principio era el Verbo, y el Verbo era con Dios, y el Verbo era Dios."</small>
+                </div>
+
+                <p><strong>Logos (λόγος):</strong> No solo significa "palabra", sino también razón, mensaje divino y expresión de Dios. Juan utiliza este término filosófico para revelar que Jesús es la Palabra creadora y eterna.</p>
+                <p><strong>Theos (θεός):</strong> La ausencia de artículo definido antes de "θεός" en la cláusula final refuerza la deidad de Cristo (es de la misma esencia que el Padre) sin confundir a las personas de la Trinidad.</p>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-alphabet" style="color:#dba87a;"></i> El Alfabeto Griego (24 letras)</strong>
+                    <p style="margin-top:8px; font-size:0.9rem;">El alfabeto es la base para la lectura y escritura del Nuevo Testamento.</p>
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th>Mayúscula</th><th>Minúscula</th><th>Nombre</th><th>Pronunciación</th></tr></thead>
+                        <tbody>
+                            <tr><td>Α</td><td>α</td><td>Alfa</td><td>a (casa)</td></tr>
+                            <tr><td>Β</td><td>β</td><td>Beta</td><td>v (vida)</td></tr>
+                            <tr><td>Γ</td><td>γ</td><td>Gamma</td><td>g (gato)</td></tr>
+                            <tr><td>Δ</td><td>δ</td><td>Delta</td><td>d (dado)</td></tr>
+                            <tr><td>Ε</td><td>ε</td><td>Épsilon</td><td>e corta (pez)</td></tr>
+                            <tr><td>Ζ</td><td>ζ</td><td>Zeta</td><td>z (zapato)</td></tr>
+                            <tr><td>Η</td><td>η</td><td>Eta</td><td>e larga (ser)</td></tr>
+                            <tr><td>Θ</td><td>θ</td><td>Theta</td><td>th (teatro)</td></tr>
+                            <tr><td>Ι</td><td>ι</td><td>Iota</td><td>i (siglo)</td></tr>
+                            <tr><td>Κ</td><td>κ</td><td>Kappa</td><td>k (kilo)</td></tr>
+                            <tr><td>Λ</td><td>λ</td><td>Lambda</td><td>l (luz)</td></tr>
+                            <tr><td>Μ</td><td>μ</td><td>Mi</td><td>m (mesa)</td></tr>
+                            <tr><td>Ν</td><td>ν</td><td>Ni</td><td>n (nido)</td></tr>
+                            <tr><td>Ξ</td><td>ξ</td><td>Xi</td><td>x (ks)</td></tr>
+                            <tr><td>Ο</td><td>ο</td><td>Ómicron</td><td>o corta (ola)</td></tr>
+                            <tr><td>Π</td><td>π</td><td>Pi</td><td>p (perro)</td></tr>
+                            <tr><td>Ρ</td><td>ρ</td><td>Ro</td><td>r vibrante</td></tr>
+                            <tr><td>Σ</td><td>σ/ς</td><td>Sigma</td><td>s (sol)</td></tr>
+                            <tr><td>Τ</td><td>τ</td><td>Tau</td><td>t (toro)</td></tr>
+                            <tr><td>Υ</td><td>υ</td><td>Ípsilon</td><td>u (universidad)</td></tr>
+                            <tr><td>Φ</td><td>φ</td><td>Fi</td><td>f (faro)</td></tr>
+                            <tr><td>Χ</td><td>χ</td><td>Ji</td><td>j suave (Bach)</td></tr>
+                            <tr><td>Ψ</td><td>ψ</td><td>Psi</td><td>ps (psicología)</td></tr>
+                            <tr><td>Ω</td><td>ω</td><td>Omega</td><td>o larga (donde)</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-microphone" style="color:#dba87a;"></i> Reglas de Pronunciación</strong>
+                    <ul style="list-style: none; margin-top:8px; color:#cdbcae; font-size:0.95rem; line-height:1.8;">
+                        <li><strong>Vocales:</strong> α, ε, η, ι, ο, υ, ω.</li>
+                        <li><strong>Diptongos:</strong> αι, ει, οι, αυ, ευ, ου.</li>
+                        <li><strong>Espíritus:</strong> Toda palabra que comienza con vocal lleva un espíritu. <br> 
+                            <span style="color:#b8a394;">• Suave (ἀ):</span> Sin aspiración. <br>
+                            <span style="color:#b8a394;">• Áspero (ἁ):</span> Con aspiración (sonido "j").</li>
+                        <li><strong>Acentos:</strong> Agudo (´), Grave (`) y Circunflejo (῀). Indican elevación del tono.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== SEMANA 2 ===== -->
+        <div class="tab-pane" id="semana2">
+            <div class="lesson-card">
+                <h3>Sustantivos y el Sistema de Casos <span class="week-tag"><i class="fas fa-calendar-week"></i> Semana 2</span></h3>
+                
+                <p><strong>El sustantivo griego</strong> se caracteriza por tres propiedades gramaticales:</p>
+                <ul style="color:#cdbcae; list-style: none; padding-left:0; margin:0.8rem 0; display:flex; gap:1.5rem; flex-wrap:wrap;">
+                    <li><i class="fas fa-venus-mars" style="color:#dba87a;"></i> <strong>Género:</strong> Masculino, Femenino, Neutro</li>
+                    <li><i class="fas fa-sort-numeric-up" style="color:#dba87a;"></i> <strong>Número:</strong> Singular y Plural</li>
+                    <li><i class="fas fa-tag" style="color:#dba87a;"></i> <strong>Caso:</strong> Indica la función del sustantivo</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-table" style="color:#dba87a;"></i> Los Casos Gramaticales</strong>
+                    <p style="font-size:0.9rem; margin-top:6px;">Los casos se marcan con <strong>desinencias</strong> (terminaciones) y son clave para entender la estructura de la oración en griego.</p>
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th>Caso</th><th>Función Básica</th><th>Traducción Clave</th><th>Ejemplo (λόγος)</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>Nominativo</strong></td><td>Sujeto</td><td>—</td><td>λόγος</td></tr>
+                            <tr><td><strong>Genitivo</strong></td><td>Posesión, Relación</td><td>"de"</td><td>λόγου</td></tr>
+                            <tr><td><strong>Dativo</strong></td><td>Complemento Indirecto</td><td>"a", "para", "por", "con"</td><td>λόγῳ</td></tr>
+                            <tr><td><strong>Acusativo</strong></td><td>Objeto Directo</td><td>—</td><td>λόγον</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="highlight-box" style="margin-top:1.2rem;">
+                    <strong><i class="fas fa-layer-group" style="color:#dba87a;"></i> Introducción a las Declinaciones</strong>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Declinación</th><th>Terminación del Lexema</th><th>Género Predominante</th><th>Ejemplo</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Primera</strong></td><td>Alfa (α) o Eta (η)</td><td>Femenino</td><td>ἀγάπη (amor)</td></tr>
+                                <tr><td><strong>Segunda</strong></td><td>Ómicron (ο)</td><td>Masculino o Neutro</td><td>λόγος, ἔργον</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== SEMANA 3 ===== -->
+        <div class="tab-pane" id="semana3">
+            <div class="lesson-card">
+                <h3>El Artículo Definido <span class="week-tag"><i class="fas fa-calendar-week"></i> Semana 3</span></h3>
+                
+                <p>En griego koiné <strong>solo existe el artículo definido</strong> (el, la, los, las). No hay artículo indefinido.</p>
+                <p>El artículo <strong>concuerda en género, número y caso</strong> con el sustantivo que modifica. Actúa como una "guía gramatical".</p>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-table" style="color:#dba87a;"></i> Paradigma del Artículo Definido</strong>
+                    <p style="font-size:0.85rem; margin-top:4px; color:#b8a394;">Memorizar este paradigma es esencial para dominar los sustantivos.</p>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Caso</th><th>Masculino</th><th>Femenino</th><th>Neutro</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Nom. sg</strong></td><td>ὁ</td><td>ἡ</td><td>τό</td></tr>
+                                <tr><td><strong>Gen. sg</strong></td><td>τοῦ</td><td>τῆς</td><td>τοῦ</td></tr>
+                                <tr><td><strong>Dat. sg</strong></td><td>τῷ</td><td>τῇ</td><td>τῷ</td></tr>
+                                <tr><td><strong>Acc. sg</strong></td><td>τόν</td><td>τήν</td><td>τό</td></tr>
+                                <tr><td><strong>Nom. pl</strong></td><td>οἱ</td><td>αἱ</td><td>τά</td></tr>
+                                <tr><td><strong>Gen. pl</strong></td><td>τῶν</td><td>τῶν</td><td>τῶν</td></tr>
+                                <tr><td><strong>Dat. pl</strong></td><td>τοῖς</td><td>ταῖς</td><td>τοῖς</td></tr>
+                                <tr><td><strong>Acc. pl</strong></td><td>τούς</td><td>τάς</td><td>τά</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-language" style="color:#dba87a;"></i> Traducción del Artículo</strong>
+                    <ul style="list-style: none; margin-top:8px; color:#cdbcae; font-size:0.95rem; line-height:2;">
+                        <li>• Con artículo: ὁ λόγος = <strong>"el Verbo"</strong></li>
+                        <li>• Sin artículo: λόγος = <strong>"Verbo"</strong> o <strong>"un Verbo"</strong></li>
+                        <li>• Con nombres propios y abstractos, el artículo griego (ej. ὁ Ἰησοῦς) puede omitirse en la traducción al español ("Jesús").</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== SEMANA 4 ===== -->
+        <div class="tab-pane" id="semana4">
+            <div class="lesson-card">
+                <h3>Preposiciones y el Verbo "Ser" (εἰμί) <span class="week-tag"><i class="fas fa-calendar-week"></i> Semana 4</span></h3>
+                
+                <p>Una preposición indica la relación entre dos palabras. <strong>Regla Clave:</strong> El significado de una preposición en griego depende del <strong>caso de su objeto</strong>.</p>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-arrows-alt-h" style="color:#dba87a;"></i> Ejemplo: διά (dia)</strong>
+                    <ul style="list-style: none; margin-top:8px; color:#cdbcae; font-size:0.95rem; line-height:2;">
+                        <li>• <strong>διά + Genitivo:</strong> "a través de" (ej. δι' αὐτοῦ = "por medio de él")</li>
+                        <li>• <strong>διά + Acusativo:</strong> "a causa de" (ej. διὰ τὸν = "a causa del")</li>
+                    </ul>
+                    <p style="margin-top:8px;"><strong>ἐν + Dativo:</strong> "en" (indica ubicación estática).</p>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-verb" style="color:#dba87a;"></i> El Verbo εἰμί (Ser/Estar)</strong>
+                    <p style="font-size:0.85rem; margin-top:4px; color:#b8a394;">Paradigma de εἰμί en Presente:</p>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Persona y Número</th><th>Griego</th><th>Traducción</th></tr></thead>
+                            <tbody>
+                                <tr><td>1ª sg.</td><td><strong>εἰμι</strong></td><td>yo soy</td></tr>
+                                <tr><td>2ª sg.</td><td><strong>εἶ</strong></td><td>tú eres</td></tr>
+                                <tr><td>3ª sg.</td><td><strong>ἐστί(ν)</strong></td><td>él/ella es</td></tr>
+                                <tr><td>1ª pl.</td><td><strong>ἐσμέν</strong></td><td>nosotros somos</td></tr>
+                                <tr><td>2ª pl.</td><td><strong>ἐστέ</strong></td><td>vosotros sois</td></tr>
+                                <tr><td>3ª pl.</td><td><strong>εἰσί(ν)</strong></td><td>ellos son</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-asterisk" style="color:#dba87a;"></i> Nominativo Predicativo</strong>
+                    <p style="margin-top:6px;">El verbo "ser" (εἰμί) no toma un objeto directo en acusativo, sino un <strong>predicado nominativo</strong> que describe o identifica al sujeto.</p>
+                    <p style="margin-top:8px;"><strong>Ejemplo:</strong> ὁ θεὸς ἀγάπη ἐστίν = <em>"Dios es amor"</em>. (Tanto θεὸς como ἀγάπη están en nominativo).</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== SEMANA 5 ===== -->
+        <div class="tab-pane" id="semana5">
+            <div class="lesson-card">
+                <h3>Adjetivos <span class="week-tag"><i class="fas fa-calendar-week"></i> Semana 5</span></h3>
+                
+                <p>El adjetivo modifica o describe a un sustantivo. Debe <strong>concordar</strong> con él en <strong>género, número y caso</strong>.</p>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-list" style="color:#dba87a;"></i> Funciones del Adjetivo en Griego</strong>
+                    <ul style="list-style: none; margin-top:8px; color:#cdbcae; line-height:2;">
+                        <li><strong>1. Atributivo:</strong> Da una cualidad directamente al sustantivo.</li>
+                        <li style="padding-left:1.5rem; font-size:0.9rem; color:#b8a394;">• Primera Posición: ὁ ἀγαθὸς ἄνθρωπος ("El hombre bueno")</li>
+                        <li style="padding-left:1.5rem; font-size:0.9rem; color:#b8a394;">• Segunda Posición: ὁ ἄνθρωπος ὁ ἀγαθός ("El hombre bueno")</li>
+                        <li><strong>2. Sustantivado:</strong> Funciona como un sustantivo.</li>
+                        <li style="padding-left:1.5rem; font-size:0.9rem; color:#b8a394;">• Ejemplo: οἱ ἀγαθοί = "los buenos (hombres)"</li>
+                        <li><strong>3. Predicativo:</strong> Afirma algo sobre el sujeto mediante el verbo "ser".</li>
+                        <li style="padding-left:1.5rem; font-size:0.9rem; color:#b8a394;">• Ejemplo: ὁ ἄνθρωπος ἀγαθός = "El hombre es bueno"</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-key" style="color:#dba87a;"></i> Claves para Identificar la Función</strong>
+                    <ul style="list-style: none; margin-top:8px; color:#cdbcae; line-height:2;">
+                        <li>• <strong>Sustantivo con artículo + Adjetivo sin artículo:</strong> Es predicativo <span style="color:#b8a394;">(ej. ὁ ἄνθρωπος ἀγαθός = "El hombre es bueno")</span></li>
+                        <li>• <strong>Artículo + Adjetivo + Sustantivo (o viceversa con dos artículos):</strong> Es atributivo <span style="color:#b8a394;">(ej. ὁ ἀγαθὸς ἄνθρωπος = "El hombre bueno")</span></li>
+                        <li>• <strong>Artículo + Adjetivo (sin sustantivo):</strong> Es sustantivado <span style="color:#b8a394;">(ej. ὁ ἀγαθός = "El bueno")</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== VOCABULARIO ===== -->
+        <div class="tab-pane" id="vocabulario">
+            <div class="lesson-card">
+                <h3>Vocabulario Acumulado Esencial <span class="week-tag"><i class="fas fa-book-open"></i> Todas las semanas</span></h3>
+                <p style="color:#b8a394; margin-bottom:1rem;">Vocabulario clave para dominar los fundamentos del griego koiné.</p>
+
+                <div class="vocab-grid">
+                    <div class="vocab-item"><span class="greek">λόγος, -ου, ὁ</span><span class="meaning">Palabra, Verbo</span><span class="tag">2ª decl.</span></div>
+                    <div class="vocab-item"><span class="greek">θεός, -οῦ, ὁ</span><span class="meaning">Dios</span><span class="tag">2ª decl.</span></div>
+                    <div class="vocab-item"><span class="greek">ἀγάπη, -ης, ἡ</span><span class="meaning">Amor</span><span class="tag">1ª decl.</span></div>
+                    <div class="vocab-item"><span class="greek">ἔργον, -ου, τό</span><span class="meaning">Obra, acción</span><span class="tag">neutro</span></div>
+                    <div class="vocab-item"><span class="greek">ἄνθρωπος, -ου, ὁ</span><span class="meaning">Hombre</span><span class="tag">2ª decl.</span></div>
+                    <div class="vocab-item"><span class="greek">καί</span><span class="meaning">Y, también</span><span class="tag">conjunción</span></div>
+                    <div class="vocab-item"><span class="greek">ἐν</span><span class="meaning">En, dentro de</span><span class="tag">prep. + dat.</span></div>
+                    <div class="vocab-item"><span class="greek">εἰμί</span><span class="meaning">Yo soy</span><span class="tag">verbo</span></div>
+                    <div class="vocab-item"><span class="greek">διά</span><span class="meaning">A través de (gen.) / a causa de (ac.)</span><span class="tag">prep.</span></div>
+                    <div class="vocab-item"><span class="greek">ἀγαθός, -ή, -όν</span><span class="meaning">Bueno</span><span class="tag">adj. 3 term.</span></div>
+                </div>
+
+                <div style="margin-top:2rem; background: rgba(219,168,122,0.04); border-radius:16px; padding:1.2rem 1.5rem; border-left:3px solid #dba87a;">
+                    <p style="color:#cdbcae; font-style:italic; font-size:0.95rem;">
+                        <i class="fas fa-quote-left" style="color:#dba87a; margin-right:8px;"></i>
+                        Al dominar estos fundamentos —el alfabeto, los casos, las declinaciones, el artículo definido, las preposiciones y los adjetivos— el estudiante habrá construido una base sólida para adentrarse en las riquezas del Nuevo Testamento en su idioma original.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="module-footer">
+        <div class="ministry">
+            <i class="fas fa-church"></i>
+            <span><strong>Vivos para servir</strong> · Un equipo que vive para servir a Dios a través de la predicación del evangelio.</span>
+        </div>
+        <div class="nav-arrows">
+            <a href="#"><i class="fas fa-arrow-left"></i> Anterior</a>
+            <a href="#">Siguiente <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </footer>
+
+</div>
+
+<!-- ===== SCRIPT TABS ===== -->
+<script>
+    (function() {
+        const tabs = document.querySelectorAll('.tab-btn');
+        const panes = document.querySelectorAll('.tab-pane');
+
+        tabs.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                // quitar active de todos
+                tabs.forEach(b => b.classList.remove('active'));
+                panes.forEach(p => p.classList.remove('active'));
+
+                // activar este
+                this.classList.add('active');
+                const target = this.getAttribute('data-tab');
+                const targetPane = document.getElementById(target);
+                if (targetPane) {
+                    targetPane.classList.add('active');
+                }
+
+                // actualizar progress (simulado)
+                const progress = document.querySelector('.progress-track .fill');
+                const weeks = ['semana1', 'semana2', 'semana3', 'semana4', 'semana5', 'vocabulario'];
+                const index = weeks.indexOf(target);
+                if (index !== -1 && progress) {
+                    const pct = ((index + 1) / weeks.length) * 100;
+                    progress.style.width = pct + '%';
+                }
+
+                // actualizar label
+                const label = document.querySelector('.progress-label');
+                if (label) {
+                    const names = {
+                        'semana1': 'Semana 1',
+                        'semana2': 'Semana 2',
+                        'semana3': 'Semana 3',
+                        'semana4': 'Semana 4',
+                        'semana5': 'Semana 5',
+                        'vocabulario': 'Vocabulario'
+                    };
+                    const weekName = names[target] || target;
+                    label.innerHTML = `<i class="fas fa-arrow-right"></i> ${weekName}`;
+                }
+            });
+        });
+    })();
+</script>
+
+</body>
+</html>
