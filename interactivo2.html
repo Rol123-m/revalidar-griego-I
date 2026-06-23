@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gramática Griega · Módulo 2 · Vivos para servir</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        /* ========== RESET & BASE ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0c0a0a;
+            min-height: 100vh;
+            padding: 2rem 1.5rem;
+            background-image: 
+                radial-gradient(ellipse at 20% 30%, rgba(120, 70, 40, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(60, 100, 80, 0.08) 0%, transparent 50%),
+                linear-gradient(160deg, #141110 0%, #1f1a17 100%);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        /* ========== CONTENEDOR ========== */
+        .module-container {
+            max-width: 1200px;
+            width: 100%;
+            background: rgba(28, 24, 21, 0.88);
+            backdrop-filter: blur(16px) saturate(180%);
+            border-radius: 40px;
+            border: 1px solid rgba(255, 215, 175, 0.06);
+            box-shadow: 0 30px 60px -16px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,215,175,0.04);
+            padding: 2rem 2rem 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .module-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(219, 168, 122, 0.03) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* ========== HEADER ========== */
+        .module-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 215, 175, 0.06);
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .module-header .left {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .module-header .logo-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid rgba(219, 168, 122, 0.25);
+            flex-shrink: 0;
+        }
+
+        .module-header .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .module-header .title-group h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #f0e4d8;
+            letter-spacing: -0.5px;
+        }
+
+        .module-header .title-group h2 span {
+            background: linear-gradient(135deg, #f5cba0, #dba87a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .module-header .title-group .sub {
+            font-size: 0.8rem;
+            color: #b8a394;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .module-header .badge-module {
+            background: rgba(219, 168, 122, 0.1);
+            border: 1px solid rgba(219, 168, 122, 0.15);
+            padding: 0.4rem 1.6rem;
+            border-radius: 60px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #dba87a;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* ========== PROGRESS BAR ========== */
+        .progress-section {
+            margin-bottom: 2.2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .progress-track {
+            flex: 1;
+            min-width: 150px;
+            height: 6px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-track .fill {
+            height: 100%;
+            width: 8%;
+            background: linear-gradient(90deg, #dba87a, #c4895e);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(219, 168, 122, 0.2);
+            transition: width 0.4s ease;
+        }
+
+        .progress-label {
+            color: #b8a394;
+            font-size: 0.8rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .progress-label i {
+            color: #dba87a;
+            margin-right: 6px;
+        }
+
+        /* ========== TABS ========== */
+        .tabs-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+            border-bottom: 1px solid rgba(255,215,175,0.05);
+            padding-bottom: 0.8rem;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 60px;
+            color: #b8a394;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border: 1px solid transparent;
+        }
+
+        .tab-btn i {
+            font-size: 0.8rem;
+            color: #7a6b5e;
+            transition: 0.2s;
+        }
+
+        .tab-btn:hover {
+            color: #f0e4d8;
+            background: rgba(255,255,255,0.03);
+        }
+
+        .tab-btn.active {
+            background: rgba(219, 168, 122, 0.10);
+            border-color: rgba(219, 168, 122, 0.15);
+            color: #f5ede6;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+        }
+
+        .tab-btn.active i {
+            color: #dba87a;
+        }
+
+        /* ========== TAB CONTENT ========== */
+        .tab-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .tab-pane {
+            display: none;
+            animation: fadeIn 0.35s ease;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ========== CONTENIDO ESTILOS ========== */
+        .lesson-card {
+            background: rgba(255,255,255,0.02);
+            border-radius: 24px;
+            padding: 1.8rem 2rem;
+            border: 1px solid rgba(255,215,175,0.04);
+            margin-bottom: 1.8rem;
+            transition: 0.2s;
+        }
+
+        .lesson-card:hover {
+            border-color: rgba(219, 168, 122, 0.08);
+            background: rgba(255,255,255,0.03);
+        }
+
+        .lesson-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #f0e4d8;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .lesson-card h3 .week-tag {
+            font-size: 0.7rem;
+            font-weight: 400;
+            background: rgba(219, 168, 122, 0.08);
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            color: #dba87a;
+            letter-spacing: 1px;
+            border: 1px solid rgba(219, 168, 122, 0.06);
+        }
+
+        .lesson-card .verse {
+            background: rgba(219, 168, 122, 0.04);
+            padding: 1rem 1.5rem;
+            border-radius: 16px;
+            border-left: 3px solid #dba87a;
+            margin: 0.8rem 0 1.2rem;
+            font-family: 'Times New Roman', serif;
+            font-size: 1.2rem;
+            color: #e8d5c4;
+        }
+
+        .lesson-card .verse small {
+            display: block;
+            font-size: 0.8rem;
+            color: #b8a394;
+            font-family: 'Inter', sans-serif;
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        .lesson-card p {
+            color: #cdbcae;
+            line-height: 1.8;
+            margin-bottom: 0.8rem;
+            font-size: 0.98rem;
+        }
+
+        .lesson-card .highlight-box {
+            background: rgba(219, 168, 122, 0.04);
+            border-radius: 16px;
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+            border: 1px solid rgba(219, 168, 122, 0.06);
+        }
+
+        .lesson-card .highlight-box strong {
+            color: #f0e4d8;
+        }
+
+        .lesson-card ul, .lesson-card ol {
+            color: #cdbcae;
+            padding-left: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .lesson-card ul li, .lesson-card ol li {
+            margin-bottom: 0.3rem;
+        }
+
+        /* ===== TABLAS ===== */
+        .table-wrap {
+            overflow-x: auto;
+            margin: 1rem 0;
+            border-radius: 16px;
+            border: 1px solid rgba(255,215,175,0.04);
+        }
+
+        .table-wrap table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        .table-wrap th {
+            background: rgba(219, 168, 122, 0.06);
+            color: #f0e4d8;
+            font-weight: 600;
+            padding: 0.7rem 1rem;
+            text-align: left;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .table-wrap td {
+            padding: 0.6rem 1rem;
+            border-bottom: 1px solid rgba(255,215,175,0.03);
+            color: #cdbcae;
+        }
+
+        .table-wrap tr:last-child td {
+            border-bottom: none;
+        }
+
+        .table-wrap td:first-child {
+            font-family: 'Times New Roman', serif;
+            font-size: 1.05rem;
+            color: #e8d5c4;
+        }
+
+        .table-wrap td .greek-inline {
+            font-family: 'Times New Roman', serif;
+            font-size: 1.05rem;
+            color: #e8d5c4;
+        }
+
+        /* tabla de paradigmas con fondo especial */
+        .paradigm-table {
+            border-color: rgba(219, 168, 122, 0.1);
+        }
+
+        .paradigm-table th {
+            background: rgba(219, 168, 122, 0.08);
+            color: #f5ede6;
+        }
+
+        .paradigm-table td {
+            font-size: 1rem;
+        }
+
+        /* ===== VOCABULARIO ===== */
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 0.8rem;
+            margin-top: 0.8rem;
+        }
+
+        .vocab-item {
+            background: rgba(255,255,255,0.02);
+            padding: 0.7rem 1.2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255,215,175,0.04);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            transition: 0.2s;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .vocab-item:hover {
+            background: rgba(255,255,255,0.04);
+            border-color: rgba(219, 168, 122, 0.08);
+        }
+
+        .vocab-item .greek {
+            font-family: 'Times New Roman', serif;
+            font-size: 1.1rem;
+            color: #f0e4d8;
+        }
+
+        .vocab-item .meaning {
+            color: #b8a394;
+            font-size: 0.85rem;
+            flex: 1;
+        }
+
+        .vocab-item .tag {
+            font-size: 0.6rem;
+            background: rgba(219, 168, 122, 0.06);
+            padding: 0.1rem 0.8rem;
+            border-radius: 40px;
+            color: #7a6b5e;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== STATS ===== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.02);
+            border-radius: 16px;
+            padding: 1.2rem;
+            text-align: center;
+            border: 1px solid rgba(255,215,175,0.04);
+        }
+
+        .stat-card .number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #dba87a;
+        }
+
+        .stat-card .label {
+            color: #b8a394;
+            font-size: 0.8rem;
+            margin-top: 4px;
+        }
+
+        /* ===== FOOTER MODULE ===== */
+        .module-footer {
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,215,175,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            color: #7a6b5e;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        .module-footer .ministry {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .module-footer .ministry i {
+            color: #dba87a;
+        }
+
+        .module-footer .ministry strong {
+            color: #cdbcae;
+            font-weight: 500;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            body { padding: 1rem; }
+            .module-container { padding: 1.5rem 1.2rem; border-radius: 28px; }
+            .module-header .title-group h2 { font-size: 1.2rem; }
+            .module-header .badge-module { font-size: 0.6rem; padding: 0.2rem 1rem; }
+            .tab-btn { padding: 0.4rem 0.8rem; font-size: 0.7rem; }
+            .lesson-card { padding: 1.2rem; }
+            .lesson-card h3 { font-size: 1.2rem; }
+            .vocab-grid { grid-template-columns: 1fr; }
+            .module-footer { flex-direction: column; align-items: center; text-align: center; }
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 480px) {
+            .module-header .left { flex-wrap: wrap; }
+            .tabs-nav { gap: 0.2rem; }
+            .tab-btn { font-size: 0.6rem; padding: 0.3rem 0.6rem; }
+            .lesson-card .verse { font-size: 1rem; padding: 0.8rem 1rem; }
+            .lesson-card { padding: 1rem; }
+            .stats-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="module-container">
+
+    <!-- ===== HEADER ===== -->
+    <header class="module-header">
+        <div class="left">
+            <div class="logo-icon">
+                <img src="https://i.postimg.cc/wMJ2bCgV/mas-logos.jpg" alt="Vivos para servir" />
+            </div>
+            <div class="title-group">
+                <h2><span>Gramática</span> · Griego Koiné</h2>
+                <div class="sub"><i class="fas fa-scroll"></i> Sección No 2 · Declinaciones y Pronombres</div>
+            </div>
+        </div>
+        <div class="badge-module">
+            <i class="fas fa-flag-checkered" style="margin-right:6px;"></i> Módulo 2
+        </div>
+    </header>
+
+    <!-- ===== PROGRESS ===== -->
+    <div class="progress-section">
+        <div class="progress-track">
+            <div class="fill" style="width: 8%;"></div>
+        </div>
+        <div class="progress-label">
+            <i class="fas fa-arrow-right"></i> Introducción
+        </div>
+    </div>
+
+    <!-- ===== TABS ===== -->
+    <nav class="tabs-nav" id="tabsNav">
+        <button class="tab-btn active" data-tab="intro"><i class="fas fa-home"></i> Intro</button>
+        <button class="tab-btn" data-tab="semana6"><i class="fas fa-6"></i> Semana 6</button>
+        <button class="tab-btn" data-tab="semana7"><i class="fas fa-7"></i> Semana 7</button>
+        <button class="tab-btn" data-tab="semana8"><i class="fas fa-8"></i> Semana 8</button>
+        <button class="tab-btn" data-tab="semana9"><i class="fas fa-9"></i> Semana 9</button>
+        <button class="tab-btn" data-tab="paradigmas"><i class="fas fa-table"></i> Paradigmas</button>
+        <button class="tab-btn" data-tab="vocabulario"><i class="fas fa-book"></i> Vocabulario</button>
+    </nav>
+
+    <!-- ===== CONTENIDO ===== -->
+    <div class="tab-content">
+
+        <!-- ===== INTRO ===== -->
+        <div class="tab-pane active" id="intro">
+            <div class="lesson-card">
+                <h3>Sección 2 · Declinaciones y Pronombres <span class="week-tag"><i class="fas fa-star"></i> Semanas 6–9</span></h3>
+                
+                <div class="verse">
+                    πιστεύω εἰς θεόν, πατέρα παντοκράτορα
+                    <small>Símbolo de los Apóstoles — "Creo en Dios, Padre todopoderoso"</small>
+                </div>
+
+                <p>Esta segunda sección te guía a través de los <strong>fundamentos avanzados</strong> del griego koiné: la Tercera Declinación, los Pronombres Personales (1ª, 2ª y 3ª persona), los Pronombres Demostrativos y los Relativos. Dominar estos temas te permitirá leer textos más complejos del Nuevo Testamento.</p>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-list-check" style="color:#dba87a;"></i> Contenido del Módulo 2</strong>
+                    <ul style="margin-top:8px; list-style:none; padding-left:0;">
+                        <li><i class="fas fa-check-circle" style="color:#7bc49a; margin-right:10px;"></i> <strong>Semana 6:</strong> Tercera Declinación · cambios consonánticos · πᾶς</li>
+                        <li><i class="fas fa-check-circle" style="color:#7bc49a; margin-right:10px;"></i> <strong>Semana 7:</strong> Pronombres Personales (1ª y 2ª persona) · formas enfáticas</li>
+                        <li><i class="fas fa-check-circle" style="color:#7bc49a; margin-right:10px;"></i> <strong>Semana 8:</strong> Pronombre Personal de 3ª persona (αὐτός) · tres usos</li>
+                        <li><i class="fas fa-check-circle" style="color:#7bc49a; margin-right:10px;"></i> <strong>Semana 9:</strong> Demostrativos (οὗτος, ἐκεῖνος) y Relativos (ὅς)</li>
+                        <li><i class="fas fa-check-circle" style="color:#7bc49a; margin-right:10px;"></i> <strong>Paradigmas:</strong> Tablas completas de todas las declinaciones y pronombres</li>
+                        <li><i class="fas fa-check-circle" style="color:#7bc49a; margin-right:10px;"></i> <strong>Vocabulario:</strong> Léxico esencial de la Sección 2</li>
+                    </ul>
+                </div>
+
+                <div style="background: rgba(219,168,122,0.04); border-radius:16px; padding:1rem 1.5rem; margin-top:1.2rem; border-left:3px solid #dba87a;">
+                    <p style="color:#b8a394; font-style:italic; font-size:0.9rem;">
+                        <i class="fas fa-quote-left" style="color:#dba87a; margin-right:8px;"></i>
+                        "La Tercera Declinación es la más diversa y rica del griego; dominarla abre las puertas a la comprensión profunda del texto bíblico."
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== SEMANA 6 ===== -->
+        <div class="tab-pane" id="semana6">
+            <div class="lesson-card">
+                <h3>La Tercera Declinación <span class="week-tag"><i class="fas fa-calendar-week"></i> Semana 6</span></h3>
+                
+                <div class="verse">
+                    ὁ λόγος σὰρξ ἐγένετο
+                    <small>Juan 1:14 — "El Verbo se hizo carne"</small>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-3" style="color:#dba87a;"></i> Características Principales</strong>
+                    <ul style="margin-top:6px;">
+                        <li>Los sustantivos de tercera declinación tienen <strong>raíces que terminan en consonante</strong>.</li>
+                        <li>Para identificar la raíz, se debe memorizar la forma del <strong>genitivo singular</strong> junto con el nominativo <span style="color:#b8a394;">(ej. σάρξ, σαρκός → raíz σαρκ-)</span>.</li>
+                        <li>El género es menos predecible que en las primeras dos declinaciones, por lo que se debe memorizar con el artículo.</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-table" style="color:#dba87a;"></i> Terminaciones de la Tercera Declinación</strong>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Caso</th><th>3ª Decl. (masc/fem)</th><th>3ª Decl. (neutro)</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Nom. sg</strong></td><td>ς</td><td>— (sin terminación)</td></tr>
+                                <tr><td><strong>Gen. sg</strong></td><td>ος</td><td>ος</td></tr>
+                                <tr><td><strong>Dat. sg</strong></td><td>ι</td><td>ι</td></tr>
+                                <tr><td><strong>Acc. sg</strong></td><td>α</td><td>— (sin terminación)</td></tr>
+                                <tr><td><strong>Nom. pl</strong></td><td>ες</td><td>α</td></tr>
+                                <tr><td><strong>Gen. pl</strong></td><td>ων</td><td>ων</td></tr>
+                                <tr><td><strong>Dat. pl</strong></td><td>σι(ν)</td><td>σι(ν)</td></tr>
+                                <tr><td><strong>Acc. pl</strong></td><td>ας</td><td>α</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-cubes" style="color:#dba87a;"></i> Cambios Consonánticos (Cuadrado de Oclusivas)</strong>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Oclusiva + σ</th><th>Resultado</th><th>Ejemplo</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Labial</strong> (π, β, φ) + σ</td><td><strong>ψ</strong></td><td>γραφ + ς → γράψ</td></tr>
+                                <tr><td><strong>Velar</strong> (κ, γ, χ) + σ</td><td><strong>ξ</strong></td><td>σαρκ + ς → σάρξ</td></tr>
+                                <tr><td><strong>Dental</strong> (τ, δ, θ) + σ</td><td><strong>σ</strong> (desaparece)</td><td>ονοματ + ς → ὄνομα</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p style="font-size:0.85rem; color:#b8a394; margin-top:6px;"><strong>Regla de la Tau Final:</strong> La tau (τ) no puede terminar una palabra y se elimina en nominativo/acusativo singular neutro.</p>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-table" style="color:#dba87a;"></i> Paradigmas Comunes de Tercera Declinación</strong>
+                    
+                    <p style="margin-top:8px; color:#b8a394; font-weight:500;">a) Raíz en -κ (σάρξ, σαρκ-) — Femenino</p>
+                    <div class="table-wrap" style="margin-top:4px;">
+                        <table>
+                            <thead><tr><th>Caso</th><th>Singular</th><th>Plural</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Nom.</strong></td><td>σάρξ</td><td>σάρκες</td></tr>
+                                <tr><td><strong>Gen.</strong></td><td>σαρκός</td><td>σαρκῶν</td></tr>
+                                <tr><td><strong>Dat.</strong></td><td>σαρκί</td><td>σαρξί(ν)</td></tr>
+                                <tr><td><strong>Acc.</strong></td><td>σάρκα</td><td>σάρκας</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p style="margin-top:12px; color:#b8a394; font-weight:500;">b) Raíz en -ματ (ὄνομα, ὀνόματος) — Neutro</p>
+                    <div class="table-wrap" style="margin-top:4px;">
+                        <table>
+                            <thead><tr><th>Caso</th><th>Singular</th><th>Plural</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Nom.</strong></td><td>ὄνομα</td><td>ὀνόματα</td></tr>
+                                <tr><td><strong>Gen.</strong></td><td>ὀνόματος</td><td>ὀνομάτων</td></tr>
+                                <tr><td><strong>Dat.</strong></td><td>ὀνόματι</td><td>ὀνόμασι(ν)</td></tr>
+                                <tr><td><strong>Acc.</strong></td><td>ὄνομα</td><td>ὀνόματα</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p style="margin-top:12px; color:#b8a394; font-weight:500;">c) Raíz en -ν (τίς, τιν-) — Interrogativo/Indefinido</p>
+                    <div class="table-wrap" style="margin-top:4px;">
+                        <table>
+                            <thead><tr><th>Caso</th><th>Singular</th><th>Plural</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Nom.</strong></td><td>τίς</td><td>τίνες</td></tr>
+                                <tr><td><strong>Gen.</strong></td><td>τίνος</td><td>τίνων</td></tr>
+                                <tr><td><strong>Dat.</strong></td><td>τίνι</td><td>τίσι(ν)</td></tr>
+                                <tr><td><strong>Acc.</strong></td><td>τίνα</td><td>τίνας</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-table" style="color:#dba87a;"></i> El Adjetivo πᾶς ("todo", "cada")</strong>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Caso</th><th>Masculino</th><th>Femenino</th><th>Neutro</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Nom. sg</strong></td><td>πᾶς</td><td>πᾶσα</td><td>πᾶν</td></tr>
+                                <tr><td><strong>Gen. sg</strong></td><td>παντός</td><td>πάσης</td><td>παντός</td></tr>
+                                <tr><td><strong>Dat. sg</strong></td><td>παντί</td><td>πάσῃ</td><td>παντί</td></tr>
+                                <tr><td><strong>Acc. sg</strong></td><td>πάντα</td><td>πᾶσαν</td><td>πᾶν</td></tr>
+                                <tr><td><strong>Nom. pl</strong></td><td>πάντες</td><td>πᾶσαι</td><td>πάντα</td></tr>
+                                <tr><td><strong>Gen. pl</strong></td><td>πάντων</td><td>πασῶν</td><td>πάντων</td></tr>
+                                <tr><td><strong>Dat. pl</strong></td><td>πᾶσι(ν)</td><td>πάσαις</td><td>πᾶσι(ν)</td></tr>
+                                <tr><td><strong>Acc. pl</strong></td><td>πάντας</td><td>πάσας</td><td>πάντα</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-list" style="color:#dba87a;"></i> Las Ocho Reglas de los Sustantivos (Mounce)</strong>
+                    <ul style="margin-top:6px;">
+                        <li><strong>1.</strong> Declinaciones: α/η = 1ª; ο = 2ª; consonante = 3ª.</li>
+                        <li><strong>2.</strong> Neutros: Nominativo = Acusativo (singular y plural).</li>
+                        <li><strong>3.</strong> Plural Neutro: Termina en -α.</li>
+                        <li><strong>4.</strong> Iota Subscrita: En dativo singular de 1ª y 2ª declinación (ej. λόγῳ, γραφῇ).</li>
+                        <li><strong>5.</strong> Cambios Vocálicos: Contracción y alargamiento compensatorio.</li>
+                        <li><strong>6.</strong> Genitivo y Dativo: Masculino = Neutro (en 2ª declinación).</li>
+                        <li><strong>7.</strong> Cuadrado de Oclusivas: Cambios al añadir sigma.</li>
+                        <li><strong>8.</strong> Tau Final: Desaparece al final de palabra.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== SEMANA 7 ===== -->
+        <div class="tab-pane" id="semana7">
+            <div class="lesson-card">
+                <h3>Pronombres Personales (1ª y 2ª Persona) <span class="week-tag"><i class="fas fa-calendar-week"></i> Semana 7</span></h3>
+                
+                <div class="verse">
+                    ἐγώ εἰμι τὸ φῶς τοῦ κόσμου
+                    <small>Juan 8:12 — "Yo soy la luz del mundo"</small>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-user" style="color:#dba87a;"></i> Definición y Función</strong>
+                    <ul style="margin-top:6px;">
+                        <li>Un <strong>pronombre personal</strong> reemplaza a un sustantivo que designa a una persona.</li>
+                        <li><strong>Primera persona:</strong> Quien habla (ἐγώ, ἡμεῖς → "yo, nosotros").</li>
+                        <li><strong>Segunda persona:</strong> El interlocutor (σύ, ὑμεῖς → "tú, vosotros/ustedes").</li>
+                        <li>Los pronombres de primera y segunda persona <strong>no tienen género gramatical</strong>.</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-table" style="color:#dba87a;"></i> Paradigma de los Pronombres Personales</strong>
+                    
+                    <p style="margin-top:8px; color:#b8a394; font-weight:500;">Primera Persona</p>
+                    <div class="table-wrap" style="margin-top:4px;">
+                        <table>
+                            <thead><tr><th>Caso</th><th>Singular</th><th>Plural</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Nominativo</strong></td><td>ἐγώ (yo)</td><td>ἡμεῖς (nosotros)</td></tr>
+                                <tr><td><strong>Genitivo</strong></td><td>μου / ἐμοῦ (de mí, mi)</td><td>ἡμῶν (de nosotros, nuestro)</td></tr>
+                                <tr><td><strong>Dativo</strong></td><td>μοι / ἐμοί (a mí)</td><td>ἡμῖν (a nosotros)</td></tr>
+                                <tr><td><strong>Acusativo</strong></td><td>με / ἐμέ (me)</td><td>ἡμᾶς (nos)</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p style="margin-top:12px; color:#b8a394; font-weight:500;">Segunda Persona</p>
+                    <div class="table-wrap" style="margin-top:4px;">
+                        <table>
+                            <thead><tr><th>Caso</th><th>Singular</th><th>Plural</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Nominativo</strong></td><td>σύ (tú)</td><td>ὑμεῖς (vosotros/ustedes)</td></tr>
+                                <tr><td><strong>Genitivo</strong></td><td>σου / σοῦ (de ti, tu)</td><td>ὑμῶν (de vosotros, vuestro)</td></tr>
+                                <tr><td><strong>Dativo</strong></td><td>σοι / σοί (a ti)</td><td>ὑμῖν (a vosotros)</td></tr>
+                                <tr><td><strong>Acusativo</strong></td><td>σε / σέ (te)</td><td>ὑμᾶς (os)</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-asterisk" style="color:#dba87a;"></i> Formas Enfáticas</strong>
+                    <ul style="margin-top:6px;">
+                        <li>Las formas con <strong>ἐ-</strong> y acento (ἐμοῦ, ἐμοί, ἐμέ; σοῦ, σοί, σέ) se usan para dar énfasis o contraste.</li>
+                        <li>Ejemplo: <span style="color:#e8d5c4;">ἐγὼ ἐβάπτισα ὑμᾶς... αὐτὸς δὲ βαπτίσει...</span> ("Yo os bauticé... pero él os bautizará...").</li>
+                        <li><strong>Posición del Posesivo:</strong> En griego, el posesivo suele ir <strong>después del sustantivo</strong> que modifica. Ej: κύριός μου → "Señor mío".</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-table" style="color:#dba87a;"></i> Sustantivos con Iota Consonántica (Tercera Declinación)</strong>
+                    <p style="color:#b8a394; font-size:0.9rem; margin-bottom:6px;">Son <strong>siempre femeninos</strong> (ej. πίστις, "fe"). La iota (ι) alterna con épsilon (ε) según la terminación.</p>
+                    <div class="table-wrap" style="margin-top:4px;">
+                        <table>
+                            <thead><tr><th>Caso</th><th>Singular</th><th>Plural</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Nom.</strong></td><td>πίστις</td><td>πίστεις</td></tr>
+                                <tr><td><strong>Gen.</strong></td><td>πίστεως</td><td>πίστεων</td></tr>
+                                <tr><td><strong>Dat.</strong></td><td>πίστει</td><td>πίστεσι(ν)</td></tr>
+                                <tr><td><strong>Acc.</strong></td><td>πίστιν</td><td>πίστεις</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-table" style="color:#dba87a;"></i> Patrones Irregulares: πατήρ, ἀνήρ, μήτηρ</strong>
+                    <p style="color:#b8a394; font-size:0.9rem; margin-bottom:6px;">Raíz: πατερ-, ἀνδρ-, μητρ-. La vocal temática fluctúa (η en nominativo, ε en acusativo).</p>
+                    <div class="table-wrap" style="margin-top:4px;">
+                        <table>
+                            <thead><tr><th>Caso</th><th>πατήρ (padre)</th><th>ἀνήρ (hombre)</th><th>μήτηρ (madre)</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Nom. sg</strong></td><td>πατήρ</td><td>ἀνήρ</td><td>μήτηρ</td></tr>
+                                <tr><td><strong>Gen. sg</strong></td><td>πατρός</td><td>ἀνδρός</td><td>μητρός</td></tr>
+                                <tr><td><strong>Dat. sg</strong></td><td>πατρί</td><td>ἀνδρί</td><td>μητρί</td></tr>
+                                <tr><td><strong>Acc. sg</strong></td><td>πατέρα</td><td>ἄνδρα</td><td>μητέρα</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== SEMANA 8 ===== -->
+        <div class="tab-pane" id="semana8">
+            <div class="lesson-card">
+                <h3>Pronombre Personal de Tercera Persona (αὐτός) <span class="week-tag"><i class="fas fa-calendar-week"></i> Semana 8</span></h3>
+                
+                <div class="verse">
+                    αὐτὸς ἐστιν Ἠλίας
+                    <small>Mateo 11:14 — "Él es Elías"</small>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-table" style="color:#dba87a;"></i> Paradigma de αὐτός</strong>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Caso</th><th>Masculino</th><th>Femenino</th><th>Neutro</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Nom. sg</strong></td><td>αὐτός</td><td>αὐτή</td><td>αὐτό</td></tr>
+                                <tr><td><strong>Gen. sg</strong></td><td>αὐτοῦ</td><td>αὐτῆς</td><td>αὐτοῦ</td></tr>
+                                <tr><td><strong>Dat. sg</strong></td><td>αὐτῷ</td><td>αὐτῇ</td><td>αὐτῷ</td></tr>
+                                <tr><td><strong>Acc. sg</strong></td><td>αὐτόν</td><td>αὐτήν</td><td>αὐτό</td></tr>
+                                <tr><td><strong>Nom. pl</strong></td><td>αὐτοί</td><td>αὐταί</td><td>αὐτά</td></tr>
+                                <tr><td><strong>Gen. pl</strong></td><td>αὐτῶν</td><td>αὐτῶν</td><td>αὐτῶν</td></tr>
+                                <tr><td><strong>Dat. pl</strong></td><td>αὐτοῖς</td><td>αὐταῖς</td><td>αὐτοῖς</td></tr>
+                                <tr><td><strong>Acc. pl</strong></td><td>αὐτούς</td><td>αὐτάς</td><td>αὐτά</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-arrows-spin" style="color:#dba87a;"></i> Los Tres Usos de αὐτός</strong>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Uso</th><th>Función</th><th>Traducción</th><th>Ejemplo</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>1. Pronombre Personal</strong></td><td>Reemplaza a un sustantivo</td><td>"él, ella, ello, ellos, ellas"</td><td>αὐτὸς ἐστιν Ἠλίας ("Él es Elías")</td></tr>
+                                <tr><td><strong>2. Intensivo Adjetival</strong></td><td>Enfatiza a otro sustantivo</td><td>"mismo/a" (posición predicativa)</td><td>αὐτὸς ὁ ἀπόστολος ("el apóstol mismo")</td></tr>
+                                <tr><td><strong>3. Adjetivo Idéntico</strong></td><td>Indica identidad</td><td>"el mismo" (posición atributiva)</td><td>τὸν αὐτὸν λόγον ("la misma palabra")</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-lightbulb" style="color:#dba87a;"></i> Características Clave</strong>
+                    <ul style="margin-top:6px;">
+                        <li><strong>Concordancia:</strong> Género y número con el antecedente; caso según su función.</li>
+                        <li><strong>Espíritu Suave:</strong> Siempre lleva espíritu suave (ἀ), a diferencia del artículo.</li>
+                        <li><strong>Neutro Singular:</strong> No usa terminación de caso (αὐτό).</li>
+                        <li><strong>Análisis Morfológico (Parsing):</strong> Indicar: Caso, número, género, forma léxica (αὐτός) y significado. Ej: αὐτούς → Acusativo plural masculino de αὐτός → "a ellos" o "los".</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== SEMANA 9 ===== -->
+        <div class="tab-pane" id="semana9">
+            <div class="lesson-card">
+                <h3>Pronombres Demostrativos y Relativos <span class="week-tag"><i class="fas fa-calendar-week"></i> Semana 9</span></h3>
+                
+                <div class="verse">
+                    οὗτός ἐστιν ὁ υἱός μου ὁ ἀγαπητός
+                    <small>Mateo 3:17 — "Este es mi Hijo amado"</small>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-table" style="color:#dba87a;"></i> a) οὗτος ("este/esta/esto")</strong>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Caso</th><th>Masculino</th><th>Femenino</th><th>Neutro</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Nom. sg</strong></td><td>οὗτος</td><td>αὕτη</td><td>τοῦτο</td></tr>
+                                <tr><td><strong>Gen. sg</strong></td><td>τούτου</td><td>ταύτης</td><td>τούτου</td></tr>
+                                <tr><td><strong>Dat. sg</strong></td><td>τούτῳ</td><td>ταύτῃ</td><td>τούτῳ</td></tr>
+                                <tr><td><strong>Acc. sg</strong></td><td>τοῦτον</td><td>ταύτην</td><td>τοῦτο</td></tr>
+                                <tr><td><strong>Nom. pl</strong></td><td>οὗτοι</td><td>αὗται</td><td>ταῦτα</td></tr>
+                                <tr><td><strong>Gen. pl</strong></td><td>τούτων</td><td>τούτων</td><td>τούτων</td></tr>
+                                <tr><td><strong>Dat. pl</strong></td><td>τούτοις</td><td>ταύταις</td><td>τούτοις</td></tr>
+                                <tr><td><strong>Acc. pl</strong></td><td>τούτους</td><td>ταύτας</td><td>ταῦτα</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-table" style="color:#dba87a;"></i> b) ἐκεῖνος ("aquel/aquella/aquello")</strong>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Caso</th><th>Masculino</th><th>Femenino</th><th>Neutro</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Nom. sg</strong></td><td>ἐκεῖνος</td><td>ἐκείνη</td><td>ἐκεῖνο</td></tr>
+                                <tr><td><strong>Gen. sg</strong></td><td>ἐκείνου</td><td>ἐκείνης</td><td>ἐκείνου</td></tr>
+                                <tr><td><strong>Dat. sg</strong></td><td>ἐκείνῳ</td><td>ἐκείνῃ</td><td>ἐκείνῳ</td></tr>
+                                <tr><td><strong>Acc. sg</strong></td><td>ἐκεῖνον</td><td>ἐκείνην</td><td>ἐκεῖνο</td></tr>
+                                <tr><td><strong>Nom. pl</strong></td><td>ἐκεῖνοι</td><td>ἐκεῖναι</td><td>ἐκεῖνα</td></tr>
+                                <tr><td><strong>Gen. pl</strong></td><td>ἐκείνων</td><td>ἐκείνων</td><td>ἐκείνων</td></tr>
+                                <tr><td><strong>Dat. pl</strong></td><td>ἐκείνοις</td><td>ἐκείναις</td><td>ἐκείνοις</td></tr>
+                                <tr><td><strong>Acc. pl</strong></td><td>ἐκείνους</td><td>ἐκείνας</td><td>ἐκεῖνα</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-bullseye" style="color:#dba87a;"></i> Funciones de los Demostrativos</strong>
+                    <ul style="margin-top:6px;">
+                        <li><strong>Como Pronombre:</strong> Reemplaza a un sustantivo. Ej. οὗτος ἐστιν... ("Este es...").</li>
+                        <li><strong>Como Adjetivo:</strong> Modifica a un sustantivo. Siempre va en <strong>posición predicativa</strong> (con artículo). Ej. οὗτος ὁ ἄνθρωπος ("Este hombre").</li>
+                        <li><strong>Como Pronombre Personal:</strong> A veces pierde fuerza demostrativa. Ej. οὗτος ἔσται μέγας ("Él será grande").</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-table" style="color:#dba87a;"></i> El Adjetivo πολύς ("mucho/muchos")</strong>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Caso</th><th>Masculino</th><th>Femenino</th><th>Neutro</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Nom. sg</strong></td><td>πολύς</td><td>πολλή</td><td>πολύ</td></tr>
+                                <tr><td><strong>Gen. sg</strong></td><td>πολλοῦ</td><td>πολλῆς</td><td>πολλοῦ</td></tr>
+                                <tr><td><strong>Dat. sg</strong></td><td>πολλῷ</td><td>πολλῇ</td><td>πολλῷ</td></tr>
+                                <tr><td><strong>Acc. sg</strong></td><td>πολύν</td><td>πολλήν</td><td>πολύ</td></tr>
+                                <tr><td><strong>Nom. pl</strong></td><td>πολλοί</td><td>πολλαί</td><td>πολλά</td></tr>
+                                <tr><td><strong>Gen. pl</strong></td><td>πολλῶν</td><td>πολλῶν</td><td>πολλῶν</td></tr>
+                                <tr><td><strong>Dat. pl</strong></td><td>πολλοῖς</td><td>πολλαῖς</td><td>πολλοῖς</td></tr>
+                                <tr><td><strong>Acc. pl</strong></td><td>πολλούς</td><td>πολλάς</td><td>πολλά</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-table" style="color:#dba87a;"></i> Pronombres Relativos (ὅς, ἥ, ὅ)</strong>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Caso</th><th>Masculino</th><th>Femenino</th><th>Neutro</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Nom. sg</strong></td><td>ὅς</td><td>ἥ</td><td>ὅ</td></tr>
+                                <tr><td><strong>Gen. sg</strong></td><td>οὗ</td><td>ἧς</td><td>οὗ</td></tr>
+                                <tr><td><strong>Dat. sg</strong></td><td>ᾧ</td><td>ᾗ</td><td>ᾧ</td></tr>
+                                <tr><td><strong>Acc. sg</strong></td><td>ὅν</td><td>ἥν</td><td>ὅ</td></tr>
+                                <tr><td><strong>Nom. pl</strong></td><td>οἵ</td><td>αἵ</td><td>ἅ</td></tr>
+                                <tr><td><strong>Gen. pl</strong></td><td>ὧν</td><td>ὧν</td><td>ὧν</td></tr>
+                                <tr><td><strong>Dat. pl</strong></td><td>οἷς</td><td>αἷς</td><td>οἷς</td></tr>
+                                <tr><td><strong>Acc. pl</strong></td><td>οὕς</td><td>ἅς</td><td>ἅ</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-link" style="color:#dba87a;"></i> Características del Pronombre Relativo</strong>
+                    <ul style="margin-top:6px;">
+                        <li><strong>Concordancia:</strong> Género y número con el <strong>antecedente</strong>.</li>
+                        <li><strong>Caso:</strong> Determinado por su <strong>función dentro de la oración relativa</strong>, no por la oración principal.</li>
+                        <li><strong>Espíritu y Acento:</strong> Siempre lleva espíritu áspero y acento (para distinguirlo del artículo).</li>
+                        <li><strong>Traducción:</strong> "que", "quien", "el cual", o "el que" según el contexto.</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-code" style="color:#dba87a;"></i> Ejemplo de Oración Relativa</strong>
+                    <p><strong>Griego:</strong> ὁ ἄνθρωπος <strong>ὃν</strong> γινώσκομεν διδάσκει ἡμᾶς.</p>
+                    <p><strong>Traducción:</strong> "El hombre <strong>a quien</strong> conocemos nos enseña".</p>
+                    <p style="color:#b8a394; font-size:0.9rem;">Análisis: ὃν es acusativo porque es objeto directo de γινώσκομεν, aunque ἄνθρωπος sea nominativo.</p>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-table" style="color:#dba87a;"></i> El Vocativo (Caso de Llamada)</strong>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Tipo</th><th>Forma</th><th>Ejemplo</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Plural</strong></td><td>Igual al nominativo</td><td>ἄνδρες Γαλιλαῖοι ("Hombres de Galilea")</td></tr>
+                                <tr><td><strong>1ª Declinación</strong></td><td>Igual al nominativo</td><td>ψυχή ("¡Alma!")</td></tr>
+                                <tr><td><strong>2ª Declinación</strong></td><td>Terminación en -ε</td><td>ἄνθρωπε ("¡Hombre!")</td></tr>
+                                <tr><td><strong>3ª Declinación</strong></td><td>Raíz desnuda</td><td>πάτερ ("¡Padre!")</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== PARADIGMAS ===== -->
+        <div class="tab-pane" id="paradigmas">
+            <div class="lesson-card">
+                <h3>Paradigmas Completos · Sección 2 <span class="week-tag"><i class="fas fa-table"></i> Declinaciones y Pronombres</span></h3>
+                <p style="color:#b8a394; margin-bottom:1.2rem;">Tablas de referencia para la Tercera Declinación, Pronombres Personales, Demostrativos y Relativos.</p>
+
+                <!-- 3ra Declinación - σάρξ -->
+                <div class="highlight-box">
+                    <strong><i class="fas fa-3" style="color:#dba87a;"></i> Tercera Declinación — σάρξ (carne)</strong>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Caso</th><th>Singular</th><th>Plural</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Nominativo</strong></td><td>σάρξ</td><td>σάρκες</td></tr>
+                                <tr><td><strong>Genitivo</strong></td><td>σαρκός</td><td>σαρκῶν</td></tr>
+                                <tr><td><strong>Dativo</strong></td><td>σαρκί</td><td>σαρξί(ν)</td></tr>
+                                <tr><td><strong>Acusativo</strong></td><td>σάρκα</td><td>σάρκας</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 3ra Declinación - ὄνομα -->
+                <div class="highlight-box">
+                    <strong><i class="fas fa-3" style="color:#dba87a;"></i> Tercera Declinación — ὄνομα (nombre, neutro)</strong>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Caso</th><th>Singular</th><th>Plural</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Nominativo</strong></td><td>ὄνομα</td><td>ὀνόματα</td></tr>
+                                <tr><td><strong>Genitivo</strong></td><td>ὀνόματος</td><td>ὀνομάτων</td></tr>
+                                <tr><td><strong>Dativo</strong></td><td>ὀνόματι</td><td>ὀνόμασι(ν)</td></tr>
+                                <tr><td><strong>Acusativo</strong></td><td>ὄνομα</td><td>ὀνόματα</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p style="font-size:0.85rem; color:#b8a394; margin-top:6px;">Los sustantivos en -ματ son siempre neutros; la raíz se obtiene del genitivo (ὀνοματ-).</p>
+                </div>
+
+                <!-- πίστις (iota cons.) -->
+                <div class="highlight-box">
+                    <strong><i class="fas fa-3" style="color:#dba87a;"></i> Iota Consonántica — πίστις (fe)</strong>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Caso</th><th>Singular</th><th>Plural</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Nominativo</strong></td><td>πίστις</td><td>πίστεις</td></tr>
+                                <tr><td><strong>Genitivo</strong></td><td>πίστεως</td><td>πίστεων</td></tr>
+                                <tr><td><strong>Dativo</strong></td><td>πίστει</td><td>πίστεσι(ν)</td></tr>
+                                <tr><td><strong>Acusativo</strong></td><td>πίστιν</td><td>πίστεις</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p style="font-size:0.85rem; color:#b8a394; margin-top:6px;">Siempre femeninos. La iota alterna con épsilon en las terminaciones.</p>
+                </div>
+
+                <!-- Pronombres Personales -->
+                <div class="highlight-box">
+                    <strong><i class="fas fa-user" style="color:#dba87a;"></i> Pronombres Personales — 1ª y 2ª Persona</strong>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Caso</th><th>1ª sg</th><th>1ª pl</th><th>2ª sg</th><th>2ª pl</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Nom.</strong></td><td>ἐγώ</td><td>ἡμεῖς</td><td>σύ</td><td>ὑμεῖς</td></tr>
+                                <tr><td><strong>Gen.</strong></td><td>μου / ἐμοῦ</td><td>ἡμῶν</td><td>σου / σοῦ</td><td>ὑμῶν</td></tr>
+                                <tr><td><strong>Dat.</strong></td><td>μοι / ἐμοί</td><td>ἡμῖν</td><td>σοι / σοί</td><td>ὑμῖν</td></tr>
+                                <tr><td><strong>Acc.</strong></td><td>με / ἐμέ</td><td>ἡμᾶς</td><td>σε / σέ</td><td>ὑμᾶς</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- αὐτός -->
+                <div class="highlight-box">
+                    <strong><i class="fas fa-user" style="color:#dba87a;"></i> Pronombre Personal — 3ª Persona (αὐτός)</strong>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Caso</th><th>Masculino</th><th>Femenino</th><th>Neutro</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Nom. sg</strong></td><td>αὐτός</td><td>αὐτή</td><td>αὐτό</td></tr>
+                                <tr><td><strong>Gen. sg</strong></td><td>αὐτοῦ</td><td>αὐτῆς</td><td>αὐτοῦ</td></tr>
+                                <tr><td><strong>Dat. sg</strong></td><td>αὐτῷ</td><td>αὐτῇ</td><td>αὐτῷ</td></tr>
+                                <tr><td><strong>Acc. sg</strong></td><td>αὐτόν</td><td>αὐτήν</td><td>αὐτό</td></tr>
+                                <tr><td><strong>Nom. pl</strong></td><td>αὐτοί</td><td>αὐταί</td><td>αὐτά</td></tr>
+                                <tr><td><strong>Gen. pl</strong></td><td>αὐτῶν</td><td>αὐτῶν</td><td>αὐτῶν</td></tr>
+                                <tr><td><strong>Dat. pl</strong></td><td>αὐτοῖς</td><td>αὐταῖς</td><td>αὐτοῖς</td></tr>
+                                <tr><td><strong>Acc. pl</strong></td><td>αὐτούς</td><td>αὐτάς</td><td>αὐτά</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Demostrativos -->
+                <div class="highlight-box">
+                    <strong><i class="fas fa-arrow-pointer" style="color:#dba87a;"></i> Demostrativos — οὗτος (este) y ἐκεῖνος (aquel)</strong>
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1rem; margin-top:8px;">
+                        <div>
+                            <p style="color:#b8a394; font-size:0.8rem; text-align:center; margin-bottom:4px;"><strong>οὗτος</strong></p>
+                            <div class="table-wrap">
+                                <table>
+                                    <thead><tr><th>Caso</th><th>Masc</th><th>Fem</th><th>Neu</th></tr></thead>
+                                    <tbody>
+                                        <tr><td><strong>Nom sg</strong></td><td>οὗτος</td><td>αὕτη</td><td>τοῦτο</td></tr>
+                                        <tr><td><strong>Gen sg</strong></td><td>τούτου</td><td>ταύτης</td><td>τούτου</td></tr>
+                                        <tr><td><strong>Acc sg</strong></td><td>τοῦτον</td><td>ταύτην</td><td>τοῦτο</td></tr>
+                                        <tr><td><strong>Nom pl</strong></td><td>οὗτοι</td><td>αὗται</td><td>ταῦτα</td></tr>
+                                        <tr><td><strong>Gen pl</strong></td><td>τούτων</td><td>τούτων</td><td>τούτων</td></tr>
+                                        <tr><td><strong>Acc pl</strong></td><td>τούτους</td><td>ταύτας</td><td>ταῦτα</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div>
+                            <p style="color:#b8a394; font-size:0.8rem; text-align:center; margin-bottom:4px;"><strong>ἐκεῖνος</strong></p>
+                            <div class="table-wrap">
+                                <table>
+                                    <thead><tr><th>Caso</th><th>Masc</th><th>Fem</th><th>Neu</th></tr></thead>
+                                    <tbody>
+                                        <tr><td><strong>Nom sg</strong></td><td>ἐκεῖνος</td><td>ἐκείνη</td><td>ἐκεῖνο</td></tr>
+                                        <tr><td><strong>Gen sg</strong></td><td>ἐκείνου</td><td>ἐκείνης</td><td>ἐκείνου</td></tr>
+                                        <tr><td><strong>Acc sg</strong></td><td>ἐκεῖνον</td><td>ἐκείνην</td><td>ἐκεῖνο</td></tr>
+                                        <tr><td><strong>Nom pl</strong></td><td>ἐκεῖνοι</td><td>ἐκεῖναι</td><td>ἐκεῖνα</td></tr>
+                                        <tr><td><strong>Gen pl</strong></td><td>ἐκείνων</td><td>ἐκείνων</td><td>ἐκείνων</td></tr>
+                                        <tr><td><strong>Acc pl</strong></td><td>ἐκείνους</td><td>ἐκείνας</td><td>ἐκεῖνα</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Relativo -->
+                <div class="highlight-box">
+                    <strong><i class="fas fa-link" style="color:#dba87a;"></i> Pronombre Relativo — ὅς, ἥ, ὅ</strong>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Caso</th><th>Masculino</th><th>Femenino</th><th>Neutro</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Nom. sg</strong></td><td>ὅς</td><td>ἥ</td><td>ὅ</td></tr>
+                                <tr><td><strong>Gen. sg</strong></td><td>οὗ</td><td>ἧς</td><td>οὗ</td></tr>
+                                <tr><td><strong>Dat. sg</strong></td><td>ᾧ</td><td>ᾗ</td><td>ᾧ</td></tr>
+                                <tr><td><strong>Acc. sg</strong></td><td>ὅν</td><td>ἥν</td><td>ὅ</td></tr>
+                                <tr><td><strong>Nom. pl</strong></td><td>οἵ</td><td>αἵ</td><td>ἅ</td></tr>
+                                <tr><td><strong>Gen. pl</strong></td><td>ὧν</td><td>ὧν</td><td>ὧν</td></tr>
+                                <tr><td><strong>Dat. pl</strong></td><td>οἷς</td><td>αἷς</td><td>οἷς</td></tr>
+                                <tr><td><strong>Acc. pl</strong></td><td>οὕς</td><td>ἅς</td><td>ἅ</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p style="font-size:0.85rem; color:#b8a394; margin-top:6px;">Siempre lleva espíritu áspero y acento para distinguirlo del artículo.</p>
+                </div>
+
+                <!-- πᾶς y πολύς -->
+                <div class="highlight-box">
+                    <strong><i class="fas fa-table" style="color:#dba87a;"></i> Adjetivos Irregulares — πᾶς y πολύς</strong>
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1rem; margin-top:8px;">
+                        <div>
+                            <p style="color:#b8a394; font-size:0.8rem; text-align:center; margin-bottom:4px;"><strong>πᾶς (todo)</strong></p>
+                            <div class="table-wrap">
+                                <table>
+                                    <thead><tr><th>Caso</th><th>Masc</th><th>Fem</th><th>Neu</th></tr></thead>
+                                    <tbody>
+                                        <tr><td><strong>Nom sg</strong></td><td>πᾶς</td><td>πᾶσα</td><td>πᾶν</td></tr>
+                                        <tr><td><strong>Gen sg</strong></td><td>παντός</td><td>πάσης</td><td>παντός</td></tr>
+                                        <tr><td><strong>Acc sg</strong></td><td>πάντα</td><td>πᾶσαν</td><td>πᾶν</td></tr>
+                                        <tr><td><strong>Nom pl</strong></td><td>πάντες</td><td>πᾶσαι</td><td>πάντα</td></tr>
+                                        <tr><td><strong>Gen pl</strong></td><td>πάντων</td><td>πασῶν</td><td>πάντων</td></tr>
+                                        <tr><td><strong>Acc pl</strong></td><td>πάντας</td><td>πάσας</td><td>πάντα</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div>
+                            <p style="color:#b8a394; font-size:0.8rem; text-align:center; margin-bottom:4px;"><strong>πολύς (mucho)</strong></p>
+                            <div class="table-wrap">
+                                <table>
+                                    <thead><tr><th>Caso</th><th>Masc</th><th>Fem</th><th>Neu</th></tr></thead>
+                                    <tbody>
+                                        <tr><td><strong>Nom sg</strong></td><td>πολύς</td><td>πολλή</td><td>πολύ</td></tr>
+                                        <tr><td><strong>Gen sg</strong></td><td>πολλοῦ</td><td>πολλῆς</td><td>πολλοῦ</td></tr>
+                                        <tr><td><strong>Acc sg</strong></td><td>πολύν</td><td>πολλήν</td><td>πολύ</td></tr>
+                                        <tr><td><strong>Nom pl</strong></td><td>πολλοί</td><td>πολλαί</td><td>πολλά</td></tr>
+                                        <tr><td><strong>Gen pl</strong></td><td>πολλῶν</td><td>πολλῶν</td><td>πολλῶν</td></tr>
+                                        <tr><td><strong>Acc pl</strong></td><td>πολλούς</td><td>πολλάς</td><td>πολλά</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background: rgba(219,168,122,0.04); border-radius:16px; padding:1rem 1.5rem; margin-top:1.2rem; border-left:3px solid #dba87a;">
+                    <p style="color:#b8a394; font-size:0.9rem;">
+                        <i class="fas fa-info-circle" style="color:#dba87a; margin-right:8px;"></i>
+                        <strong>Consejo:</strong> Memoriza estos paradigmas gradualmente. La Tercera Declinación es la más diversa; practica identificando la raíz a partir del genitivo singular.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== VOCABULARIO ===== -->
+        <div class="tab-pane" id="vocabulario">
+            <div class="lesson-card">
+                <h3>Vocabulario Acumulado · Sección 2 <span class="week-tag"><i class="fas fa-book-open"></i> Semanas 6–9</span></h3>
+                <p style="color:#b8a394; margin-bottom:1rem;">Vocabulario esencial de la Tercera Declinación, pronombres y adjetivos irregulares.</p>
+
+                <div class="vocab-grid">
+                    <div class="vocab-item"><span class="greek">σάρξ, σαρκός, ἡ</span><span class="meaning">Carne</span><span class="tag">3ª decl.</span></div>
+                    <div class="vocab-item"><span class="greek">ὄνομα, -ατος, τό</span><span class="meaning">Nombre</span><span class="tag">3ª decl. neutro</span></div>
+                    <div class="vocab-item"><span class="greek">πίστις, -εως, ἡ</span><span class="meaning">Fe</span><span class="tag">3ª decl. iota</span></div>
+                    <div class="vocab-item"><span class="greek">πατήρ, πατρός, ὁ</span><span class="meaning">Padre</span><span class="tag">3ª decl. masc.</span></div>
+                    <div class="vocab-item"><span class="greek">ἀνήρ, ἀνδρός, ὁ</span><span class="meaning">Hombre, varón</span><span class="tag">3ª decl. masc.</span></div>
+                    <div class="vocab-item"><span class="greek">μήτηρ, μητρός, ἡ</span><span class="meaning">Madre</span><span class="tag">3ª decl. fem.</span></div>
+                    <div class="vocab-item"><span class="greek">ἐλπίς, -ίδος, ἡ</span><span class="meaning">Esperanza</span><span class="tag">3ª decl. fem.</span></div>
+                    <div class="vocab-item"><span class="greek">φῶς, φωτός, τό</span><span class="meaning">Luz</span><span class="tag">3ª decl. neutro</span></div>
+                    <div class="vocab-item"><span class="greek">ὕδωρ, -ατος, τό</span><span class="meaning">Agua</span><span class="tag">3ª decl. neutro</span></div>
+                    <div class="vocab-item"><span class="greek">πόλις, -εως, ἡ</span><span class="meaning">Ciudad</span><span class="tag">3ª decl. iota</span></div>
+                    <div class="vocab-item"><span class="greek">ἀδελφός, -οῦ, ὁ</span><span class="meaning">Hermano</span><span class="tag">2ª decl.</span></div>
+                    <div class="vocab-item"><span class="greek">ἐκκλησία, -ας, ἡ</span><span class="meaning">Iglesia, asamblea</span><span class="tag">1ª decl.</span></div>
+                    <div class="vocab-item"><span class="greek">μαθητής, -οῦ, ὁ</span><span class="meaning">Discípulo</span><span class="tag">2ª decl.</span></div>
+                    <div class="vocab-item"><span class="greek">δικαιοσύνη, -ης, ἡ</span><span class="meaning">Justicia</span><span class="tag">1ª decl.</span></div>
+                    <div class="vocab-item"><span class="greek">μακάριος, -ία, -ιον</span><span class="meaning">Bienaventurado</span><span class="tag">adj. 2-1-2</span></div>
+                    <div class="vocab-item"><span class="greek">μέγας, μεγάλη, μέγα</span><span class="meaning">Grande</span><span class="tag">adj. 2-1-2</span></div>
+                    <div class="vocab-item"><span class="greek">πολύς, πολλή, πολύ</span><span class="meaning">Mucho, muchos</span><span class="tag">adj. irregular</span></div>
+                    <div class="vocab-item"><span class="greek">πᾶς, πᾶσα, πᾶν</span><span class="meaning">Todo, cada</span><span class="tag">adj. 3-1-3</span></div>
+                    <div class="vocab-item"><span class="greek">οὗτος, αὕτη, τοῦτο</span><span class="meaning">Este, esta, esto</span><span class="tag">demostrativo</span></div>
+                    <div class="vocab-item"><span class="greek">ἐκεῖνος, -η, -ο</span><span class="meaning">Aquel, aquella</span><span class="tag">demostrativo</span></div>
+                    <div class="vocab-item"><span class="greek">ὅς, ἥ, ὅ</span><span class="meaning">Que, quien, el cual</span><span class="tag">relativo</span></div>
+                    <div class="vocab-item"><span class="greek">αὐτός, -ή, -ό</span><span class="meaning">Él, ella; mismo</span><span class="tag">3ª pers. / intensivo</span></div>
+                    <div class="vocab-item"><span class="greek">ἐγώ, σύ, ἡμεῖς, ὑμεῖς</span><span class="meaning">Yo, tú, nosotros, vosotros</span><span class="tag">1ª/2ª pers.</span></div>
+                </div>
+
+                <!-- Estadísticas -->
+                <div style="margin-top:2rem;">
+                    <h4 style="color:#f0e4d8; font-family:'Space Grotesk',sans-serif; margin-bottom:1rem;"><i class="fas fa-chart-simple" style="color:#dba87a;"></i> Estadísticas de Vocabulario · Sección 2</h4>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="number">138,162</div>
+                            <div class="label">Total de palabras en el NT</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="number">151</div>
+                            <div class="label">Palabras aprendidas hasta la fecha</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="number">88,624</div>
+                            <div class="label">Ocurrencias acumuladas</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="number">64.14%</div>
+                            <div class="label">Porcentaje del NT cubierto</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top:2rem; background: rgba(219,168,122,0.04); border-radius:16px; padding:1.2rem 1.5rem; border-left:3px solid #dba87a;">
+                    <p style="color:#cdbcae; font-style:italic; font-size:0.95rem;">
+                        <i class="fas fa-quote-left" style="color:#dba87a; margin-right:8px;"></i>
+                        Con esta segunda sección, has ampliado significativamente tu capacidad de lectura del Nuevo Testamento. La Tercera Declinación y los pronombres son esenciales para comprender la estructura y el significado profundo del texto bíblico.
+                    </p>
+                    <p style="color:#dba87a; margin-top:10px; font-weight:500; text-align:right;">
+                        <i class="fas fa-church"></i> Vivos para servir
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="module-footer">
+        <div class="ministry">
+            <i class="fas fa-church"></i>
+            <span><strong>Vivos para servir</strong> · Un equipo que vive para servir a Dios a través de la predicación del evangelio.</span>
+        </div>
+        <div style="display: flex; gap: 0.8rem; font-size:0.75rem; color:#7a6b5e;">
+            <span><i class="fas fa-flag"></i> ἀλήθεια</span>
+            <span><i class="fas fa-heart" style="color:#b97f5a;"></i> χάρις</span>
+            <span><i class="fas fa-star"></i> ζωή</span>
+        </div>
+    </footer>
+
+</div>
+
+<!-- ===== SCRIPT TABS ===== -->
+<script>
+    (function() {
+        const tabs = document.querySelectorAll('.tab-btn');
+        const panes = document.querySelectorAll('.tab-pane');
+        const progressFill = document.querySelector('.progress-track .fill');
+        const progressLabel = document.querySelector('.progress-label');
+
+        const tabNames = {
+            'intro': 'Introducción',
+            'semana6': 'Semana 6',
+            'semana7': 'Semana 7',
+            'semana8': 'Semana 8',
+            'semana9': 'Semana 9',
+            'paradigmas': 'Paradigmas',
+            'vocabulario': 'Vocabulario'
+        };
+
+        const tabOrder = ['intro', 'semana6', 'semana7', 'semana8', 'semana9', 'paradigmas', 'vocabulario'];
+
+        tabs.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                // quitar active de todos
+                tabs.forEach(b => b.classList.remove('active'));
+                panes.forEach(p => p.classList.remove('active'));
+
+                // activar este
+                this.classList.add('active');
+                const target = this.getAttribute('data-tab');
+                const targetPane = document.getElementById(target);
+                if (targetPane) {
+                    targetPane.classList.add('active');
+                }
+
+                // actualizar progress
+                const index = tabOrder.indexOf(target);
+                if (index !== -1 && progressFill) {
+                    const pct = ((index + 1) / tabOrder.length) * 100;
+                    progressFill.style.width = pct + '%';
+                }
+
+                // actualizar label
+                if (progressLabel) {
+                    const name = tabNames[target] || target;
+                    progressLabel.innerHTML = `<i class="fas fa-arrow-right"></i> ${name}`;
+                }
+            });
+        });
+    })();
+</script>
+
+</body>
+</html>

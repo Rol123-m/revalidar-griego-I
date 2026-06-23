@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gramática Griega · Módulo 3 · Verbos · Vivos para servir</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        /* ========== RESET & BASE ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0c0a0a;
+            min-height: 100vh;
+            padding: 2rem 1.5rem;
+            background-image: 
+                radial-gradient(ellipse at 20% 30%, rgba(120, 70, 40, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(60, 100, 80, 0.08) 0%, transparent 50%),
+                linear-gradient(160deg, #141110 0%, #1f1a17 100%);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .module-container {
+            max-width: 1200px;
+            width: 100%;
+            background: rgba(28, 24, 21, 0.88);
+            backdrop-filter: blur(16px) saturate(180%);
+            border-radius: 40px;
+            border: 1px solid rgba(255, 215, 175, 0.06);
+            box-shadow: 0 30px 60px -16px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,215,175,0.04);
+            padding: 2rem 2rem 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .module-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(219, 168, 122, 0.03) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* ========== HEADER ========== */
+        .module-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 215, 175, 0.06);
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .module-header .left {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .module-header .logo-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid rgba(219, 168, 122, 0.25);
+            flex-shrink: 0;
+        }
+
+        .module-header .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .module-header .title-group h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #f0e4d8;
+            letter-spacing: -0.5px;
+        }
+
+        .module-header .title-group h2 span {
+            background: linear-gradient(135deg, #f5cba0, #dba87a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .module-header .title-group .sub {
+            font-size: 0.8rem;
+            color: #b8a394;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .module-header .badge-module {
+            background: rgba(219, 168, 122, 0.1);
+            border: 1px solid rgba(219, 168, 122, 0.15);
+            padding: 0.4rem 1.6rem;
+            border-radius: 60px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #dba87a;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* ========== PROGRESS BAR ========== */
+        .progress-section {
+            margin-bottom: 2.2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .progress-track {
+            flex: 1;
+            min-width: 150px;
+            height: 6px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-track .fill {
+            height: 100%;
+            width: 8%;
+            background: linear-gradient(90deg, #dba87a, #c4895e);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(219, 168, 122, 0.2);
+            transition: width 0.4s ease;
+        }
+
+        .progress-label {
+            color: #b8a394;
+            font-size: 0.8rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .progress-label i {
+            color: #dba87a;
+            margin-right: 6px;
+        }
+
+        /* ========== TABS ========== */
+        .tabs-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+            border-bottom: 1px solid rgba(255,215,175,0.05);
+            padding-bottom: 0.8rem;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            padding: 0.6rem 1.1rem;
+            border-radius: 60px;
+            color: #b8a394;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 0.78rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border: 1px solid transparent;
+        }
+
+        .tab-btn i {
+            font-size: 0.8rem;
+            color: #7a6b5e;
+            transition: 0.2s;
+        }
+
+        .tab-btn:hover {
+            color: #f0e4d8;
+            background: rgba(255,255,255,0.03);
+        }
+
+        .tab-btn.active {
+            background: rgba(219, 168, 122, 0.10);
+            border-color: rgba(219, 168, 122, 0.15);
+            color: #f5ede6;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+        }
+
+        .tab-btn.active i {
+            color: #dba87a;
+        }
+
+        /* ========== TAB CONTENT ========== */
+        .tab-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .tab-pane {
+            display: none;
+            animation: fadeIn 0.35s ease;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ========== CONTENIDO ESTILOS ========== */
+        .lesson-card {
+            background: rgba(255,255,255,0.02);
+            border-radius: 24px;
+            padding: 1.8rem 2rem;
+            border: 1px solid rgba(255,215,175,0.04);
+            margin-bottom: 1.8rem;
+            transition: 0.2s;
+        }
+
+        .lesson-card:hover {
+            border-color: rgba(219, 168, 122, 0.08);
+            background: rgba(255,255,255,0.03);
+        }
+
+        .lesson-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #f0e4d8;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .lesson-card h3 .week-tag {
+            font-size: 0.7rem;
+            font-weight: 400;
+            background: rgba(219, 168, 122, 0.08);
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            color: #dba87a;
+            letter-spacing: 1px;
+            border: 1px solid rgba(219, 168, 122, 0.06);
+        }
+
+        .lesson-card .verse {
+            background: rgba(219, 168, 122, 0.04);
+            padding: 1rem 1.5rem;
+            border-radius: 16px;
+            border-left: 3px solid #dba87a;
+            margin: 0.8rem 0 1.2rem;
+            font-family: 'Times New Roman', serif;
+            font-size: 1.2rem;
+            color: #e8d5c4;
+        }
+
+        .lesson-card .verse small {
+            display: block;
+            font-size: 0.8rem;
+            color: #b8a394;
+            font-family: 'Inter', sans-serif;
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        .lesson-card p {
+            color: #cdbcae;
+            line-height: 1.8;
+            margin-bottom: 0.8rem;
+            font-size: 0.98rem;
+        }
+
+        .lesson-card .highlight-box {
+            background: rgba(219, 168, 122, 0.04);
+            border-radius: 16px;
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+            border: 1px solid rgba(219, 168, 122, 0.06);
+        }
+
+        .lesson-card .highlight-box strong {
+            color: #f0e4d8;
+        }
+
+        .lesson-card ul, .lesson-card ol {
+            color: #cdbcae;
+            padding-left: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .lesson-card ul li, .lesson-card ol li {
+            margin-bottom: 0.3rem;
+        }
+
+        /* ===== TABLAS ===== */
+        .table-wrap {
+            overflow-x: auto;
+            margin: 1rem 0;
+            border-radius: 16px;
+            border: 1px solid rgba(255,215,175,0.04);
+        }
+
+        .table-wrap table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        .table-wrap th {
+            background: rgba(219, 168, 122, 0.06);
+            color: #f0e4d8;
+            font-weight: 600;
+            padding: 0.7rem 1rem;
+            text-align: left;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .table-wrap td {
+            padding: 0.6rem 1rem;
+            border-bottom: 1px solid rgba(255,215,175,0.03);
+            color: #cdbcae;
+        }
+
+        .table-wrap tr:last-child td {
+            border-bottom: none;
+        }
+
+        .table-wrap td:first-child {
+            font-family: 'Times New Roman', serif;
+            font-size: 1.05rem;
+            color: #e8d5c4;
+        }
+
+        .table-wrap td .greek-inline {
+            font-family: 'Times New Roman', serif;
+            font-size: 1.05rem;
+            color: #e8d5c4;
+        }
+
+        /* tabla de paradigmas con fondo especial */
+        .paradigm-table {
+            border-color: rgba(219, 168, 122, 0.1);
+        }
+
+        .paradigm-table th {
+            background: rgba(219, 168, 122, 0.08);
+            color: #f5ede6;
+        }
+
+        .paradigm-table td {
+            font-size: 1rem;
+        }
+
+        /* ===== VOCABULARIO ===== */
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 0.8rem;
+            margin-top: 0.8rem;
+        }
+
+        .vocab-item {
+            background: rgba(255,255,255,0.02);
+            padding: 0.7rem 1.2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255,215,175,0.04);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            transition: 0.2s;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .vocab-item:hover {
+            background: rgba(255,255,255,0.04);
+            border-color: rgba(219, 168, 122, 0.08);
+        }
+
+        .vocab-item .greek {
+            font-family: 'Times New Roman', serif;
+            font-size: 1.1rem;
+            color: #f0e4d8;
+        }
+
+        .vocab-item .meaning {
+            color: #b8a394;
+            font-size: 0.85rem;
+            flex: 1;
+        }
+
+        .vocab-item .tag {
+            font-size: 0.6rem;
+            background: rgba(219, 168, 122, 0.06);
+            padding: 0.1rem 0.8rem;
+            border-radius: 40px;
+            color: #7a6b5e;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== STATS ===== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.02);
+            border-radius: 16px;
+            padding: 1.2rem;
+            text-align: center;
+            border: 1px solid rgba(255,215,175,0.04);
+        }
+
+        .stat-card .number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #dba87a;
+        }
+
+        .stat-card .label {
+            color: #b8a394;
+            font-size: 0.8rem;
+            margin-top: 4px;
+        }
+
+        /* ===== MASTER TABLE ===== */
+        .master-table th {
+            background: rgba(219, 168, 122, 0.1);
+        }
+
+        /* ===== FOOTER MODULE ===== */
+        .module-footer {
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,215,175,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            color: #7a6b5e;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        .module-footer .ministry {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .module-footer .ministry i {
+            color: #dba87a;
+        }
+
+        .module-footer .ministry strong {
+            color: #cdbcae;
+            font-weight: 500;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            body { padding: 1rem; }
+            .module-container { padding: 1.5rem 1.2rem; border-radius: 28px; }
+            .module-header .title-group h2 { font-size: 1.2rem; }
+            .module-header .badge-module { font-size: 0.6rem; padding: 0.2rem 1rem; }
+            .tab-btn { padding: 0.4rem 0.7rem; font-size: 0.65rem; }
+            .lesson-card { padding: 1.2rem; }
+            .lesson-card h3 { font-size: 1.2rem; }
+            .vocab-grid { grid-template-columns: 1fr; }
+            .module-footer { flex-direction: column; align-items: center; text-align: center; }
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 480px) {
+            .module-header .left { flex-wrap: wrap; }
+            .tabs-nav { gap: 0.15rem; }
+            .tab-btn { font-size: 0.6rem; padding: 0.25rem 0.6rem; }
+            .lesson-card .verse { font-size: 1rem; padding: 0.8rem 1rem; }
+            .lesson-card { padding: 1rem; }
+            .stats-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="module-container">
+
+    <!-- ===== HEADER ===== -->
+    <header class="module-header">
+        <div class="left">
+            <div class="logo-icon">
+                <img src="https://i.postimg.cc/wMJ2bCgV/mas-logos.jpg" alt="Vivos para servir" />
+            </div>
+            <div class="title-group">
+                <h2><span>Gramática</span> · Griego Koiné</h2>
+                <div class="sub"><i class="fas fa-scroll"></i> Sección No 3 · Verbos</div>
+            </div>
+        </div>
+        <div class="badge-module">
+            <i class="fas fa-flag-checkered" style="margin-right:6px;"></i> Módulo 3
+        </div>
+    </header>
+
+    <!-- ===== PROGRESS ===== -->
+    <div class="progress-section">
+        <div class="progress-track">
+            <div class="fill" style="width: 8%;"></div>
+        </div>
+        <div class="progress-label">
+            <i class="fas fa-arrow-right"></i> Introducción
+        </div>
+    </div>
+
+    <!-- ===== TABS ===== -->
+    <nav class="tabs-nav" id="tabsNav">
+        <button class="tab-btn active" data-tab="intro"><i class="fas fa-home"></i> Intro</button>
+        <button class="tab-btn" data-tab="semana10"><i class="fas fa-10"></i> Sem. 10</button>
+        <button class="tab-btn" data-tab="semana11"><i class="fas fa-11"></i> Sem. 11</button>
+        <button class="tab-btn" data-tab="semana12"><i class="fas fa-12"></i> Sem. 12</button>
+        <button class="tab-btn" data-tab="semana13"><i class="fas fa-13"></i> Sem. 13</button>
+        <button class="tab-btn" data-tab="semana14"><i class="fas fa-14"></i> Sem. 14</button>
+        <button class="tab-btn" data-tab="maestra"><i class="fas fa-table"></i> Maestra</button>
+        <button class="tab-btn" data-tab="vocabulario"><i class="fas fa-book"></i> Vocabulario</button>
+    </nav>
+
+    <!-- ===== CONTENIDO ===== -->
+    <div class="tab-content">
+
+        <!-- ===== INTRO ===== -->
+        <div class="tab-pane active" id="intro">
+            <div class="lesson-card">
+                <h3>Sección 3 · Verbos Griegos <span class="week-tag"><i class="fas fa-star"></i> Semanas 10–14</span></h3>
+                
+                <div class="verse">
+                    λύω τὰ δεσμά τοῦ κόσμου
+                    <small>— "Libero las ataduras del mundo"</small>
+                </div>
+
+                <p>Esta tercera sección te introduce al <strong>sistema verbal del griego koiné</strong>, el corazón de la lengua. Aprenderás a conjugar verbos en Presente, Futuro, Imperfecto y Aoristo, así como los verbos contractos y la voz pasiva. Dominar los verbos te permitirá leer y comprender el Nuevo Testamento en su idioma original con mayor fluidez.</p>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-list-check" style="color:#dba87a;"></i> Contenido del Módulo 3</strong>
+                    <ul style="margin-top:8px; list-style:none; padding-left:0;">
+                        <li><i class="fas fa-check-circle" style="color:#7bc49a; margin-right:10px;"></i> <strong>Semana 10:</strong> Introducción a los Verbos · Presente Activo Indicativo</li>
+                        <li><i class="fas fa-check-circle" style="color:#7bc49a; margin-right:10px;"></i> <strong>Semana 11:</strong> Verbos Contractos · Voz Pasiva · Deponentes</li>
+                        <li><i class="fas fa-check-circle" style="color:#7bc49a; margin-right:10px;"></i> <strong>Semana 12:</strong> Futuro Activo y Medio · Cambios con σ</li>
+                        <li><i class="fas fa-check-circle" style="color:#7bc49a; margin-right:10px;"></i> <strong>Semana 13:</strong> Imperfecto Indicativo · Aumento</li>
+                        <li><i class="fas fa-check-circle" style="color:#7bc49a; margin-right:10px;"></i> <strong>Semana 14:</strong> Aoristo Indicativo · Primero y Segundo</li>
+                        <li><i class="fas fa-check-circle" style="color:#7bc49a; margin-right:10px;"></i> <strong>Tabla Maestra:</strong> Síntesis de todos los tiempos y voces</li>
+                        <li><i class="fas fa-check-circle" style="color:#7bc49a; margin-right:10px;"></i> <strong>Vocabulario:</strong> Verbos esenciales del NT</li>
+                    </ul>
+                </div>
+
+                <div style="background: rgba(219,168,122,0.04); border-radius:16px; padding:1rem 1.5rem; margin-top:1.2rem; border-left:3px solid #dba87a;">
+                    <p style="color:#b8a394; font-style:italic; font-size:0.9rem;">
+                        <i class="fas fa-quote-left" style="color:#dba87a; margin-right:8px;"></i>
+                        "El verbo griego es el motor de la oración; su riqueza aspectual revela matices teológicos que transforman nuestra comprensión del texto bíblico."
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== SEMANA 10 ===== -->
+        <div class="tab-pane" id="semana10">
+            <div class="lesson-card">
+                <h3>Presente Activo Indicativo <span class="week-tag"><i class="fas fa-calendar-week"></i> Semana 10</span></h3>
+                
+                <div class="verse">
+                    λύει ἡμᾶς ἀπὸ τῆς ἁμαρτίας
+                    <small>— "Nos libera del pecado"</small>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-verb" style="color:#dba87a;"></i> ¿Qué es un Verbo?</strong>
+                    <ul style="margin-top:6px;">
+                        <li>Expresa <strong>acción</strong> ("Estudio griego") o <strong>estado de ser</strong> ("El griego es una lengua sagrada").</li>
+                        <li>Concuerda con su sujeto en <strong>persona</strong> (1ª, 2ª, 3ª) y <strong>número</strong> (singular/plural).</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-table" style="color:#dba87a;"></i> Conceptos Verbales Fundamentales</strong>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Concepto</th><th>Definición</th><th>Ejemplo</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Persona</strong></td><td>Quien realiza la acción</td><td>1ª: yo/nosotros; 2ª: tú/vosotros; 3ª: él/ellos</td></tr>
+                                <tr><td><strong>Número</strong></td><td>Cantidad de sujetos</td><td>Singular / Plural</td></tr>
+                                <tr><td><strong>Tiempo</strong></td><td>Cuándo ocurre la acción</td><td>Presente, Pasado, Futuro</td></tr>
+                                <tr><td><strong>Aspecto</strong></td><td>Cómo ocurre la acción</td><td>Continuo (proceso) o Indefinido (hecho)</td></tr>
+                                <tr><td><strong>Voz</strong></td><td>Relación sujeto-acción</td><td>Activa, Pasiva, Media</td></tr>
+                                <tr><td><strong>Modo</strong></td><td>Actitud del hablante</td><td>Indicativo (hechos reales)</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-cube" style="color:#dba87a;"></i> Estructura del Verbo Griego</strong>
+                    <p style="margin-top:6px;"><strong>Raíz + Vocal de Unión + Desinencia Personal → Verbo Conjugado</strong></p>
+                    <p><span style="color:#e8d5c4;">Ejemplo:</span> λυ + ο + μεν → λύομεν ("nosotros liberamos")</p>
+                    <ul style="margin-top:6px;">
+                        <li><strong>Raíz (tema verbal):</strong> Contiene el significado básico (ej. λυ- = "liberar").</li>
+                        <li><strong>Vocal de unión:</strong> Facilita la pronunciación (ο/ε).</li>
+                        <li><strong>Desinencia personal:</strong> Indica persona y número.</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-table" style="color:#dba87a;"></i> Desinencias Primarias Activas (Presente Activo)</strong>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Persona/Número</th><th>Desinencia Real</th><th>Forma Práctica</th></tr></thead>
+                            <tbody>
+                                <tr><td>1ª sg</td><td>—</td><td>-ω</td></tr>
+                                <tr><td>2ª sg</td><td>-ς</td><td>-εις</td></tr>
+                                <tr><td>3ª sg</td><td>-ι</td><td>-ει</td></tr>
+                                <tr><td>1ª pl</td><td>-μεν</td><td>-ομεν</td></tr>
+                                <tr><td>2ª pl</td><td>-τε</td><td>-ετε</td></tr>
+                                <tr><td>3ª pl</td><td>-νσι</td><td>-ουσι(ν)</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-table" style="color:#dba87a;"></i> Paradigma del Presente Activo Indicativo (λύω)</strong>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Forma</th><th>Traducción</th><th>Vocal de Unión</th><th>Desinencia</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>λύω</strong></td><td>Yo libero / estoy liberando</td><td>ο</td><td>—</td></tr>
+                                <tr><td><strong>λύεις</strong></td><td>Tú liberas</td><td>ε</td><td>-ς</td></tr>
+                                <tr><td><strong>λύει</strong></td><td>Él/Ella libera</td><td>ε</td><td>-ι</td></tr>
+                                <tr><td><strong>λύομεν</strong></td><td>Nosotros liberamos</td><td>ο</td><td>-μεν</td></tr>
+                                <tr><td><strong>λύετε</strong></td><td>Vosotros liberáis</td><td>ε</td><td>-τε</td></tr>
+                                <tr><td><strong>λύουσι(ν)</strong></td><td>Ellos liberan</td><td>ο</td><td>-νσι</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p style="font-size:0.85rem; color:#b8a394; margin-top:6px;"><strong>Regla de la Vocal de Unión:</strong> ο si la desinencia empieza con μ o ν; ε en los demás casos.</p>
+                    <p style="font-size:0.85rem; color:#b8a394;"><strong>Aspecto del Presente:</strong> Acción continua ("estoy liberando") o simple/indefinida ("libero").</p>
+                    <p style="font-size:0.85rem; color:#b8a394;"><strong>Nu Móvil (ν):</strong> En 3ª pl (-ουσι), se añade -ν ante pausa o vocal (ej. λύουσιν).</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== SEMANA 11 ===== -->
+        <div class="tab-pane" id="semana11">
+            <div class="lesson-card">
+                <h3>Verbos Contractos y Voz Pasiva <span class="week-tag"><i class="fas fa-calendar-week"></i> Semana 11</span></h3>
+                
+                <div class="verse">
+                    ἀγαπῶμεν ἀλλήλους
+                    <small>1 Juan 4:7 — "Amémonos unos a otros"</small>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-compress" style="color:#dba87a;"></i> Verbos Contractos</strong>
+                    <p style="margin-top:6px;">Son verbos cuyas raíces terminan en <strong>α, ε, ο</strong>. La vocal final se <strong>contrae</strong> con la vocal de unión.</p>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Vocal Contracta</th><th>Ejemplo de Forma Léxica</th><th>Forma Contraída</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>α</strong></td><td>ἀγαπάω</td><td>ἀγαπῶ</td></tr>
+                                <tr><td><strong>ε</strong></td><td>ποιέω</td><td>ποιῶ</td></tr>
+                                <tr><td><strong>ο</strong></td><td>πληρόω</td><td>πληρῶ</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-table" style="color:#dba87a;"></i> Reglas Principales de Contracción</strong>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Combinación</th><th>Resultado</th><th>Ejemplo</th></tr></thead>
+                            <tbody>
+                                <tr><td>εο, οε, οο</td><td><strong>ου</strong></td><td>ποιοῦμεν ← ποιε-ομεν</td></tr>
+                                <tr><td>εε</td><td><strong>ει</strong></td><td>ποιεῖτε ← ποιε-ετε</td></tr>
+                                <tr><td>αο, αω, οω, ωο</td><td><strong>ω</strong></td><td>ἀγαπῶμεν ← ἀγαπα-ομεν</td></tr>
+                                <tr><td>αε, αει</td><td><strong>α / ᾳ</strong></td><td>ἀγαπᾶτε ← ἀγαπα-ετε</td></tr>
+                                <tr><td>εα, εαι</td><td><strong>η / ῃ</strong></td><td>ποιῇ ← ποιε-αι</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p style="font-size:0.85rem; color:#b8a394; margin-top:6px;"><strong>Regla nemotécnica:</strong> "El primero gana" — Si α va primero → α; si ε va primero → η.</p>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-table" style="color:#dba87a;"></i> Paradigma de Verbos Contractos (Presente Activo)</strong>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Persona</th><th>ἀγαπάω (α)</th><th>ποιέω (ε)</th><th>πληρόω (ο)</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>1ª sg</strong></td><td>ἀγαπῶ</td><td>ποιῶ</td><td>πληρῶ</td></tr>
+                                <tr><td><strong>2ª sg</strong></td><td>ἀγαπᾷς</td><td>ποιεῖς</td><td>πληροῖς</td></tr>
+                                <tr><td><strong>3ª sg</strong></td><td>ἀγαπᾷ</td><td>ποιεῖ</td><td>πληροῖ</td></tr>
+                                <tr><td><strong>1ª pl</strong></td><td>ἀγαπῶμεν</td><td>ποιοῦμεν</td><td>πληροῦμεν</td></tr>
+                                <tr><td><strong>2ª pl</strong></td><td>ἀγαπᾶτε</td><td>ποιεῖτε</td><td>πληροῦτε</td></tr>
+                                <tr><td><strong>3ª pl</strong></td><td>ἀγαπῶσι(ν)</td><td>ποιοῦσι(ν)</td><td>πληροῦσι(ν)</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-table" style="color:#dba87a;"></i> Voz Pasiva (Presente Pasivo Indicativo)</strong>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Persona</th><th>Terminación</th><th>Ejemplo (λύω)</th><th>Traducción</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>1ª sg</strong></td><td>-ομαι</td><td>λύομαι</td><td>Soy soltado</td></tr>
+                                <tr><td><strong>2ª sg</strong></td><td>-ῃ</td><td>λύῃ</td><td>Eres soltado</td></tr>
+                                <tr><td><strong>3ª sg</strong></td><td>-εται</td><td>λύεται</td><td>Es soltado</td></tr>
+                                <tr><td><strong>1ª pl</strong></td><td>-όμεθα</td><td>λυόμεθα</td><td>Somos soltados</td></tr>
+                                <tr><td><strong>2ª pl</strong></td><td>-εσθε</td><td>λύεσθε</td><td>Sois soltados</td></tr>
+                                <tr><td><strong>3ª pl</strong></td><td>-ονται</td><td>λύονται</td><td>Son soltados</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-lightbulb" style="color:#dba87a;"></i> Verbos Deponentes y Voz Media</strong>
+                    <ul style="margin-top:6px;">
+                        <li><strong>Deponentes:</strong> Tienen <strong>forma media/pasiva</strong> pero <strong>significado activo</strong>. Ej: ἔρχομαι ("vengo"), γίνομαι ("llegar a ser"). En el léxico, aparecen terminados en <strong>-ομαι</strong>.</li>
+                        <li><strong>Voz Media:</strong> Igual a la pasiva en forma, pero con matiz <strong>reflexivo</strong> o de <strong>interés personal</strong>. Ej: λούομαι ("me lavo").</li>
+                        <li>En el NT, ≈75% de las formas medias son deponentes.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== SEMANA 12 ===== -->
+        <div class="tab-pane" id="semana12">
+            <div class="lesson-card">
+                <h3>Futuro Activo y Medio Indicativo <span class="week-tag"><i class="fas fa-calendar-week"></i> Semana 12</span></h3>
+                
+                <div class="verse">
+                    πορεύσομαι πρὸς τὸν πατέρα
+                    <small>Juan 14:12 — "Iré al Padre"</small>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-clock" style="color:#dba87a;"></i> El Tiempo Futuro</strong>
+                    <ul style="margin-top:6px;">
+                        <li>Describe una acción que ocurrirá en el <strong>futuro</strong>.</li>
+                        <li>Enfatiza más el <strong>tiempo</strong> que el <strong>aspecto</strong>.</li>
+                        <li>Se traduce generalmente con aspecto indefinido ("amaré").</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-table" style="color:#dba87a;"></i> Formación del Futuro Activo</strong>
+                    <p style="margin-top:6px;"><strong>Raíz Futura + σ (sigma) + Vocal de Unión + Desinencias Primarias Activas</strong></p>
+                    <p><span style="color:#e8d5c4;">Ejemplo:</span> λυ + σ + ω → λύσω ("liberaré")</p>
+                    
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Forma</th><th>Traducción</th><th>Vocal de Unión</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>λύσω</strong></td><td>Yo liberaré</td><td>ο</td></tr>
+                                <tr><td><strong>λύσεις</strong></td><td>Tú liberarás</td><td>ε</td></tr>
+                                <tr><td><strong>λύσει</strong></td><td>Él/Ella liberará</td><td>ε</td></tr>
+                                <tr><td><strong>λύσομεν</strong></td><td>Nosotros liberaremos</td><td>ο</td></tr>
+                                <tr><td><strong>λύσετε</strong></td><td>Vosotros liberaréis</td><td>ε</td></tr>
+                                <tr><td><strong>λύσουσι(ν)</strong></td><td>Ellos liberarán</td><td>ο</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-cubes" style="color:#dba87a;"></i> Ley de las Oclusivas (Cambios con σ)</strong>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Oclusiva + σ</th><th>Resultado</th><th>Ejemplo</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Labiales</strong> (π, β, φ) + σ</td><td><strong>ψ</strong></td><td>βλέπω → βλέψω</td></tr>
+                                <tr><td><strong>Velares</strong> (κ, γ, χ) + σ</td><td><strong>ξ</strong></td><td>διώκω → διώξω</td></tr>
+                                <tr><td><strong>Dentales</strong> (τ, δ, θ) + σ</td><td><strong>σ</strong></td><td>βαπτίζω → βαπτίσω</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-table" style="color:#dba87a;"></i> Verbos Contractos en Futuro</strong>
+                    <p style="color:#b8a394; font-size:0.9rem;">La vocal contracta se <strong>alarga</strong> ante la sigma del futuro.</p>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Vocal Contracta</th><th>Alargamiento</th><th>Ejemplo</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>α</strong></td><td>η</td><td>ἀγαπάω → ἀγαπήσω</td></tr>
+                                <tr><td><strong>ε</strong></td><td>η</td><td>ποιέω → ποιήσω</td></tr>
+                                <tr><td><strong>ο</strong></td><td>ω</td><td>πληρόω → πληρώσω</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-table" style="color:#dba87a;"></i> Futuro Medio Indicativo</strong>
+                    <p style="margin-top:6px;"><strong>Raíz Futura + σ + Vocal de Unión + Desinencias Pasivas Primarias</strong></p>
+                    <p><span style="color:#e8d5c4;">Ejemplo:</span> πορεύσομαι ("iré")</p>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Persona</th><th>Forma</th><th>Traducción</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>1ª sg</strong></td><td>πορεύσομαι</td><td>Yo iré</td></tr>
+                                <tr><td><strong>2ª sg</strong></td><td>πορεύσῃ</td><td>Tú irás</td></tr>
+                                <tr><td><strong>3ª sg</strong></td><td>πορεύσεται</td><td>Él/Ella irá</td></tr>
+                                <tr><td><strong>1ª pl</strong></td><td>πορευσόμεθα</td><td>Nosotros iremos</td></tr>
+                                <tr><td><strong>2ª pl</strong></td><td>πορεύσεσθε</td><td>Vosotros iréis</td></tr>
+                                <tr><td><strong>3ª pl</strong></td><td>πορεύσονται</td><td>Ellos irán</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-table" style="color:#dba87a;"></i> Futuro de εἰμί ("ser/estar")</strong>
+                    <p style="color:#b8a394; font-size:0.9rem;">Raíz: <strong>ἐσ-</strong> (con alargamiento a ἔσ-).</p>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Forma</th><th>Traducción</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>ἔσομαι</strong></td><td>Yo seré/estaré</td></tr>
+                                <tr><td><strong>ἔσῃ</strong></td><td>Tú serás/estarás</td></tr>
+                                <tr><td><strong>ἔσται</strong></td><td>Él/Ella será/estará</td></tr>
+                                <tr><td><strong>ἐσόμεθα</strong></td><td>Nosotros seremos/estaremos</td></tr>
+                                <tr><td><strong>ἔσεσθε</strong></td><td>Vosotros seréis/estaréis</td></tr>
+                                <tr><td><strong>ἔσονται</strong></td><td>Ellos serán/estarán</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== SEMANA 13 ===== -->
+        <div class="tab-pane" id="semana13">
+            <div class="lesson-card">
+                <h3>Imperfecto Indicativo <span class="week-tag"><i class="fas fa-calendar-week"></i> Semana 13</span></h3>
+                
+                <div class="verse">
+                    ἦν ἐν ἀρχῇ πρὸς τὸν θεόν
+                    <small>Juan 1:2 — "Estaba en el principio con Dios"</small>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-history" style="color:#dba87a;"></i> Concepto del Imperfecto</strong>
+                    <ul style="margin-top:6px;">
+                        <li>Describe una acción <strong>continua</strong> en el <strong>pasado</strong>.</li>
+                        <li>Se traduce como "estaba amando" o "amaba" (acción en progreso).</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-table" style="color:#dba87a;"></i> Formación del Imperfecto</strong>
+                    <p style="margin-top:6px;"><strong>Aumento (ἐ-) + Tema de Presente + Vocal de Unión + Desinencias Secundarias</strong></p>
+                    
+                    <p style="margin-top:12px; color:#b8a394; font-weight:500;">Desinencias Secundarias</p>
+                    <div class="table-wrap" style="margin-top:4px;">
+                        <table>
+                            <thead><tr><th>Persona</th><th>Activas</th><th>Medio-Pasivas</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>1ª sg</strong></td><td>-ον</td><td>-όμην</td></tr>
+                                <tr><td><strong>2ª sg</strong></td><td>-ες</td><td>-ου</td></tr>
+                                <tr><td><strong>3ª sg</strong></td><td>-ε(ν)</td><td>-ετο</td></tr>
+                                <tr><td><strong>1ª pl</strong></td><td>-ομεν</td><td>-όμεθα</td></tr>
+                                <tr><td><strong>2ª pl</strong></td><td>-ετε</td><td>-εσθε</td></tr>
+                                <tr><td><strong>3ª pl</strong></td><td>-ον</td><td>-οντο</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-table" style="color:#dba87a;"></i> Paradigma del Imperfecto Activo (ἔλυον)</strong>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Forma</th><th>Traducción</th><th>Vocal de Unión</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>ἔλυον</strong></td><td>Yo estaba soltando</td><td>ο</td></tr>
+                                <tr><td><strong>ἔλυες</strong></td><td>Tú estabas soltando</td><td>ε</td></tr>
+                                <tr><td><strong>ἔλυε(ν)</strong></td><td>Él/Ella estaba soltando</td><td>ε</td></tr>
+                                <tr><td><strong>ἐλύομεν</strong></td><td>Nosotros estábamos soltando</td><td>ο</td></tr>
+                                <tr><td><strong>ἐλύετε</strong></td><td>Vosotros estabais soltando</td><td>ε</td></tr>
+                                <tr><td><strong>ἔλυον</strong></td><td>Ellos estaban soltando</td><td>ο</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-table" style="color:#dba87a;"></i> Reglas del Aumento</strong>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Tipo de Inicio</th><th>Regla</th><th>Ejemplo</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Consonante</strong></td><td>Se añade ἐ-</td><td>λύω → ἔλυον</td></tr>
+                                <tr><td><strong>Vocal α</strong></td><td>α → η</td><td>ἀγαπάω → ἠγάπων</td></tr>
+                                <tr><td><strong>Vocal ε</strong></td><td>ε → η</td><td>ἐλπίζω → ἤλπιζον</td></tr>
+                                <tr><td><strong>Vocal ο</strong></td><td>ο → ω</td><td>ὁράω → ἑώρων</td></tr>
+                                <tr><td><strong>Diptongo αι</strong></td><td>αι → ῃ</td><td>αἰτέω → ᾔτουν</td></tr>
+                                <tr><td><strong>Diptongo ευ</strong></td><td>Puede alargarse o no</td><td>εὐχαριστέω → ηὐχαρίστουν</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-table" style="color:#dba87a;"></i> Imperfecto de Verbos Contractos</strong>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Persona</th><th>ἀγαπάω</th><th>ποιέω</th><th>πληρόω</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>1ª sg</strong></td><td>ἠγάπων</td><td>ἐποίουν</td><td>ἐπλήρουν</td></tr>
+                                <tr><td><strong>2ª sg</strong></td><td>ἠγάπας</td><td>ἐποίεις</td><td>ἐπλήρους</td></tr>
+                                <tr><td><strong>3ª sg</strong></td><td>ἠγάπα</td><td>ἐποίει</td><td>ἐπλήρου</td></tr>
+                                <tr><td><strong>1ª pl</strong></td><td>ἠγαπῶμεν</td><td>ἐποιοῦμεν</td><td>ἐπληροῦμεν</td></tr>
+                                <tr><td><strong>2ª pl</strong></td><td>ἠγαπᾶτε</td><td>ἐποιεῖτε</td><td>ἐπληροῦτε</td></tr>
+                                <tr><td><strong>3ª pl</strong></td><td>ἠγάπων</td><td>ἐποίουν</td><td>ἐπλήρουν</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-table" style="color:#dba87a;"></i> Imperfecto de εἰμί ("ser/estar")</strong>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Forma</th><th>Traducción</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>ἤμην</strong></td><td>Yo era/estaba</td></tr>
+                                <tr><td><strong>ἦς</strong></td><td>Tú eras/estabas</td></tr>
+                                <tr><td><strong>ἦν</strong></td><td>Él/Ella era/estaba</td></tr>
+                                <tr><td><strong>ἦμεν / ἦμεθα</strong></td><td>Nosotros éramos/estábamos</td></tr>
+                                <tr><td><strong>ἦτε</strong></td><td>Vosotros erais/estabais</td></tr>
+                                <tr><td><strong>ἦσαν</strong></td><td>Ellos eran/estaban</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p style="font-size:0.85rem; color:#b8a394; margin-top:6px;"><strong>Verbos Compuestos en Imperfecto:</strong> El aumento se coloca <strong>después de la preposición</strong>. Ej: καταβαίνω → <strong>κατέβαινον</strong> (no καταέβαινον).</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== SEMANA 14 ===== -->
+        <div class="tab-pane" id="semana14">
+            <div class="lesson-card">
+                <h3>Aoristo Indicativo <span class="week-tag"><i class="fas fa-calendar-week"></i> Semana 14</span></h3>
+                
+                <div class="verse">
+                    ἔλαβον τὸν ἄρτον
+                    <small>— "Tomé el pan"</small>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-bolt" style="color:#dba87a;"></i> Concepto del Aoristo</strong>
+                    <ul style="margin-top:6px;">
+                        <li>Describe una acción <strong>indefinida</strong> en el <strong>pasado</strong> (sin especificar duración).</li>
+                        <li>Se traduce como pasado simple: "amé", "tomé", "dije".</li>
+                        <li>La palabra "aoristo" (ἀόριστος) significa <strong>"no delimitado"</strong> o <strong>"sin marca"</strong>.</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-table" style="color:#dba87a;"></i> Comparación: Imperfecto vs. Aoristo</strong>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Tiempo</th><th>Aspecto</th><th>Traducción</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Imperfecto</strong></td><td>Continuo</td><td>"Estaba amando" / "Amaba"</td></tr>
+                                <tr><td><strong>Aoristo</strong></td><td>Indefinido</td><td>"Amé"</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-table" style="color:#dba87a;"></i> Dos Formas de Aoristo</strong>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Tipo</th><th>Característica</th><th>Ejemplo</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Primer Aoristo</strong></td><td>Usa formante -σα-</td><td>ἔλυσα ("solté")</td></tr>
+                                <tr><td><strong>Segundo Aoristo</strong></td><td>Modifica la raíz</td><td>ἔλαβον ("tomé")</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-table" style="color:#dba87a;"></i> Paradigma del Aoristo Segundo Activo (ἔλαβον)</strong>
+                    <p style="margin-top:6px;"><strong>Aumento (ἐ-) + Raíz del Aoristo + Vocal de Unión + Desinencias Secundarias Activas</strong></p>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Forma</th><th>Traducción</th><th>Vocal de Unión</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>ἔλαβον</strong></td><td>Yo tomé</td><td>ο</td></tr>
+                                <tr><td><strong>ἔλαβες</strong></td><td>Tú tomaste</td><td>ε</td></tr>
+                                <tr><td><strong>ἔλαβε(ν)</strong></td><td>Él/Ella tomó</td><td>ε</td></tr>
+                                <tr><td><strong>ἐλάβομεν</strong></td><td>Nosotros tomamos</td><td>ο</td></tr>
+                                <tr><td><strong>ἐλάβετε</strong></td><td>Vosotros tomasteis</td><td>ε</td></tr>
+                                <tr><td><strong>ἔλαβον</strong></td><td>Ellos tomaron</td><td>ο</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-table" style="color:#dba87a;"></i> Cambios Comunes de Raíz en Aoristo Segundo</strong>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Presente</th><th>Aoristo Segundo</th><th>Significado</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>λαμβάνω</strong></td><td>ἔλαβον</td><td>Tomar</td></tr>
+                                <tr><td><strong>λέγω</strong></td><td>εἶπον</td><td>Decir</td></tr>
+                                <tr><td><strong>βάλλω</strong></td><td>ἔβαλον</td><td>Lanzar</td></tr>
+                                <tr><td><strong>γίνομαι</strong></td><td>ἐγενόμην</td><td>Llegar a ser</td></tr>
+                                <tr><td><strong>εὑρίσκω</strong></td><td>εὗρον</td><td>Encontrar</td></tr>
+                                <tr><td><strong>φέρω</strong></td><td>ἤνεγκον</td><td>Llevar</td></tr>
+                                <tr><td><strong>ἔρχομαι</strong></td><td>ἦλθον</td><td>Venir</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-table" style="color:#dba87a;"></i> Aoristo Segundo Medio (γίνομαι)</strong>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Forma</th><th>Traducción</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>ἐγενόμην</strong></td><td>Yo llegué a ser</td></tr>
+                                <tr><td><strong>ἐγένου</strong></td><td>Tú llegaste a ser</td></tr>
+                                <tr><td><strong>ἐγένετο</strong></td><td>Él/Ella llegó a ser</td></tr>
+                                <tr><td><strong>ἐγενόμεθα</strong></td><td>Nosotros llegamos a ser</td></tr>
+                                <tr><td><strong>ἐγένεσθε</strong></td><td>Vosotros llegasteis a ser</td></tr>
+                                <tr><td><strong>ἐγένοντο</strong></td><td>Ellos llegaron a ser</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-lightbulb" style="color:#dba87a;"></i> Características Clave del Aoristo</strong>
+                    <ul style="margin-top:6px;">
+                        <li>Usa <strong>desinencias secundarias</strong> (como el imperfecto).</li>
+                        <li>La única diferencia con el imperfecto es la <strong>raíz temporal</strong>.</li>
+                        <li>La 1ª sg y 3ª pl son <strong>idénticas</strong> en forma (ej. ἔλαβον), pero el contexto las distingue.</li>
+                        <li>Los aoristos medios <strong>deponentes</strong> tienen significado activo (ej. ἐγενόμην = "llegué a ser").</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== TABLA MAESTRA ===== -->
+        <div class="tab-pane" id="maestra">
+            <div class="lesson-card">
+                <h3>Tabla Maestra de Verbos <span class="week-tag"><i class="fas fa-table"></i> Síntesis completa</span></h3>
+                <p style="color:#b8a394; margin-bottom:1.2rem;">Resumen de todos los tiempos y voces estudiados en esta sección.</p>
+
+                <div class="table-wrap master-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tiempo/Voz</th>
+                                <th>Aumento</th>
+                                <th>Raíz</th>
+                                <th>Formante</th>
+                                <th>Vocal</th>
+                                <th>Desinencias</th>
+                                <th>Ejemplo (1ª sg)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Presente Activo</strong></td>
+                                <td>—</td>
+                                <td>Presente</td>
+                                <td>—</td>
+                                <td>ο/ε</td>
+                                <td>Primarias Activas</td>
+                                <td>λύω</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Presente Medio/Pas.</strong></td>
+                                <td>—</td>
+                                <td>Presente</td>
+                                <td>—</td>
+                                <td>ο/ε</td>
+                                <td>Primarias Med./Pas.</td>
+                                <td>λύομαι</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Imperfecto Activo</strong></td>
+                                <td>ἐ-</td>
+                                <td>Presente</td>
+                                <td>—</td>
+                                <td>ο/ε</td>
+                                <td>Secundarias Activas</td>
+                                <td>ἔλυον</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Imperfecto Med./Pas.</strong></td>
+                                <td>ἐ-</td>
+                                <td>Presente</td>
+                                <td>—</td>
+                                <td>ο/ε</td>
+                                <td>Secundarias Med./Pas.</td>
+                                <td>ἐλυόμην</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Futuro Activo</strong></td>
+                                <td>—</td>
+                                <td>Futura</td>
+                                <td>σ</td>
+                                <td>ο/ε</td>
+                                <td>Primarias Activas</td>
+                                <td>λύσω</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Futuro Medio</strong></td>
+                                <td>—</td>
+                                <td>Futura</td>
+                                <td>σ</td>
+                                <td>ο/ε</td>
+                                <td>Primarias Med./Pas.</td>
+                                <td>πορεύσομαι</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Aoristo 2° Activo</strong></td>
+                                <td>ἐ-</td>
+                                <td>Aoristo</td>
+                                <td>—</td>
+                                <td>ο/ε</td>
+                                <td>Secundarias Activas</td>
+                                <td>ἔλαβον</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Aoristo 2° Medio</strong></td>
+                                <td>ἐ-</td>
+                                <td>Aoristo</td>
+                                <td>—</td>
+                                <td>ο/ε</td>
+                                <td>Secundarias Med./Pas.</td>
+                                <td>ἐγενόμην</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div style="background: rgba(219,168,122,0.04); border-radius:16px; padding:1rem 1.5rem; margin-top:1.2rem; border-left:3px solid #dba87a;">
+                    <p style="color:#b8a394; font-size:0.9rem;">
+                        <i class="fas fa-info-circle" style="color:#dba87a; margin-right:8px;"></i>
+                        <strong>Clave:</strong> Las desinencias primarias se usan para presente y futuro; las secundarias para pasado (imperfecto y aoristo). El aoristo segundo modifica la raíz verbal.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== VOCABULARIO ===== -->
+        <div class="tab-pane" id="vocabulario">
+            <div class="lesson-card">
+                <h3>Vocabulario · Verbos Esenciales <span class="week-tag"><i class="fas fa-book-open"></i> Sección 3</span></h3>
+                <p style="color:#b8a394; margin-bottom:1rem;">Verbos fundamentales del Nuevo Testamento con sus formas irregulares.</p>
+
+                <div class="vocab-grid">
+                    <div class="vocab-item"><span class="greek">λύω</span><span class="meaning">Soltar, liberar, desatar</span><span class="tag">regular</span></div>
+                    <div class="vocab-item"><span class="greek">λέγω</span><span class="meaning">Decir, hablar</span><span class="tag">Aor. II: εἶπον</span></div>
+                    <div class="vocab-item"><span class="greek">ἀγαπάω</span><span class="meaning">Amar</span><span class="tag">contracto -αω</span></div>
+                    <div class="vocab-item"><span class="greek">ποιέω</span><span class="meaning">Hacer</span><span class="tag">contracto -εω</span></div>
+                    <div class="vocab-item"><span class="greek">πληρόω</span><span class="meaning">Llenar, completar</span><span class="tag">contracto -οω</span></div>
+                    <div class="vocab-item"><span class="greek">ἀκούω</span><span class="meaning">Oír, escuchar</span><span class="tag">futuro: ἀκούσω</span></div>
+                    <div class="vocab-item"><span class="greek">βλέπω</span><span class="meaning">Ver, mirar</span><span class="tag">βλέψω (labial)</span></div>
+                    <div class="vocab-item"><span class="greek">ἔχω</span><span class="meaning">Tener, sostener</span><span class="tag">futuro: ἕξω</span></div>
+                    <div class="vocab-item"><span class="greek">πιστεύω</span><span class="meaning">Creer, tener fe</span><span class="tag">dat. o acus.</span></div>
+                    <div class="vocab-item"><span class="greek">γίνομαι</span><span class="meaning">Llegar a ser, suceder</span><span class="tag">deponente; Aor. II: ἐγενόμην</span></div>
+                    <div class="vocab-item"><span class="greek">λαμβάνω</span><span class="meaning">Tomar, recibir</span><span class="tag">Aor. II: ἔλαβον</span></div>
+                    <div class="vocab-item"><span class="greek">ἔρχομαι</span><span class="meaning">Venir, ir</span><span class="tag">deponente; Aor. II: ἦλθον</span></div>
+                    <div class="vocab-item"><span class="greek">εὑρίσκω</span><span class="meaning">Encontrar</span><span class="tag">Aor. II: εὗρον</span></div>
+                    <div class="vocab-item"><span class="greek">βάλλω</span><span class="meaning">Lanzar, arrojar</span><span class="tag">Aor. II: ἔβαλον</span></div>
+                    <div class="vocab-item"><span class="greek">γινώσκω</span><span class="meaning">Conocer, darse cuenta</span><span class="tag">fut. dep.: γνώσομαι</span></div>
+                    <div class="vocab-item"><span class="greek">πορεύομαι</span><span class="meaning">Ir, vivir, proseguir</span><span class="tag">fut. medio dep.</span></div>
+                    <div class="vocab-item"><span class="greek">προσεύχομαι</span><span class="meaning">Orar</span><span class="tag">Aor. I med.: προσηυξάμην</span></div>
+                    <div class="vocab-item"><span class="greek">εἰμί</span><span class="meaning">Ser, estar</span><span class="tag">fut.: ἔσομαι; impf.: ἤμην</span></div>
+                </div>
+
+                <!-- Estadísticas -->
+                <div style="margin-top:2rem;">
+                    <h4 style="color:#f0e4d8; font-family:'Space Grotesk',sans-serif; margin-bottom:1rem;"><i class="fas fa-chart-simple" style="color:#dba87a;"></i> Estadísticas de Vocabulario · Sección 3</h4>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="number">138,162</div>
+                            <div class="label">Total de palabras en el NT</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="number">201+</div>
+                            <div class="label">Palabras aprendidas hasta la fecha</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="number">98,552+</div>
+                            <div class="label">Ocurrencias acumuladas</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="number">71.33%+</div>
+                            <div class="label">Porcentaje del NT cubierto</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top:2rem; background: rgba(219,168,122,0.04); border-radius:16px; padding:1.2rem 1.5rem; border-left:3px solid #dba87a;">
+                    <p style="color:#cdbcae; font-style:italic; font-size:0.95rem;">
+                        <i class="fas fa-quote-left" style="color:#dba87a; margin-right:8px;"></i>
+                        Con esta tercera sección, has dominado el sistema verbal del griego koiné. El Presente, Futuro, Imperfecto y Aoristo te permiten leer con fluidez el Nuevo Testamento, comprendiendo los matices aspectuales que enriquecen el mensaje bíblico.
+                    </p>
+                    <p style="color:#dba87a; margin-top:10px; font-weight:500; text-align:right;">
+                        <i class="fas fa-church"></i> Vivos para servir
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="module-footer">
+        <div class="ministry">
+            <i class="fas fa-church"></i>
+            <span><strong>Vivos para servir</strong> · Un equipo que vive para servir a Dios a través de la predicación del evangelio.</span>
+        </div>
+        <div style="display: flex; gap: 0.8rem; font-size:0.75rem; color:#7a6b5e;">
+            <span><i class="fas fa-flag"></i> ἀλήθεια</span>
+            <span><i class="fas fa-heart" style="color:#b97f5a;"></i> χάρις</span>
+            <span><i class="fas fa-star"></i> ζωή</span>
+        </div>
+    </footer>
+
+</div>
+
+<!-- ===== SCRIPT TABS ===== -->
+<script>
+    (function() {
+        const tabs = document.querySelectorAll('.tab-btn');
+        const panes = document.querySelectorAll('.tab-pane');
+        const progressFill = document.querySelector('.progress-track .fill');
+        const progressLabel = document.querySelector('.progress-label');
+
+        const tabNames = {
+            'intro': 'Introducción',
+            'semana10': 'Semana 10',
+            'semana11': 'Semana 11',
+            'semana12': 'Semana 12',
+            'semana13': 'Semana 13',
+            'semana14': 'Semana 14',
+            'maestra': 'Tabla Maestra',
+            'vocabulario': 'Vocabulario'
+        };
+
+        const tabOrder = ['intro', 'semana10', 'semana11', 'semana12', 'semana13', 'semana14', 'maestra', 'vocabulario'];
+
+        tabs.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                tabs.forEach(b => b.classList.remove('active'));
+                panes.forEach(p => p.classList.remove('active'));
+
+                this.classList.add('active');
+                const target = this.getAttribute('data-tab');
+                const targetPane = document.getElementById(target);
+                if (targetPane) {
+                    targetPane.classList.add('active');
+                }
+
+                const index = tabOrder.indexOf(target);
+                if (index !== -1 && progressFill) {
+                    const pct = ((index + 1) / tabOrder.length) * 100;
+                    progressFill.style.width = pct + '%';
+                }
+
+                if (progressLabel) {
+                    const name = tabNames[target] || target;
+                    progressLabel.innerHTML = `<i class="fas fa-arrow-right"></i> ${name}`;
+                }
+            });
+        });
+    })();
+</script>
+
+</body>
+</html>
