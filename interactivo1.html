@@ -34,9 +34,9 @@
 
         /* ========== CONTENEDOR ========== */
         .module-container {
-            max-width: 1100px;
+            max-width: 1200px;
             width: 100%;
-            background: rgba(28, 24, 21, 0.85);
+            background: rgba(28, 24, 21, 0.88);
             backdrop-filter: blur(16px) saturate(180%);
             border-radius: 40px;
             border: 1px solid rgba(255, 215, 175, 0.06);
@@ -149,7 +149,7 @@
 
         .progress-track .fill {
             height: 100%;
-            width: 20%;
+            width: 8%;
             background: linear-gradient(90deg, #dba87a, #c4895e);
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(219, 168, 122, 0.2);
@@ -172,7 +172,7 @@
         .tabs-nav {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.4rem;
             margin-bottom: 2rem;
             position: relative;
             z-index: 1;
@@ -183,12 +183,12 @@
         .tab-btn {
             background: transparent;
             border: none;
-            padding: 0.6rem 1.6rem;
+            padding: 0.6rem 1.4rem;
             border-radius: 60px;
             color: #b8a394;
             font-family: 'Inter', sans-serif;
             font-weight: 500;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             cursor: pointer;
             transition: all 0.25s ease;
             display: flex;
@@ -198,7 +198,7 @@
         }
 
         .tab-btn i {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #7a6b5e;
             transition: 0.2s;
         }
@@ -256,13 +256,14 @@
 
         .lesson-card h3 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: 600;
             color: #f0e4d8;
-            margin-bottom: 0.6rem;
+            margin-bottom: 0.8rem;
             display: flex;
             align-items: center;
             gap: 12px;
+            flex-wrap: wrap;
         }
 
         .lesson-card h3 .week-tag {
@@ -298,7 +299,7 @@
 
         .lesson-card p {
             color: #cdbcae;
-            line-height: 1.7;
+            line-height: 1.8;
             margin-bottom: 0.8rem;
             font-size: 0.98rem;
         }
@@ -313,6 +314,16 @@
 
         .lesson-card .highlight-box strong {
             color: #f0e4d8;
+        }
+
+        .lesson-card ul, .lesson-card ol {
+            color: #cdbcae;
+            padding-left: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .lesson-card ul li, .lesson-card ol li {
+            margin-bottom: 0.3rem;
         }
 
         /* ===== TABLAS ===== */
@@ -352,21 +363,41 @@
 
         .table-wrap td:first-child {
             font-family: 'Times New Roman', serif;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: #e8d5c4;
+        }
+
+        .table-wrap td .greek-inline {
+            font-family: 'Times New Roman', serif;
+            font-size: 1.05rem;
+            color: #e8d5c4;
+        }
+
+        /* tabla de paradigmas con fondo especial */
+        .paradigm-table {
+            border-color: rgba(219, 168, 122, 0.1);
+        }
+
+        .paradigm-table th {
+            background: rgba(219, 168, 122, 0.08);
+            color: #f5ede6;
+        }
+
+        .paradigm-table td {
+            font-size: 1rem;
         }
 
         /* ===== VOCABULARIO ===== */
         .vocab-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 0.8rem;
             margin-top: 0.8rem;
         }
 
         .vocab-item {
             background: rgba(255,255,255,0.02);
-            padding: 0.6rem 1.2rem;
+            padding: 0.7rem 1.2rem;
             border-radius: 12px;
             border: 1px solid rgba(255,215,175,0.04);
             display: flex;
@@ -374,6 +405,8 @@
             align-items: center;
             font-size: 0.95rem;
             transition: 0.2s;
+            flex-wrap: wrap;
+            gap: 0.4rem;
         }
 
         .vocab-item:hover {
@@ -390,14 +423,17 @@
         .vocab-item .meaning {
             color: #b8a394;
             font-size: 0.85rem;
+            flex: 1;
         }
 
         .vocab-item .tag {
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             background: rgba(219, 168, 122, 0.06);
             padding: 0.1rem 0.8rem;
             border-radius: 40px;
             color: #7a6b5e;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         /* ===== FOOTER MODULE ===== */
@@ -430,48 +466,25 @@
             font-weight: 500;
         }
 
-        .module-footer .nav-arrows {
-            display: flex;
-            gap: 0.8rem;
-        }
-
-        .module-footer .nav-arrows a {
-            color: #b8a394;
-            text-decoration: none;
-            padding: 0.3rem 1.2rem;
-            border-radius: 60px;
-            border: 1px solid rgba(255,215,175,0.06);
-            transition: 0.2s;
-            font-size: 0.8rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .module-footer .nav-arrows a:hover {
-            background: rgba(219, 168, 122, 0.06);
-            border-color: rgba(219, 168, 122, 0.15);
-            color: #f0e4d8;
-        }
-
         /* ========== RESPONSIVE ========== */
         @media (max-width: 768px) {
             body { padding: 1rem; }
             .module-container { padding: 1.5rem 1.2rem; border-radius: 28px; }
             .module-header .title-group h2 { font-size: 1.2rem; }
             .module-header .badge-module { font-size: 0.6rem; padding: 0.2rem 1rem; }
-            .tab-btn { padding: 0.4rem 1rem; font-size: 0.8rem; }
+            .tab-btn { padding: 0.4rem 0.9rem; font-size: 0.75rem; }
             .lesson-card { padding: 1.2rem; }
-            .lesson-card h3 { font-size: 1.2rem; flex-wrap: wrap; }
+            .lesson-card h3 { font-size: 1.2rem; }
             .vocab-grid { grid-template-columns: 1fr; }
             .module-footer { flex-direction: column; align-items: center; text-align: center; }
         }
 
         @media (max-width: 480px) {
             .module-header .left { flex-wrap: wrap; }
-            .tabs-nav { gap: 0.3rem; }
-            .tab-btn { font-size: 0.7rem; padding: 0.3rem 0.8rem; }
+            .tabs-nav { gap: 0.2rem; }
+            .tab-btn { font-size: 0.65rem; padding: 0.3rem 0.7rem; }
             .lesson-card .verse { font-size: 1rem; padding: 0.8rem 1rem; }
+            .lesson-card { padding: 1rem; }
         }
     </style>
 </head>
@@ -487,7 +500,7 @@
             </div>
             <div class="title-group">
                 <h2><span>Gramática</span> · Griego Koiné</h2>
-                <div class="sub"><i class="fas fa-scroll"></i> Sección No 1 · Fundamentos</div>
+                <div class="sub"><i class="fas fa-scroll"></i> Sección No 1 · Fundamentos completos</div>
             </div>
         </div>
         <div class="badge-module">
@@ -498,28 +511,66 @@
     <!-- ===== PROGRESS ===== -->
     <div class="progress-section">
         <div class="progress-track">
-            <div class="fill" style="width: 20%;"></div>
+            <div class="fill" style="width: 8%;"></div>
         </div>
         <div class="progress-label">
-            <i class="fas fa-arrow-right"></i> 1 de 5 semanas
+            <i class="fas fa-arrow-right"></i> Introducción
         </div>
     </div>
 
     <!-- ===== TABS ===== -->
     <nav class="tabs-nav" id="tabsNav">
-        <button class="tab-btn active" data-tab="semana1"><i class="fas fa-1"></i> Semana 1</button>
+        <button class="tab-btn active" data-tab="intro"><i class="fas fa-home"></i> Intro</button>
+        <button class="tab-btn" data-tab="semana1"><i class="fas fa-1"></i> Semana 1</button>
         <button class="tab-btn" data-tab="semana2"><i class="fas fa-2"></i> Semana 2</button>
         <button class="tab-btn" data-tab="semana3"><i class="fas fa-3"></i> Semana 3</button>
         <button class="tab-btn" data-tab="semana4"><i class="fas fa-4"></i> Semana 4</button>
         <button class="tab-btn" data-tab="semana5"><i class="fas fa-5"></i> Semana 5</button>
+        <button class="tab-btn" data-tab="paradigmas"><i class="fas fa-table"></i> Paradigmas</button>
         <button class="tab-btn" data-tab="vocabulario"><i class="fas fa-book"></i> Vocabulario</button>
     </nav>
 
     <!-- ===== CONTENIDO ===== -->
     <div class="tab-content">
 
+        <!-- ===== INTRO ===== -->
+        <div class="tab-pane active" id="intro">
+            <div class="lesson-card">
+                <h3>Bienvenido al Módulo de Fundamentos <span class="week-tag"><i class="fas fa-star"></i> Inicio</span></h3>
+                
+                <div class="verse">
+                    Ἐν ἀρχῇ ἦν ὁ λόγος, καὶ ὁ λόγος ἦν πρὸς τὸν θεόν, καὶ θεὸς ἦν ὁ λόγος.
+                    <small>Juan 1:1 — "En el principio era el Verbo, y el Verbo era con Dios, y el Verbo era Dios."</small>
+                </div>
+
+                <p>Este módulo interactivo te guiará a través de los <strong>fundamentos esenciales</strong> del griego koiné del Nuevo Testamento. Cada semana cubre un aspecto clave de la gramática, desde el alfabeto hasta los paradigmas completos de declinaciones y conjugaciones.</p>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-list-check" style="color:#dba87a;"></i> Contenido del Módulo</strong>
+                    <ul style="margin-top:8px; list-style:none; padding-left:0;">
+                        <li><i class="fas fa-check-circle" style="color:#7bc49a; margin-right:10px;"></i> <strong>Semana 1:</strong> Alfabeto, pronunciación y fundamentos bíblicos</li>
+                        <li><i class="fas fa-check-circle" style="color:#7bc49a; margin-right:10px;"></i> <strong>Semana 2:</strong> Sustantivos, casos y declinaciones</li>
+                        <li><i class="fas fa-check-circle" style="color:#7bc49a; margin-right:10px;"></i> <strong>Semana 3:</strong> El artículo definido y su uso</li>
+                        <li><i class="fas fa-check-circle" style="color:#7bc49a; margin-right:10px;"></i> <strong>Semana 4:</strong> Preposiciones y el verbo εἰμί (ser)</li>
+                        <li><i class="fas fa-check-circle" style="color:#7bc49a; margin-right:10px;"></i> <strong>Semana 5:</strong> Adjetivos y sus funciones</li>
+                        <li><i class="fas fa-check-circle" style="color:#7bc49a; margin-right:10px;"></i> <strong>Paradigmas:</strong> Tablas completas de declinaciones y conjugaciones</li>
+                        <li><i class="fas fa-check-circle" style="color:#7bc49a; margin-right:10px;"></i> <strong>Vocabulario:</strong> Léxico esencial acumulado</li>
+                    </ul>
+                </div>
+
+                <p style="margin-top:0.5rem;">Al dominar estos fundamentos, podrás leer y comprender el Nuevo Testamento en su idioma original, descubriendo capas de significado que enriquecen tu estudio bíblico.</p>
+
+                <div style="background: rgba(219,168,122,0.04); border-radius:16px; padding:1rem 1.5rem; margin-top:1.2rem; border-left:3px solid #dba87a;">
+                    <p style="color:#b8a394; font-style:italic; font-size:0.9rem;">
+                        <i class="fas fa-quote-left" style="color:#dba87a; margin-right:8px;"></i>
+                        "El griego del Nuevo Testamento es un instrumento de precisión divina para revelar la verdad de Dios."
+                    </p>
+                </div>
+            </div>
+        </div>
+
         <!-- ===== SEMANA 1 ===== -->
-        <div class="tab-pane active" id="semana1">
+        <div class="tab-pane" id="semana1">
             <div class="lesson-card">
                 <h3>Fundamentos del Griego Bíblico <span class="week-tag"><i class="fas fa-calendar-week"></i> Semana 1</span></h3>
                 
@@ -533,7 +584,7 @@
 
                 <div class="highlight-box">
                     <strong><i class="fas fa-alphabet" style="color:#dba87a;"></i> El Alfabeto Griego (24 letras)</strong>
-                    <p style="margin-top:8px; font-size:0.9rem;">El alfabeto es la base para la lectura y escritura del Nuevo Testamento.</p>
+                    <p style="margin-top:8px; font-size:0.9rem; color:#b8a394;">El alfabeto es la base para la lectura y escritura del Nuevo Testamento.</p>
                 </div>
 
                 <div class="table-wrap">
@@ -570,13 +621,14 @@
 
                 <div class="highlight-box">
                     <strong><i class="fas fa-microphone" style="color:#dba87a;"></i> Reglas de Pronunciación</strong>
-                    <ul style="list-style: none; margin-top:8px; color:#cdbcae; font-size:0.95rem; line-height:1.8;">
+                    <ul style="list-style: none; margin-top:8px; color:#cdbcae; font-size:0.95rem; line-height:2; padding-left:0;">
                         <li><strong>Vocales:</strong> α, ε, η, ι, ο, υ, ω.</li>
                         <li><strong>Diptongos:</strong> αι, ει, οι, αυ, ευ, ου.</li>
                         <li><strong>Espíritus:</strong> Toda palabra que comienza con vocal lleva un espíritu. <br> 
                             <span style="color:#b8a394;">• Suave (ἀ):</span> Sin aspiración. <br>
                             <span style="color:#b8a394;">• Áspero (ἁ):</span> Con aspiración (sonido "j").</li>
                         <li><strong>Acentos:</strong> Agudo (´), Grave (`) y Circunflejo (῀). Indican elevación del tono.</li>
+                        <li><strong>Iota suscrita:</strong> Aparece debajo de α, η, ω (ᾳ, ῃ, ῳ) y se pronuncia como parte de la vocal.</li>
                     </ul>
                 </div>
             </div>
@@ -603,25 +655,37 @@
                     <table>
                         <thead><tr><th>Caso</th><th>Función Básica</th><th>Traducción Clave</th><th>Ejemplo (λόγος)</th></tr></thead>
                         <tbody>
-                            <tr><td><strong>Nominativo</strong></td><td>Sujeto</td><td>—</td><td>λόγος</td></tr>
-                            <tr><td><strong>Genitivo</strong></td><td>Posesión, Relación</td><td>"de"</td><td>λόγου</td></tr>
-                            <tr><td><strong>Dativo</strong></td><td>Complemento Indirecto</td><td>"a", "para", "por", "con"</td><td>λόγῳ</td></tr>
-                            <tr><td><strong>Acusativo</strong></td><td>Objeto Directo</td><td>—</td><td>λόγον</td></tr>
+                            <tr><td><strong>Nominativo</strong></td><td>Sujeto / Predicado</td><td>—</td><td>λόγος</td></tr>
+                            <tr><td><strong>Genitivo</strong></td><td>Posesión, Origen, Relación</td><td>"de"</td><td>λόγου</td></tr>
+                            <tr><td><strong>Dativo</strong></td><td>Complemento Indirecto, Instrumento</td><td>"a", "para", "por", "con"</td><td>λόγῳ</td></tr>
+                            <tr><td><strong>Acusativo</strong></td><td>Objeto Directo, Extensión</td><td>—</td><td>λόγον</td></tr>
+                            <tr><td><strong>Vocativo</strong></td><td>Llamamiento directo</td><td>"Oh"</td><td>λόγε</td></tr>
                         </tbody>
                     </table>
                 </div>
 
                 <div class="highlight-box" style="margin-top:1.2rem;">
                     <strong><i class="fas fa-layer-group" style="color:#dba87a;"></i> Introducción a las Declinaciones</strong>
+                    <p style="font-size:0.9rem; color:#b8a394; margin-top:4px;">Los sustantivos siguen patrones de flexión llamados declinaciones.</p>
                     <div class="table-wrap" style="margin-top:8px;">
                         <table>
                             <thead><tr><th>Declinación</th><th>Terminación del Lexema</th><th>Género Predominante</th><th>Ejemplo</th></tr></thead>
                             <tbody>
                                 <tr><td><strong>Primera</strong></td><td>Alfa (α) o Eta (η)</td><td>Femenino</td><td>ἀγάπη (amor)</td></tr>
                                 <tr><td><strong>Segunda</strong></td><td>Ómicron (ο)</td><td>Masculino o Neutro</td><td>λόγος, ἔργον</td></tr>
+                                <tr><td><strong>Tercera</strong></td><td>Consonante o vocal variable</td><td>Los tres géneros</td><td>σάρξ (carne)</td></tr>
                             </tbody>
                         </table>
                     </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-lightbulb" style="color:#dba87a;"></i> Conceptos Clave</strong>
+                    <ul style="margin-top:6px;">
+                        <li><strong>Lexema (raíz):</strong> La parte invariable de la palabra que contiene su significado básico.</li>
+                        <li><strong>Desinencia:</strong> La terminación que indica caso, número y género.</li>
+                        <li><strong>Tema:</strong> La combinación del lexema + la vocal temática (cuando existe).</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -632,7 +696,7 @@
                 <h3>El Artículo Definido <span class="week-tag"><i class="fas fa-calendar-week"></i> Semana 3</span></h3>
                 
                 <p>En griego koiné <strong>solo existe el artículo definido</strong> (el, la, los, las). No hay artículo indefinido.</p>
-                <p>El artículo <strong>concuerda en género, número y caso</strong> con el sustantivo que modifica. Actúa como una "guía gramatical".</p>
+                <p>El artículo <strong>concuerda en género, número y caso</strong> con el sustantivo que modifica. Actúa como una "guía gramatical" fundamental.</p>
 
                 <div class="highlight-box">
                     <strong><i class="fas fa-table" style="color:#dba87a;"></i> Paradigma del Artículo Definido</strong>
@@ -655,11 +719,13 @@
                 </div>
 
                 <div class="highlight-box">
-                    <strong><i class="fas fa-language" style="color:#dba87a;"></i> Traducción del Artículo</strong>
-                    <ul style="list-style: none; margin-top:8px; color:#cdbcae; font-size:0.95rem; line-height:2;">
-                        <li>• Con artículo: ὁ λόγος = <strong>"el Verbo"</strong></li>
-                        <li>• Sin artículo: λόγος = <strong>"Verbo"</strong> o <strong>"un Verbo"</strong></li>
-                        <li>• Con nombres propios y abstractos, el artículo griego (ej. ὁ Ἰησοῦς) puede omitirse en la traducción al español ("Jesús").</li>
+                    <strong><i class="fas fa-language" style="color:#dba87a;"></i> Uso del Artículo</strong>
+                    <ul style="margin-top:8px; color:#cdbcae; line-height:2;">
+                        <li><strong>Con artículo:</strong> ὁ λόγος = <em>"el Verbo"</em></li>
+                        <li><strong>Sin artículo:</strong> λόγος = <em>"Verbo"</em> o <em>"un Verbo"</em></li>
+                        <li><strong>Con nombres propios:</strong> El artículo griego (ej. ὁ Ἰησοῦς) puede omitirse en la traducción al español ("Jesús").</li>
+                        <li><strong>Artículo sustantivador:</strong> El artículo puede convertir adjetivos, participios o preposiciones en sustantivos. <br>
+                            <span style="color:#b8a394;">Ej: οἱ πτωχοί = "los pobres" (lit. "los que son pobres")</span></li>
                     </ul>
                 </div>
             </div>
@@ -673,36 +739,49 @@
                 <p>Una preposición indica la relación entre dos palabras. <strong>Regla Clave:</strong> El significado de una preposición en griego depende del <strong>caso de su objeto</strong>.</p>
 
                 <div class="highlight-box">
-                    <strong><i class="fas fa-arrows-alt-h" style="color:#dba87a;"></i> Ejemplo: διά (dia)</strong>
-                    <ul style="list-style: none; margin-top:8px; color:#cdbcae; font-size:0.95rem; line-height:2;">
-                        <li>• <strong>διά + Genitivo:</strong> "a través de" (ej. δι' αὐτοῦ = "por medio de él")</li>
-                        <li>• <strong>διά + Acusativo:</strong> "a causa de" (ej. διὰ τὸν = "a causa del")</li>
-                    </ul>
-                    <p style="margin-top:8px;"><strong>ἐν + Dativo:</strong> "en" (indica ubicación estática).</p>
-                </div>
-
-                <div class="highlight-box">
-                    <strong><i class="fas fa-verb" style="color:#dba87a;"></i> El Verbo εἰμί (Ser/Estar)</strong>
-                    <p style="font-size:0.85rem; margin-top:4px; color:#b8a394;">Paradigma de εἰμί en Presente:</p>
+                    <strong><i class="fas fa-arrows-alt-h" style="color:#dba87a;"></i> Preposiciones Importantes</strong>
                     <div class="table-wrap" style="margin-top:8px;">
                         <table>
-                            <thead><tr><th>Persona y Número</th><th>Griego</th><th>Traducción</th></tr></thead>
+                            <thead><tr><th>Preposición</th><th>+ Genitivo</th><th>+ Dativo</th><th>+ Acusativo</th></tr></thead>
                             <tbody>
-                                <tr><td>1ª sg.</td><td><strong>εἰμι</strong></td><td>yo soy</td></tr>
-                                <tr><td>2ª sg.</td><td><strong>εἶ</strong></td><td>tú eres</td></tr>
-                                <tr><td>3ª sg.</td><td><strong>ἐστί(ν)</strong></td><td>él/ella es</td></tr>
-                                <tr><td>1ª pl.</td><td><strong>ἐσμέν</strong></td><td>nosotros somos</td></tr>
-                                <tr><td>2ª pl.</td><td><strong>ἐστέ</strong></td><td>vosotros sois</td></tr>
-                                <tr><td>3ª pl.</td><td><strong>εἰσί(ν)</strong></td><td>ellos son</td></tr>
+                                <tr><td><strong>ἀπό</strong></td><td>de, desde</td><td>—</td><td>—</td></tr>
+                                <tr><td><strong>διά</strong></td><td>a través de</td><td>—</td><td>a causa de</td></tr>
+                                <tr><td><strong>εἰς</strong></td><td>—</td><td>—</td><td>hacia, en</td></tr>
+                                <tr><td><strong>ἐκ/ἐξ</strong></td><td>de, desde dentro</td><td>—</td><td>—</td></tr>
+                                <tr><td><strong>ἐν</strong></td><td>—</td><td>en, dentro de</td><td>—</td></tr>
+                                <tr><td><strong>μετά</strong></td><td>con</td><td>—</td><td>después de</td></tr>
+                                <tr><td><strong>παρά</strong></td><td>de (procedencia)</td><td>junto a, delante de</td><td>al lado de</td></tr>
+                                <tr><td><strong>πρός</strong></td><td>—</td><td>—</td><td>hacia, para con</td></tr>
+                                <tr><td><strong>ὑπό</strong></td><td>por (agente)</td><td>—</td><td>bajo (lugar)</td></tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
 
                 <div class="highlight-box">
+                    <strong><i class="fas fa-verb" style="color:#dba87a;"></i> El Verbo εἰμί (Ser/Estar) — Presente de Indicativo</strong>
+                    <p style="font-size:0.85rem; margin-top:4px; color:#b8a394;">Paradigma completo del verbo más común y crucial:</p>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Persona y Número</th><th>Griego</th><th>Transliteración</th><th>Traducción</th></tr></thead>
+                            <tbody>
+                                <tr><td>1ª sg.</td><td><strong>εἰμι</strong></td><td>eimi</td><td>yo soy</td></tr>
+                                <tr><td>2ª sg.</td><td><strong>εἶ</strong></td><td>ei</td><td>tú eres</td></tr>
+                                <tr><td>3ª sg.</td><td><strong>ἐστί(ν)</strong></td><td>esti(n)</td><td>él/ella es</td></tr>
+                                <tr><td>1ª pl.</td><td><strong>ἐσμέν</strong></td><td>esmen</td><td>nosotros somos</td></tr>
+                                <tr><td>2ª pl.</td><td><strong>ἐστέ</strong></td><td>este</td><td>vosotros sois</td></tr>
+                                <tr><td>3ª pl.</td><td><strong>εἰσί(ν)</strong></td><td>eisi(n)</td><td>ellos son</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p style="margin-top:8px; font-size:0.9rem; color:#b8a394;">La <strong>ν</strong> (nu) móvil se añade al final cuando la siguiente palabra comienza con vocal.</p>
+                </div>
+
+                <div class="highlight-box">
                     <strong><i class="fas fa-asterisk" style="color:#dba87a;"></i> Nominativo Predicativo</strong>
                     <p style="margin-top:6px;">El verbo "ser" (εἰμί) no toma un objeto directo en acusativo, sino un <strong>predicado nominativo</strong> que describe o identifica al sujeto.</p>
                     <p style="margin-top:8px;"><strong>Ejemplo:</strong> ὁ θεὸς ἀγάπη ἐστίν = <em>"Dios es amor"</em>. (Tanto θεὸς como ἀγάπη están en nominativo).</p>
+                    <p style="margin-top:4px; color:#b8a394; font-size:0.9rem;">Otro ejemplo: ὁ λόγος σὰρξ ἐγένετο = <em>"El Verbo se hizo carne"</em> (Juan 1:14).</p>
                 </div>
             </div>
         </div>
@@ -716,11 +795,11 @@
 
                 <div class="highlight-box">
                     <strong><i class="fas fa-list" style="color:#dba87a;"></i> Funciones del Adjetivo en Griego</strong>
-                    <ul style="list-style: none; margin-top:8px; color:#cdbcae; line-height:2;">
+                    <ul style="margin-top:8px; color:#cdbcae; line-height:2.2;">
                         <li><strong>1. Atributivo:</strong> Da una cualidad directamente al sustantivo.</li>
                         <li style="padding-left:1.5rem; font-size:0.9rem; color:#b8a394;">• Primera Posición: ὁ ἀγαθὸς ἄνθρωπος ("El hombre bueno")</li>
-                        <li style="padding-left:1.5rem; font-size:0.9rem; color:#b8a394;">• Segunda Posición: ὁ ἄνθρωπος ὁ ἀγαθός ("El hombre bueno")</li>
-                        <li><strong>2. Sustantivado:</strong> Funciona como un sustantivo.</li>
+                        <li style="padding-left:1.5rem; font-size:0.9rem; color:#b8a394;">• Segunda Posición (con artículo repetido): ὁ ἄνθρωπος ὁ ἀγαθός ("El hombre bueno")</li>
+                        <li><strong>2. Sustantivado:</strong> Funciona como un sustantivo (con artículo).</li>
                         <li style="padding-left:1.5rem; font-size:0.9rem; color:#b8a394;">• Ejemplo: οἱ ἀγαθοί = "los buenos (hombres)"</li>
                         <li><strong>3. Predicativo:</strong> Afirma algo sobre el sujeto mediante el verbo "ser".</li>
                         <li style="padding-left:1.5rem; font-size:0.9rem; color:#b8a394;">• Ejemplo: ὁ ἄνθρωπος ἀγαθός = "El hombre es bueno"</li>
@@ -729,11 +808,147 @@
 
                 <div class="highlight-box">
                     <strong><i class="fas fa-key" style="color:#dba87a;"></i> Claves para Identificar la Función</strong>
-                    <ul style="list-style: none; margin-top:8px; color:#cdbcae; line-height:2;">
+                    <ul style="margin-top:8px; color:#cdbcae; line-height:2.2;">
                         <li>• <strong>Sustantivo con artículo + Adjetivo sin artículo:</strong> Es predicativo <span style="color:#b8a394;">(ej. ὁ ἄνθρωπος ἀγαθός = "El hombre es bueno")</span></li>
                         <li>• <strong>Artículo + Adjetivo + Sustantivo (o viceversa con dos artículos):</strong> Es atributivo <span style="color:#b8a394;">(ej. ὁ ἀγαθὸς ἄνθρωπος = "El hombre bueno")</span></li>
                         <li>• <strong>Artículo + Adjetivo (sin sustantivo):</strong> Es sustantivado <span style="color:#b8a394;">(ej. ὁ ἀγαθός = "El bueno")</span></li>
                     </ul>
+                </div>
+
+                <div class="highlight-box">
+                    <strong><i class="fas fa-table" style="color:#dba87a;"></i> Adjetivos de Tres Terminaciones (ej. ἀγαθός, -ή, -όν)</strong>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Caso</th><th>Masculino</th><th>Femenino</th><th>Neutro</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Nom. sg</strong></td><td>ἀγαθός</td><td>ἀγαθή</td><td>ἀγαθόν</td></tr>
+                                <tr><td><strong>Gen. sg</strong></td><td>ἀγαθοῦ</td><td>ἀγαθῆς</td><td>ἀγαθοῦ</td></tr>
+                                <tr><td><strong>Dat. sg</strong></td><td>ἀγαθῷ</td><td>ἀγαθῇ</td><td>ἀγαθῷ</td></tr>
+                                <tr><td><strong>Acc. sg</strong></td><td>ἀγαθόν</td><td>ἀγαθήν</td><td>ἀγαθόν</td></tr>
+                                <tr><td><strong>Nom. pl</strong></td><td>ἀγαθοί</td><td>ἀγαθαί</td><td>ἀγαθά</td></tr>
+                                <tr><td><strong>Gen. pl</strong></td><td>ἀγαθῶν</td><td>ἀγαθῶν</td><td>ἀγαθῶν</td></tr>
+                                <tr><td><strong>Dat. pl</strong></td><td>ἀγαθοῖς</td><td>ἀγαθαῖς</td><td>ἀγαθοῖς</td></tr>
+                                <tr><td><strong>Acc. pl</strong></td><td>ἀγαθούς</td><td>ἀγαθάς</td><td>ἀγαθά</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== PARADIGMAS ===== -->
+        <div class="tab-pane" id="paradigmas">
+            <div class="lesson-card">
+                <h3>Paradigmas Completos <span class="week-tag"><i class="fas fa-table"></i> Declinaciones y Conjugaciones</span></h3>
+                <p style="color:#b8a394; margin-bottom:1.2rem;">Tablas de referencia para los patrones principales de flexión nominal y verbal.</p>
+
+                <!-- 1ra Declinación -->
+                <div class="highlight-box">
+                    <strong><i class="fas fa-1" style="color:#dba87a;"></i> Primera Declinación (Femenino) — ἀγάπη (amor)</strong>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Caso</th><th>Singular</th><th>Plural</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Nominativo</strong></td><td>ἀγάπη</td><td>ἀγάπαι</td></tr>
+                                <tr><td><strong>Genitivo</strong></td><td>ἀγάπης</td><td>ἀγαπῶν</td></tr>
+                                <tr><td><strong>Dativo</strong></td><td>ἀγάπῃ</td><td>ἀγάπαις</td></tr>
+                                <tr><td><strong>Acusativo</strong></td><td>ἀγάπην</td><td>ἀγάπας</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 2da Declinación Masculina -->
+                <div class="highlight-box">
+                    <strong><i class="fas fa-2" style="color:#dba87a;"></i> Segunda Declinación (Masculino) — λόγος (palabra)</strong>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Caso</th><th>Singular</th><th>Plural</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Nominativo</strong></td><td>λόγος</td><td>λόγοι</td></tr>
+                                <tr><td><strong>Genitivo</strong></td><td>λόγου</td><td>λόγων</td></tr>
+                                <tr><td><strong>Dativo</strong></td><td>λόγῳ</td><td>λόγοις</td></tr>
+                                <tr><td><strong>Acusativo</strong></td><td>λόγον</td><td>λόγους</td></tr>
+                                <tr><td><strong>Vocativo</strong></td><td>λόγε</td><td>λόγοι</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 2da Declinación Neutra -->
+                <div class="highlight-box">
+                    <strong><i class="fas fa-2" style="color:#dba87a;"></i> Segunda Declinación (Neutro) — ἔργον (obra)</strong>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Caso</th><th>Singular</th><th>Plural</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Nominativo</strong></td><td>ἔργον</td><td>ἔργα</td></tr>
+                                <tr><td><strong>Genitivo</strong></td><td>ἔργου</td><td>ἔργων</td></tr>
+                                <tr><td><strong>Dativo</strong></td><td>ἔργῳ</td><td>ἔργοις</td></tr>
+                                <tr><td><strong>Acusativo</strong></td><td>ἔργον</td><td>ἔργα</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p style="font-size:0.85rem; color:#b8a394; margin-top:6px;">Nota: El nominativo y acusativo son idénticos en los neutros, tanto en singular como en plural.</p>
+                </div>
+
+                <!-- 3ra Declinación -->
+                <div class="highlight-box">
+                    <strong><i class="fas fa-3" style="color:#dba87a;"></i> Tercera Declinación — σάρξ (carne), raíz en consonante</strong>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Caso</th><th>Singular</th><th>Plural</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Nominativo</strong></td><td>σάρξ</td><td>σάρκες</td></tr>
+                                <tr><td><strong>Genitivo</strong></td><td>σαρκός</td><td>σαρκῶν</td></tr>
+                                <tr><td><strong>Dativo</strong></td><td>σαρκί</td><td>σαρξί(ν)</td></tr>
+                                <tr><td><strong>Acusativo</strong></td><td>σάρκα</td><td>σάρκας</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p style="font-size:0.85rem; color:#b8a394; margin-top:6px;">La tercera declinación incluye sustantivos de los tres géneros con raíces en consonante o vocal.</p>
+                </div>
+
+                <!-- Verbo εἰμί -->
+                <div class="highlight-box">
+                    <strong><i class="fas fa-verb" style="color:#dba87a;"></i> Conjugación de εἰμί (ser) — Presente de Indicativo</strong>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Persona</th><th>Singular</th><th>Plural</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>1ª</strong></td><td>εἰμι</td><td>ἐσμέν</td></tr>
+                                <tr><td><strong>2ª</strong></td><td>εἶ</td><td>ἐστέ</td></tr>
+                                <tr><td><strong>3ª</strong></td><td>ἐστί(ν)</td><td>εἰσί(ν)</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Artículo Definido (resumen) -->
+                <div class="highlight-box">
+                    <strong><i class="fas fa-article" style="color:#dba87a;"></i> Artículo Definido — Resumen</strong>
+                    <div class="table-wrap" style="margin-top:8px;">
+                        <table>
+                            <thead><tr><th>Caso</th><th>Masculino</th><th>Femenino</th><th>Neutro</th></tr></thead>
+                            <tbody>
+                                <tr><td><strong>Nom. sg</strong></td><td>ὁ</td><td>ἡ</td><td>τό</td></tr>
+                                <tr><td><strong>Gen. sg</strong></td><td>τοῦ</td><td>τῆς</td><td>τοῦ</td></tr>
+                                <tr><td><strong>Dat. sg</strong></td><td>τῷ</td><td>τῇ</td><td>τῷ</td></tr>
+                                <tr><td><strong>Acc. sg</strong></td><td>τόν</td><td>τήν</td><td>τό</td></tr>
+                                <tr><td><strong>Nom. pl</strong></td><td>οἱ</td><td>αἱ</td><td>τά</td></tr>
+                                <tr><td><strong>Gen. pl</strong></td><td>τῶν</td><td>τῶν</td><td>τῶν</td></tr>
+                                <tr><td><strong>Dat. pl</strong></td><td>τοῖς</td><td>ταῖς</td><td>τοῖς</td></tr>
+                                <tr><td><strong>Acc. pl</strong></td><td>τούς</td><td>τάς</td><td>τά</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div style="background: rgba(219,168,122,0.04); border-radius:16px; padding:1rem 1.5rem; margin-top:1.2rem; border-left:3px solid #dba87a;">
+                    <p style="color:#b8a394; font-size:0.9rem;">
+                        <i class="fas fa-info-circle" style="color:#dba87a; margin-right:8px;"></i>
+                        <strong>Consejo:</strong> Memoriza estos paradigmas gradualmente. Comienza con el artículo, luego la segunda declinación, y progresivamente añade los demás patrones.
+                    </p>
                 </div>
             </div>
         </div>
@@ -742,25 +957,38 @@
         <div class="tab-pane" id="vocabulario">
             <div class="lesson-card">
                 <h3>Vocabulario Acumulado Esencial <span class="week-tag"><i class="fas fa-book-open"></i> Todas las semanas</span></h3>
-                <p style="color:#b8a394; margin-bottom:1rem;">Vocabulario clave para dominar los fundamentos del griego koiné.</p>
+                <p style="color:#b8a394; margin-bottom:1rem;">Vocabulario clave para dominar los fundamentos del griego koiné. Incluye sustantivos, verbos, preposiciones y adjetivos.</p>
 
                 <div class="vocab-grid">
-                    <div class="vocab-item"><span class="greek">λόγος, -ου, ὁ</span><span class="meaning">Palabra, Verbo</span><span class="tag">2ª decl.</span></div>
+                    <div class="vocab-item"><span class="greek">λόγος, -ου, ὁ</span><span class="meaning">Palabra, Verbo, mensaje</span><span class="tag">2ª decl.</span></div>
                     <div class="vocab-item"><span class="greek">θεός, -οῦ, ὁ</span><span class="meaning">Dios</span><span class="tag">2ª decl.</span></div>
                     <div class="vocab-item"><span class="greek">ἀγάπη, -ης, ἡ</span><span class="meaning">Amor</span><span class="tag">1ª decl.</span></div>
-                    <div class="vocab-item"><span class="greek">ἔργον, -ου, τό</span><span class="meaning">Obra, acción</span><span class="tag">neutro</span></div>
-                    <div class="vocab-item"><span class="greek">ἄνθρωπος, -ου, ὁ</span><span class="meaning">Hombre</span><span class="tag">2ª decl.</span></div>
-                    <div class="vocab-item"><span class="greek">καί</span><span class="meaning">Y, también</span><span class="tag">conjunción</span></div>
-                    <div class="vocab-item"><span class="greek">ἐν</span><span class="meaning">En, dentro de</span><span class="tag">prep. + dat.</span></div>
-                    <div class="vocab-item"><span class="greek">εἰμί</span><span class="meaning">Yo soy</span><span class="tag">verbo</span></div>
+                    <div class="vocab-item"><span class="greek">ἔργον, -ου, τό</span><span class="meaning">Obra, acción, trabajo</span><span class="tag">neutro</span></div>
+                    <div class="vocab-item"><span class="greek">ἄνθρωπος, -ου, ὁ</span><span class="meaning">Hombre, humanidad</span><span class="tag">2ª decl.</span></div>
+                    <div class="vocab-item"><span class="greek">σάρξ, σαρκός, ἡ</span><span class="meaning">Carne, naturaleza humana</span><span class="tag">3ª decl.</span></div>
+                    <div class="vocab-item"><span class="greek">καιρός, -οῦ, ὁ</span><span class="meaning">Tiempo (oportuno)</span><span class="tag">2ª decl.</span></div>
+                    <div class="vocab-item"><span class="greek">κόσμος, -ου, ὁ</span><span class="meaning">Mundo, universo</span><span class="tag">2ª decl.</span></div>
+                    <div class="vocab-item"><span class="greek">καί</span><span class="meaning">Y, también, incluso</span><span class="tag">conjunción</span></div>
+                    <div class="vocab-item"><span class="greek">ἐν</span><span class="meaning">En, dentro de, con</span><span class="tag">prep. + dat.</span></div>
+                    <div class="vocab-item"><span class="greek">εἰμί</span><span class="meaning">Yo soy, existo</span><span class="tag">verbo</span></div>
                     <div class="vocab-item"><span class="greek">διά</span><span class="meaning">A través de (gen.) / a causa de (ac.)</span><span class="tag">prep.</span></div>
-                    <div class="vocab-item"><span class="greek">ἀγαθός, -ή, -όν</span><span class="meaning">Bueno</span><span class="tag">adj. 3 term.</span></div>
+                    <div class="vocab-item"><span class="greek">μετά</span><span class="meaning">Con (gen.) / después de (ac.)</span><span class="tag">prep.</span></div>
+                    <div class="vocab-item"><span class="greek">πρός</span><span class="meaning">Hacia, para con (ac.)</span><span class="tag">prep.</span></div>
+                    <div class="vocab-item"><span class="greek">ἀγαθός, -ή, -όν</span><span class="meaning">Bueno, noble</span><span class="tag">adj. 3 term.</span></div>
+                    <div class="vocab-item"><span class="greek">ἅγιος, -α, -ον</span><span class="meaning">Santo, apartado</span><span class="tag">adj. 3 term.</span></div>
+                    <div class="vocab-item"><span class="greek">πιστός, -ή, -όν</span><span class="meaning">Fiel, digno de confianza</span><span class="tag">adj. 3 term.</span></div>
+                    <div class="vocab-item"><span class="greek">Ἰησοῦς, -οῦ, ὁ</span><span class="meaning">Jesús</span><span class="tag">nombre propio</span></div>
+                    <div class="vocab-item"><span class="greek">Χριστός, -οῦ, ὁ</span><span class="meaning">Cristo, Ungido</span><span class="tag">2ª decl.</span></div>
+                    <div class="vocab-item"><span class="greek">πνεῦμα, -ατος, τό</span><span class="meaning">Espíritu, viento</span><span class="tag">3ª decl.</span></div>
                 </div>
 
                 <div style="margin-top:2rem; background: rgba(219,168,122,0.04); border-radius:16px; padding:1.2rem 1.5rem; border-left:3px solid #dba87a;">
                     <p style="color:#cdbcae; font-style:italic; font-size:0.95rem;">
                         <i class="fas fa-quote-left" style="color:#dba87a; margin-right:8px;"></i>
-                        Al dominar estos fundamentos —el alfabeto, los casos, las declinaciones, el artículo definido, las preposiciones y los adjetivos— el estudiante habrá construido una base sólida para adentrarse en las riquezas del Nuevo Testamento en su idioma original.
+                        Al dominar estos fundamentos —el alfabeto, los casos, las declinaciones, el artículo definido, las preposiciones y los adjetivos— el estudiante habrá construido una base sólida para adentrarse en las riquezas del Nuevo Testamento en su idioma original. Cada detalle gramatical revela una profundidad teológica que transforma nuestra lectura y comprensión de las Escrituras.
+                    </p>
+                    <p style="color:#dba87a; margin-top:10px; font-weight:500; text-align:right;">
+                        <i class="fas fa-church"></i> Vivos para servir
                     </p>
                 </div>
             </div>
@@ -774,9 +1002,10 @@
             <i class="fas fa-church"></i>
             <span><strong>Vivos para servir</strong> · Un equipo que vive para servir a Dios a través de la predicación del evangelio.</span>
         </div>
-        <div class="nav-arrows">
-            <a href="#"><i class="fas fa-arrow-left"></i> Anterior</a>
-            <a href="#">Siguiente <i class="fas fa-arrow-right"></i></a>
+        <div style="display: flex; gap: 0.8rem; font-size:0.75rem; color:#7a6b5e;">
+            <span><i class="fas fa-flag"></i> ἀλήθεια</span>
+            <span><i class="fas fa-heart" style="color:#b97f5a;"></i> χάρις</span>
+            <span><i class="fas fa-star"></i> ζωή</span>
         </div>
     </footer>
 
@@ -787,6 +1016,21 @@
     (function() {
         const tabs = document.querySelectorAll('.tab-btn');
         const panes = document.querySelectorAll('.tab-pane');
+        const progressFill = document.querySelector('.progress-track .fill');
+        const progressLabel = document.querySelector('.progress-label');
+
+        const tabNames = {
+            'intro': 'Introducción',
+            'semana1': 'Semana 1',
+            'semana2': 'Semana 2',
+            'semana3': 'Semana 3',
+            'semana4': 'Semana 4',
+            'semana5': 'Semana 5',
+            'paradigmas': 'Paradigmas',
+            'vocabulario': 'Vocabulario'
+        };
+
+        const tabOrder = ['intro', 'semana1', 'semana2', 'semana3', 'semana4', 'semana5', 'paradigmas', 'vocabulario'];
 
         tabs.forEach(btn => {
             btn.addEventListener('click', function(e) {
@@ -802,28 +1046,17 @@
                     targetPane.classList.add('active');
                 }
 
-                // actualizar progress (simulado)
-                const progress = document.querySelector('.progress-track .fill');
-                const weeks = ['semana1', 'semana2', 'semana3', 'semana4', 'semana5', 'vocabulario'];
-                const index = weeks.indexOf(target);
-                if (index !== -1 && progress) {
-                    const pct = ((index + 1) / weeks.length) * 100;
-                    progress.style.width = pct + '%';
+                // actualizar progress
+                const index = tabOrder.indexOf(target);
+                if (index !== -1 && progressFill) {
+                    const pct = ((index + 1) / tabOrder.length) * 100;
+                    progressFill.style.width = pct + '%';
                 }
 
                 // actualizar label
-                const label = document.querySelector('.progress-label');
-                if (label) {
-                    const names = {
-                        'semana1': 'Semana 1',
-                        'semana2': 'Semana 2',
-                        'semana3': 'Semana 3',
-                        'semana4': 'Semana 4',
-                        'semana5': 'Semana 5',
-                        'vocabulario': 'Vocabulario'
-                    };
-                    const weekName = names[target] || target;
-                    label.innerHTML = `<i class="fas fa-arrow-right"></i> ${weekName}`;
+                if (progressLabel) {
+                    const name = tabNames[target] || target;
+                    progressLabel.innerHTML = `<i class="fas fa-arrow-right"></i> ${name}`;
                 }
             });
         });
